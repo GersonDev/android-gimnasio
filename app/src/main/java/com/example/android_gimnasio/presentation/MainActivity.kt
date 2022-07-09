@@ -1,4 +1,4 @@
-package com.example.android_gimnasio
+package com.example.android_gimnasio.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
