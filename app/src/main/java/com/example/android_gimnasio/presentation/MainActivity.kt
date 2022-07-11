@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             NavHost(navController, startDestination = Screen.Logearse.route) {
                 composable(Screen.Logearse.route) {
                     LogearsePantalla(
-                        
+
                     )
                 }
             }
