@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.components.LogearsePantalla
+import com.example.android_gimnasio.presentation.components.RegistrarPantalla
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,6 +25,16 @@ class MainActivity : ComponentActivity() {
                         },
                         onClickButtonTwo = {},
                         onClickButtonThree = {}
+                    )
+                }
+                composable(Screen.Registrar.route){
+                    RegistrarPantalla(
+                        onClickRegistro = { { /*TODO*/ } },
+                        onClickPrivacidad = {},
+                        onClickCondiciones = {},
+                        nombre = "",
+                        correo = "",
+                        contraseña =""
                     )
                 }
             }

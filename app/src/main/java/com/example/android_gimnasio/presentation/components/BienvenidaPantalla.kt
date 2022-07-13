@@ -25,7 +25,7 @@ fun LogearsePantalla(
     onClickButtonThree: () -> Unit
 ) {
     Box(
-        contentAlignment = Alignment.Center
+        contentAlignment = Alignment.Center , modifier = Modifier.absolutePadding()
     ) {
         Image(
             modifier = Modifier
@@ -62,6 +62,8 @@ fun LogearsePantalla(
                     onClick = onClickButtonOne,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue),
                     content = {
+                        val painter: Painter= painterResource(id = R.drawable.ic_baseline_account_circle_24)
+                        Image(painter = painter, contentDescription = "Logo de Iniciar Sesion", modifier = Modifier.width(20.dp))
                         Text("Iniciar sesion", color = Color.White)
                     })
             }
