@@ -28,16 +28,16 @@ class MainActivity : ComponentActivity() {
                             onClickButtonThree = {}
                         )
                     }
-                }
-                composable(Screen.Registrar.route){
-                    RegistrarPantalla(
-                        onClickRegistro = { { /*TODO*/ } },
-                        onClickPrivacidad = {},
-                        onClickCondiciones = {},
-                        nombre = "",
-                        correo = "",
-                        contraseña =""
-                    )
+                    composable(Screen.Registrar.route) {
+                        RegistrarPantalla(
+                            onClickRegistro = { { /*TODO*/ } },
+                            onClickPrivacidad = {},
+                            onClickCondiciones = {},
+                            nombre = "",
+                            correo = "",
+                            contraseña = ""
+                        )
+                    }
                 }
             }
         }
