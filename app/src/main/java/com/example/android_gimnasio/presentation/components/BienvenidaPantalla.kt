@@ -40,7 +40,7 @@ fun LogearsePantalla(
                 .fillMaxSize(),
             painter = painterResource(id = R.drawable.gimnasio1),
             contentDescription = "Logo Gimnasio",
-            contentScale = ContentScale.FillWidth
+            contentScale = ContentScale.FillBounds
         )
 
         Column(
@@ -55,7 +55,7 @@ fun LogearsePantalla(
             Text(
                 "BIENVENIDOS A STRONG \n FITNESS",
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.h1
+                style = MaterialTheme.typography.h1,
             )
             Spacer(
                 modifier = Modifier
@@ -85,7 +85,17 @@ fun LogearsePantalla(
                     onClick = onClickButtonOne,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue),
                     content = {
-                        Text("Iniciar sesion", color = Color.White)
+                        val painter: Painter =
+                            painterResource(id = R.drawable.ic_baseline_account_circle_24)
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                            Image(
+                                painter = painter,
+                                contentDescription = "Logo de Iniciar Sesion",
+                                modifier = Modifier.width(20.dp),
+                            )
+                            Text("Iniciar sesion", color = Color.White)
+                        }
+
                     })
             }
             Spacer(
@@ -95,13 +105,17 @@ fun LogearsePantalla(
             )
             Text(
                 "STRONG FITNESS",
-                fontSize = 15.sp,
+                fontSize = 25.sp,
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
             Button(onClick = onClickButtonThree, colors = ButtonDefaults.buttonColors(Color.Blue)) {
                 val painter: Painter = painterResource(id = R.drawable.img)
-                Image(painter = painter, contentDescription = "Logo de Facebook", modifier = Modifier.width(20.dp))
+                Image(
+                    painter = painter,
+                    contentDescription = "Logo de Facebook",
+                    modifier = Modifier.width(20.dp)
+                )
                 Text("Continuar con Facebook")
             }
             Spacer(
