@@ -56,7 +56,9 @@ fun RegistrarPantalla(
                 "Registrarse",
                 fontSize = 30.sp,
                 color = Color.Blue,
-                modifier = Modifier.border(1.dp, Color.Blue).background(Color.LightGray),
+                modifier = Modifier
+                    .border(1.dp, Color.Blue)
+                    .background(Color.LightGray),
                 style = MaterialTheme.typography.body1
             )
             Spacer(
@@ -164,6 +166,7 @@ fun RegistrarPantalla(
         }
     }
 }
+
 @Preview(showBackground = true)
 @Composable
 fun RegistrarPantallaPreview() {
