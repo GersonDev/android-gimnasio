@@ -24,9 +24,9 @@ import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
 fun LogearsePantalla(
-    onClickButtonOne: () -> Unit,
-    onClickButtonTwo: () -> Unit,
-    onClickButtonThree: () -> Unit
+    onClickButtonRegistrar: () -> Unit,
+    onClickButtonIncisiarSesion: () -> Unit,
+    onClickButtonFacebook: () -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -75,14 +75,14 @@ fun LogearsePantalla(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Button(
-                    onClick = onClickButtonTwo,
+                    onClick = onClickButtonRegistrar,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Cyan),
                     content = {
                         Text("Registrarse", color = Color.Blue)
                     })
                 Spacer(modifier = Modifier.width(25.dp))
                 Button(
-                    onClick = onClickButtonOne,
+                    onClick = onClickButtonIncisiarSesion,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Blue),
                     content = {
                         val painter: Painter =
@@ -109,7 +109,10 @@ fun LogearsePantalla(
                 fontWeight = FontWeight.Bold,
                 textAlign = TextAlign.Center
             )
-            Button(onClick = onClickButtonThree, colors = ButtonDefaults.buttonColors(Color.Blue)) {
+            Button(
+                onClick = onClickButtonFacebook,
+                colors = ButtonDefaults.buttonColors(Color.Blue)
+            ) {
                 val painter: Painter = painterResource(id = R.drawable.img)
                 Image(
                     painter = painter,
@@ -131,9 +134,9 @@ fun LogearsePantalla(
 @Composable
 fun LogearsePreview() {
     AndroidgimnasioTheme {
-        LogearsePantalla(onClickButtonOne = { /*TODO*/ },
-            onClickButtonTwo = {},
-            onClickButtonThree = {}
+        LogearsePantalla(onClickButtonRegistrar = { /*TODO*/ },
+            onClickButtonIncisiarSesion = {},
+            onClickButtonFacebook = {}
         )
     }
 }

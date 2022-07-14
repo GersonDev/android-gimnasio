@@ -30,15 +30,12 @@ class MenuViewModel : ViewModel() {
     fun enviarCorreo(correo: String){
         _correo.value = correo
     }
-    fun enviarContraseña(password: String){
+    fun enviarPassword(password: String){
         _password.value = password
-    }
-    fun registerPerson(){
-
     }
     fun insertPeople(context: Context){
         viewModelScope.launch {
-            peopleRepository.insertPeople(context, People(0,"","",""))
+            peopleRepository.insertPeople(context, People(0,_nombre.value ?:"",_correo.value ?:"",_password.value ?:""))
         }
     }
     fun getPeople(context: Context){

@@ -28,8 +28,10 @@ fun RegistrarPantalla(
     onClickPrivacidad: () -> Unit,
     nombre: String,
     correo: String,
-    contraseña: String
-
+    password: String,
+    onValueChangeNombre: (String) -> Unit,
+    onValueChangeCorreo: (String) -> Unit,
+    onValueChangePassword: (String) -> Unit,
 ) {
     Box(
         modifier = Modifier
@@ -65,8 +67,9 @@ fun RegistrarPantalla(
                 modifier = Modifier
                     .weight(0.2f)
             )
-            TextField(value = nombre,
-                onValueChange = {},
+            TextField(
+                value = nombre,
+                onValueChange = onValueChangeNombre,
                 modifier = Modifier.border(1.dp, Color.Black),
                 label = {
                     Text(
@@ -81,7 +84,7 @@ fun RegistrarPantalla(
                     .weight(0.2f)
             )
             TextField(value = correo,
-                onValueChange = {},
+                onValueChange = onValueChangeCorreo,
                 modifier = Modifier.border(1.dp, Color.Black),
                 label = {
                     Text(
@@ -95,8 +98,8 @@ fun RegistrarPantalla(
                 modifier = Modifier
                     .weight(0.2f)
             )
-            TextField(value = contraseña,
-                onValueChange = {},
+            TextField(value = password,
+                onValueChange = onValueChangePassword,
                 modifier = Modifier.border(1.dp, Color.Black),
                 label = {
                     Text(
@@ -177,7 +180,10 @@ fun RegistrarPantallaPreview() {
             onClickPrivacidad = {},
             nombre = "",
             correo = "",
-            contraseña = "",
+            password = "",
+            onValueChangeNombre = {},
+            onValueChangeCorreo = {},
+            onValueChangePassword = {},
         )
     }
 }
