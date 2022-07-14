@@ -15,16 +15,18 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val navController = rememberNavController()
-            NavHost(navController, startDestination = Screen.Logearse.route) {
-                composable(Screen.Logearse.route) {
-                    LogearsePantalla(
-                        onClickButtonOne = {
-                            navController.navigate(Screen.Registrar.route)
-                        },
-                        onClickButtonTwo = {},
-                        onClickButtonThree = {}
-                    )
+            AndroidgimnasioTheme {
+                val navController = rememberNavController()
+                NavHost(navController, startDestination = Screen.Logearse.route) {
+                    composable(Screen.Logearse.route) {
+                        LogearsePantalla(
+                            onClickButtonOne = {
+                                navController.navigate(Screen.Registrar.route)
+                            },
+                            onClickButtonTwo = {},
+                            onClickButtonThree = {}
+                        )
+                    }
                 }
             }
         }
