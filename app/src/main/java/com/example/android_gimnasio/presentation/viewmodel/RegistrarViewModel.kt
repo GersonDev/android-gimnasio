@@ -9,7 +9,7 @@ import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import kotlinx.coroutines.launch
 
-class MenuViewModel : ViewModel() {
+class RegistrarViewModel : ViewModel() {
 
     private val peopleRepository=PeopleRepository()
 
