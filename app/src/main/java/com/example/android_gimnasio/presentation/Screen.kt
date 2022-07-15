@@ -13,6 +13,6 @@ sealed class BottomNavItem(var title: String, var icon: Int, var screenRoute: St
     object Gym: BottomNavItem("Gym", R.drawable.ic_baseline_adb_24, "gym")
     object Baile: BottomNavItem("Baile", R.drawable.ic_baseline_home_24, "baile")
     object Trainer: BottomNavItem("Trainer", R.drawable.ic_baseline_home_24, "trainer")
-    object Parque: BottomNavItem("Parque", R.drawable.ic_baseline_home_24, "parque")
+    object Profile: BottomNavItem("Profile", R.drawable.ic_baseline_account_circle_24, "profile")
     object Cuenta: BottomNavItem("Cuenta", R.drawable.ic_baseline_home_24, "cuenta")
 }

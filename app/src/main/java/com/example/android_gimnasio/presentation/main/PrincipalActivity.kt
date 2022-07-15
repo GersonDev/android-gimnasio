@@ -57,7 +57,7 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Gym,
         BottomNavItem.Baile,
         BottomNavItem.Trainer,
-        BottomNavItem.Parque
+        BottomNavItem.Profile
     )
     androidx.compose.material.BottomNavigation(
         backgroundColor = colorResource(id = R.color.teal_200),
@@ -110,8 +110,8 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Trainer.screenRoute) {
             TrainerPantalla()
         }
-        composable(BottomNavItem.Parque.screenRoute) {
-            ParquePantalla()
+        composable(BottomNavItem.Profile.screenRoute) {
+            ProfilePantalla()
         }
     }
 }
