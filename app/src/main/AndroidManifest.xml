@@ -14,6 +14,11 @@
         android:theme="@style/Theme.Androidgimnasio"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.main.PrincipalActivity"
+            android:exported="false"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/Theme.Androidgimnasio" />
+        <activity
             android:name=".presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
