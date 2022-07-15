@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -14,6 +15,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,7 +34,7 @@ fun RegistrarPantalla(
     password: String,
     onValueChangeNombre: (String) -> Unit,
     onValueChangeCorreo: (String) -> Unit,
-    onValueChangePassword: (String) -> Unit,
+    onValueChangePassword: (String) -> Unit
 ) {
     Box(
         modifier = Modifier
@@ -43,7 +46,7 @@ fun RegistrarPantalla(
         Image(
             modifier = Modifier
                 .fillMaxSize(),
-            painter = painterResource(id = R.drawable.gimnasio1),
+            painter = painterResource(id = R.drawable.gym1),
             contentDescription = "Logo Gimnasio",
             contentScale = ContentScale.FillBounds
         )
@@ -101,11 +104,13 @@ fun RegistrarPantalla(
             TextField(value = password,
                 onValueChange = onValueChangePassword,
                 modifier = Modifier.border(1.dp, Color.Black),
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 label = {
                     Text(
                         "Contraseña",
                         textAlign = TextAlign.Center,
-                        style = MaterialTheme.typography.body1
+                        style = MaterialTheme.typography.body1,
                     )
                 })
             Spacer(

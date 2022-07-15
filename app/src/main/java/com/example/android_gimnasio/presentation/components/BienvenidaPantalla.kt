@@ -23,7 +23,7 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun LogearsePantalla(
+fun BienvenidaPantalla(
     onClickButtonRegistrar: () -> Unit,
     onClickButtonIncisiarSesion: () -> Unit,
     onClickButtonFacebook: () -> Unit
@@ -38,7 +38,7 @@ fun LogearsePantalla(
         Image(
             modifier = Modifier
                 .fillMaxSize(),
-            painter = painterResource(id = R.drawable.gimnasio1),
+            painter = painterResource(id = R.drawable.gym1),
             contentDescription = "Logo Gimnasio",
             contentScale = ContentScale.FillBounds
         )
@@ -113,7 +113,7 @@ fun LogearsePantalla(
                 onClick = onClickButtonFacebook,
                 colors = ButtonDefaults.buttonColors(Color.Blue)
             ) {
-                val painter: Painter = painterResource(id = R.drawable.img)
+                val painter: Painter = painterResource(id = R.drawable.iconofacebook)
                 Image(
                     painter = painter,
                     contentDescription = "Logo de Facebook",
@@ -132,9 +132,9 @@ fun LogearsePantalla(
 
 @Preview(showBackground = true)
 @Composable
-fun LogearsePreview() {
+fun BienvenidaPreview() {
     AndroidgimnasioTheme {
-        LogearsePantalla(onClickButtonRegistrar = { /*TODO*/ },
+        BienvenidaPantalla(onClickButtonRegistrar = { /*TODO*/ },
             onClickButtonIncisiarSesion = {},
             onClickButtonFacebook = {}
         )
