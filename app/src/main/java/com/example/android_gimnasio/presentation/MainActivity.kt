@@ -1,6 +1,5 @@
 package com.example.android_gimnasio.presentation
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,24 +14,21 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.components.BienvenidaPantalla
 import com.example.android_gimnasio.presentation.components.LoginPantalla
+import com.example.android_gimnasio.presentation.components.ModalDeError
 import com.example.android_gimnasio.presentation.components.RegistrarPantalla
 import com.example.android_gimnasio.presentation.main.PrincipalActivity
-import com.example.android_gimnasio.presentation.viewmodel.LoginViewModel
-import com.example.android_gimnasio.presentation.viewmodel.RegistrarViewModel
+import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val registrarViewModel by viewModels<RegistrarViewModel>()
-    private val loginViewModel by viewModels<LoginViewModel>()
+    private val mainViewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidgimnasioTheme {
                 MainScreen(
-                    applicationContext,
-                    registrarViewModel,
-                    loginViewModel
+                    mainViewModel
                 )
             }
         }
@@ -41,13 +37,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(
-    applicationContext: Context,
-    registrarViewModel: RegistrarViewModel,
-    loginViewModel: LoginViewModel
+    mainViewModel: MainViewModel
 ) {
-    val nombre by registrarViewModel.nombre.observeAsState("")
-    val correo by registrarViewModel.correo.observeAsState("")
-    val password by registrarViewModel.password.observeAsState("")
+    val nombre by mainViewModel.nombre.observeAsState("")
+    val correo by mainViewModel.correo.observeAsState("")
+    val password by mainViewModel.password.observeAsState("")
+    val registroExitoso by mainViewModel.registroExitoso.observeAsState(false)
+    val loginExitoso by mainViewModel.loginExitoso.observeAsState()
     val context = LocalContext.current
     val navController = rememberNavController()
     NavHost(navController, startDestination = Screen.Bienvenida.route) {
@@ -65,7 +61,7 @@ fun MainScreen(
         composable(Screen.Registrar.route) {
             RegistrarPantalla(
                 onClickRegistro = {
-                    registrarViewModel.insertPeople(applicationContext)
+                    mainViewModel.insertPeople(context)
                 },
                 onClickPrivacidad = {},
                 onClickCondiciones = {},
@@ -73,26 +69,47 @@ fun MainScreen(
                 correo = correo,
                 password = password,
                 onValueChangeNombre = {
-                    registrarViewModel.enviarNombre(it)
+                    mainViewModel.enviarNombre(it)
                 },
                 onValueChangeCorreo = {
-                    registrarViewModel.enviarCorreo(it)
+                    mainViewModel.enviarCorreo(it)
                 },
                 onValueChangePassword = {
-                    registrarViewModel.enviarPassword(it)
+                    mainViewModel.enviarPassword(it)
                 }
             )
+            if (registroExitoso) {
+                context.startActivity(Intent(context, PrincipalActivity::class.java))
+            }
+
         }
         composable(Screen.Login.route) {
             LoginPantalla(
                 onClickLoginPantalla = {
-                    context.startActivity(Intent(context, PrincipalActivity::class.java))
+                    mainViewModel.startLogin(context)
                 },
-                correo = "",
-                password = "",
-                onValueChangeCorreo = {},
-                onValueChangePassword = {}
+                correo = correo,
+                password = password,
+                onValueChangeCorreo = {
+                    mainViewModel.enviarCorreo(it)
+                },
+                onValueChangePassword = {
+                    mainViewModel.enviarPassword(it)
+                }
             )
+            when (loginExitoso) {
+                null -> {
+
+                }
+                true -> {
+                    context.startActivity(Intent(context, PrincipalActivity::class.java))
+                }
+                false -> {
+                    ModalDeError {
+                        mainViewModel.ocultarModal()
+                    }
+                }
+            }
         }
     }
 }
