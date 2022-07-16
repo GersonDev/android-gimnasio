@@ -3,8 +3,9 @@ package com.example.android_gimnasio.presentation
 import com.example.android_gimnasio.R
 
 sealed class Screen(val route:String) {
-    object Logearse:Screen("logearsePantalla")
+    object Bienvenida:Screen("BienvenidaPantalla")
     object Registrar:Screen("registrarPantalla")
+    object Login:Screen("loginPantalla")
 }
 
 sealed class BottomNavItem(var title: String, var icon: Int, var screenRoute: String) {

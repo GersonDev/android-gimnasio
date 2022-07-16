@@ -12,35 +12,39 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.components.BienvenidaPantalla
+import com.example.android_gimnasio.presentation.components.LoginPantalla
 import com.example.android_gimnasio.presentation.components.RegistrarPantalla
-import com.example.android_gimnasio.presentation.viewmodel.MenuViewModel
+import com.example.android_gimnasio.presentation.viewmodel.RegistrarViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class MainActivity : ComponentActivity() {
 
-    val menuViewModel by viewModels<MenuViewModel>()
+    val registrarViewModel by viewModels<RegistrarViewModel>()
+    val loginViewModel by viewModels<RegistrarViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            val nombre by menuViewModel.nombre.observeAsState("")
-            val correo by menuViewModel.correo.observeAsState("")
-            val password by menuViewModel.password.observeAsState("")
+            val nombre by registrarViewModel.nombre.observeAsState("")
+            val correo by registrarViewModel.correo.observeAsState("")
+            val password by registrarViewModel.password.observeAsState("")
             AndroidgimnasioTheme {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = Screen.Logearse.route) {
-                    composable(Screen.Logearse.route) {
+                NavHost(navController, startDestination = Screen.Bienvenida.route) {
+                    composable(Screen.Bienvenida.route) {
                         BienvenidaPantalla(
                             onClickButtonRegistrar = {
                                 navController.navigate(Screen.Registrar.route)
                             },
-                            onClickButtonIncisiarSesion = {},
+                            onClickButtonIncisiarSesion = {
+                                navController.navigate(Screen.Login.route)
+                            },
                             onClickButtonFacebook = {}
                         )
                     }
                     composable(Screen.Registrar.route) {
                         RegistrarPantalla(
                             onClickRegistro = {
-                                menuViewModel.insertPeople(applicationContext)
+                                registrarViewModel.insertPeople(applicationContext)
                             },
                             onClickPrivacidad = {},
                             onClickCondiciones = {},
@@ -48,14 +52,23 @@ class MainActivity : ComponentActivity() {
                             correo = correo,
                             password = password,
                             onValueChangeNombre = {
-                                menuViewModel.enviarNombre(it)
+                                registrarViewModel.enviarNombre(it)
                             },
                             onValueChangeCorreo = {
-                                menuViewModel.enviarCorreo(it)
+                                registrarViewModel.enviarCorreo(it)
                             },
                             onValueChangePassword = {
-                                menuViewModel.enviarPassword(it)
+                                registrarViewModel.enviarPassword(it)
                             }
+                        )
+                    }
+                    composable(Screen.Login.route){
+                        LoginPantalla(
+                            onClickLoginPantalla = {},
+                            correo ="" ,
+                            password ="" ,
+                            onValueChangeCorreo ={} ,
+                            onValueChangePassword ={}
                         )
                     }
                 }
