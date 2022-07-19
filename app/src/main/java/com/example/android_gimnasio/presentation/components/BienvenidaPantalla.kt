@@ -22,6 +22,9 @@ import androidx.compose.ui.unit.sp
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
+
+//Este archivo es para guia
+
 @Composable
 fun BienvenidaPantalla(
     onClickButtonRegistrar: () -> Unit,

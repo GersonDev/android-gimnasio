@@ -10,21 +10,51 @@ import com.example.android_gimnasio.R
 
 // Set of Material typography styles to start with
 
-val QuickSand = FontFamily(
-    Font(R.font.quicksand_regular),
-    Font(R.font.quicksand_bold, FontWeight.Bold)
+val Poppins = FontFamily(
+    Font(R.font.poppins_regular),
+    Font(R.font.poppins_bold, FontWeight.Bold),
 )
 
 val Typography = Typography(
     h1 = TextStyle(
-        fontFamily = QuickSand,
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 30.sp
+    ),
+    h2 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp
+    ),
+    h3 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 26.sp
+    ),
+    h4 = TextStyle(
+        fontFamily = Poppins,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp
     ),
+    h5 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 22.sp
+    ),
+    h6 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
     body1 = TextStyle(
-        fontFamily = QuickSand,
+        fontFamily = Poppins,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
+        fontSize = 19.sp
+    ),
+    body2 = TextStyle(
+        fontFamily = Poppins,
+        fontWeight = FontWeight.Normal,
+        fontSize = 23.sp
     )
     /* Other default text styles to override
     button = TextStyle(

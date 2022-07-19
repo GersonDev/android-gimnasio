@@ -12,10 +12,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.android_gimnasio.presentation.components.BienvenidaPantalla
-import com.example.android_gimnasio.presentation.components.LoginPantalla
-import com.example.android_gimnasio.presentation.components.ModalDeError
-import com.example.android_gimnasio.presentation.components.RegistrarPantalla
+import com.example.android_gimnasio.presentation.components.*
 import com.example.android_gimnasio.presentation.main.PrincipalActivity
 import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
@@ -48,15 +45,16 @@ fun MainScreen(
     val navController = rememberNavController()
     NavHost(navController, startDestination = Screen.Bienvenida.route) {
         composable(Screen.Bienvenida.route) {
-            BienvenidaPantalla(
-                onClickButtonRegistrar = {
-                    navController.navigate(Screen.Registrar.route)
-                },
-                onClickButtonIncisiarSesion = {
-                    navController.navigate(Screen.Login.route)
-                },
-                onClickButtonFacebook = {}
-            )
+            WelcomePantalla()
+//            BienvenidaPantalla(
+//                onClickButtonRegistrar = {
+//                    navController.navigate(Screen.Registrar.route)
+//                },
+//                onClickButtonIncisiarSesion = {
+//                    navController.navigate(Screen.Login.route)
+//                },
+//                onClickButtonFacebook = {}
+//            )
         }
         composable(Screen.Registrar.route) {
             RegistrarPantalla(
