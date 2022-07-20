@@ -46,6 +46,7 @@ fun MainScreen(
     NavHost(navController, startDestination = Screen.Bienvenida.route) {
         composable(Screen.Bienvenida.route) {
             WelcomePantalla()
+
 //            BienvenidaPantalla(
 //                onClickButtonRegistrar = {
 //                    navController.navigate(Screen.Registrar.route)
