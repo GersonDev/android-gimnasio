@@ -25,7 +25,7 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun WelcomePantalla() {
+fun WelcomePantalla(onClickStarted:()->Unit) {
     Box(
         contentAlignment = Alignment.Center
     ) {
@@ -81,7 +81,7 @@ fun WelcomePantalla() {
                     style = MaterialTheme.typography.body1
                 )
                 Button(
-                    onClick = {},
+                    onClick = onClickStarted,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
                     modifier = Modifier.padding(top = 33.dp, bottom = 70.dp).width(244.dp).height(55.dp),
 
@@ -99,6 +99,6 @@ fun WelcomePantalla() {
 @Composable
  private fun WelcomepantallaPreview() {
     AndroidgimnasioTheme() {
-        WelcomePantalla()
+        WelcomePantalla(onClickStarted = {})
     }
 }

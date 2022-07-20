@@ -3,25 +3,27 @@ package com.example.android_gimnasio.presentation.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.*
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
@@ -35,17 +37,24 @@ fun LoginPantalla(
     correo: String,
     password: String,
     onValueChangeCorreo: (String) -> Unit,
-    onValueChangePassword: (String) -> Unit
+    onValueChangePassword: (String) -> Unit,
+    onClickSignUp: () -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center
     ) {
-        Image(
-            modifier = Modifier.fillMaxSize(),
-            painter = painterResource(id = R.drawable.imagen_de_login),
-            contentDescription = "Imagen de login",
-            contentScale = ContentScale.FillBounds
-        )
+        Column {
+            Image(
+                modifier = Modifier.fillMaxWidth(),
+                painter = painterResource(id = R.drawable.imagen_de_login),
+                contentDescription = "Imagen de login",
+                contentScale = ContentScale.FillWidth
+            )
+            Spacer(
+                modifier = Modifier
+                    .weight(1f)
+            )
+        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -54,8 +63,10 @@ fun LoginPantalla(
                     brush = Brush.verticalGradient(
                         colors = listOf(
                             Color.Transparent,
-                            Color(0xD7525252),
-                        )
+                            MaterialTheme.colors.secondaryVariant
+                        ),
+                        startY = 0f,
+                        endY = 1200f
                     )
                 )
         )
@@ -77,31 +88,55 @@ fun LoginPantalla(
             TextField(
                 value = correo,
                 onValueChange = onValueChangeCorreo,
-                modifier = Modifier.background(Color.White),
+                shape = RoundedCornerShape(15.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color(0xFF03DAC5)
+                ),
                 label = {
-                    Text(
-                        "Email",
-                        color = Color.LightGray,
-                        style = MaterialTheme.typography.body1
-                    )
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.ic_baseline_email_24),
+                            contentDescription = "Icono de login"
+                        )
+                        Text(
+                            "Email",
+                            color = Color.LightGray,
+                            style = MaterialTheme.typography.body1,
+                            modifier = Modifier
+                                .width(276.dp)
+                                .height(50.dp),
+                        )
+                    }
                 }
             )
             Spacer(
                 modifier = Modifier
-                    .weight(0.2f)
+                    .weight(0.1f)
             )
             TextField(
                 value = password,
                 onValueChange = onValueChangePassword,
-                modifier = Modifier.background(Color.White),
+                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier
+                    .background(color = Color.Transparent),
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 label = {
-                    Text(
-                        "Password",
-                        color = Color.LightGray,
-                        style = MaterialTheme.typography.body1
-                    )
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.icon_contra),
+                            contentDescription = "Icono de password"
+                        )
+                        Text(
+                            "Password",
+                            color = Color.LightGray,
+                            style = MaterialTheme.typography.body1,
+                            modifier = Modifier
+                                .width(276.dp)
+                                .height(50.dp),
+                        )
+                    }
+
                 }
             )
             Text(
@@ -115,10 +150,11 @@ fun LoginPantalla(
             Button(
                 onClick = onClickLoginPantalla,
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
+                shape = RoundedCornerShape(50.dp),
                 modifier = Modifier
                     .padding(top = 20.dp, bottom = 5.dp)
                     .width(326.dp)
-                    .height(50.dp) ,
+                    .height(50.dp),
 
                 content = {
                     Text(
@@ -128,29 +164,23 @@ fun LoginPantalla(
                     )
                 }
             )
-            Text(
-                buildAnnotatedString {
-                    withStyle(
-                        style = SpanStyle(Color.White),
-                    ) {
-                        append(
-                            "Didn’t have any account?"
-                        )
-                    }
-                    withStyle(
-                        style = SpanStyle(Color.Yellow)
-                    ) {
-                        append("Sign Up here")
-                    }
-                },
-                style = MaterialTheme.typography.body1,
-                modifier = Modifier.padding(top = 15.dp, bottom = 70.dp),
-                fontSize = 14.sp
-            )
+            Row(modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)) {
+                Text(
+                    "Didn’t have any account?",
+                    style = MaterialTheme.typography.body1,
+                    fontSize = 14.sp
+                )
+                ClickableText(
+                    text = AnnotatedString(" Sign Up here"),
+                    style = TextStyle(
+                        color = Blue,
+                    ),
+                    onClick = { }
+                )
+            }
         }
     }
 }
-
 
 @Preview
 @Composable
@@ -161,7 +191,8 @@ private fun LoginPantallaPreview() {
             correo = "",
             password = "",
             onValueChangePassword = {},
-            onValueChangeCorreo = {}
+            onValueChangeCorreo = {},
+            onClickSignUp = {}
         )
     }
 }

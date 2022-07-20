@@ -45,7 +45,11 @@ fun MainScreen(
     val navController = rememberNavController()
     NavHost(navController, startDestination = Screen.Bienvenida.route) {
         composable(Screen.Bienvenida.route) {
-            WelcomePantalla()
+            WelcomePantalla(
+                onClickStarted = {
+                navController.navigate(Screen.Login.route)
+            },
+            )
 
 //            BienvenidaPantalla(
 //                onClickButtonRegistrar = {
@@ -94,6 +98,8 @@ fun MainScreen(
                 },
                 onValueChangePassword = {
                     mainViewModel.enviarPassword(it)
+                },
+                onClickSignUp = {
                 }
             )
             when (loginExitoso) {

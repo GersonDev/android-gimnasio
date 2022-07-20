@@ -42,14 +42,22 @@ fun RegistrarPantalla(
             .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
+        Column {
+            Image(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                painter = painterResource(id = R.drawable.imagen_pantalla_registro),
+                contentDescription = "Imagen pantalla de registro",
+                contentScale = ContentScale.FillWidth
+            )
+            Spacer(
+                modifier = Modifier
+                    .weight(1f)
+            )
+        }
+        Box {
 
-        Image(
-            modifier = Modifier
-                .fillMaxSize(),
-            painter = painterResource(id = R.drawable.gym1),
-            contentDescription = "Logo Gimnasio",
-            contentScale = ContentScale.FillBounds
-        )
+        }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
