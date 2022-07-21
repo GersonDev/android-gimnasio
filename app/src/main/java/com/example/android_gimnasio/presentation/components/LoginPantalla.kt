@@ -16,11 +16,14 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -90,7 +93,7 @@ fun LoginPantalla(
                 onValueChange = onValueChangeCorreo,
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color(0xFF03DAC5)
+                    backgroundColor = Color(0xFFFFFFFF)
                 ),
                 label = {
                     Row {
@@ -103,7 +106,7 @@ fun LoginPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .width(276.dp)
+                                .width(266.dp)
                                 .height(50.dp),
                         )
                     }
@@ -117,8 +120,9 @@ fun LoginPantalla(
                 value = password,
                 onValueChange = onValueChangePassword,
                 shape = RoundedCornerShape(15.dp),
-                modifier = Modifier
-                    .background(color = Color.Transparent),
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color(0xFFFFFFFF)
+                ),
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 label = {
@@ -132,7 +136,7 @@ fun LoginPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .width(276.dp)
+                                .width(266.dp)
                                 .height(50.dp),
                         )
                     }
@@ -143,6 +147,7 @@ fun LoginPantalla(
                 "Forgot Password",
                 color = Color.White,
                 style = MaterialTheme.typography.body1,
+                fontWeight = FontWeight.Bold,
                 fontSize = 13.sp,
                 modifier = Modifier
                     .padding(top = 20.dp, bottom = 5.dp)
@@ -150,7 +155,7 @@ fun LoginPantalla(
             Button(
                 onClick = onClickLoginPantalla,
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
-                shape = RoundedCornerShape(50.dp),
+                shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
                     .padding(top = 20.dp, bottom = 5.dp)
                     .width(326.dp)
@@ -159,6 +164,7 @@ fun LoginPantalla(
                 content = {
                     Text(
                         "Sign In",
+                        fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
                     )
@@ -167,13 +173,15 @@ fun LoginPantalla(
             Row(modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)) {
                 Text(
                     "Didn’t have any account?",
-                    style = MaterialTheme.typography.body1,
+                    style = TextStyle(
+                        color = White
+                    ),
                     fontSize = 14.sp
                 )
                 ClickableText(
                     text = AnnotatedString(" Sign Up here"),
                     style = TextStyle(
-                        color = Blue,
+                        color = Yellow,
                     ),
                     onClick = { }
                 )
