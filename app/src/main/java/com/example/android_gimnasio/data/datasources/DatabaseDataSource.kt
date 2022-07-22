@@ -13,9 +13,9 @@ class DatabaseDataSource {
         return listPeopleEntities.map {
             People(
                 id = it.id,
-                nombre = it.nombre,
-                correo = it.correo,
-                password = it.password
+                email = it.correo,
+                password = it.password,
+                confirmationPassword = it.confirmationPassword
             )
         }
     }
@@ -23,9 +23,9 @@ class DatabaseDataSource {
     suspend fun insertPeople(context: Context, people: People) {
         val peopleEntity = PeopleEntity(
             id = people.id,
-            nombre = people.nombre,
-            correo = people.correo,
-            password = people.password
+            correo = people.email,
+            password = people.password,
+            confirmationPassword = people.confirmationPassword
         )
         GimnasioDataBase.buildDataBase(context)
             .peopleDao()

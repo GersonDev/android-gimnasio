@@ -36,55 +36,26 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(
     mainViewModel: MainViewModel
 ) {
-    val nombre by mainViewModel.nombre.observeAsState("")
-    val correo by mainViewModel.correo.observeAsState("")
+    val correo by mainViewModel.email.observeAsState("")
     val password by mainViewModel.password.observeAsState("")
+    val confirmationPassword by mainViewModel.confirmationPassword.observeAsState("")
     val registroExitoso by mainViewModel.registroExitoso.observeAsState(false)
     val loginExitoso by mainViewModel.loginExitoso.observeAsState()
+    val isLogin by mainViewModel.isLogin.observeAsState(false)
     val context = LocalContext.current
     val navController = rememberNavController()
     NavHost(navController, startDestination = Screen.Bienvenida.route) {
+
         composable(Screen.Bienvenida.route) {
+            mainViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
-                navController.navigate(Screen.Login.route)
-            },
+                    navController.navigate(Screen.Login.route)
+                },
             )
-
-//            BienvenidaPantalla(
-//                onClickButtonRegistrar = {
-//                    navController.navigate(Screen.Registrar.route)
-//                },
-//                onClickButtonIncisiarSesion = {
-//                    navController.navigate(Screen.Login.route)
-//                },
-//                onClickButtonFacebook = {}
-//            )
-        }
-        composable(Screen.Registrar.route) {
-            RegistrarPantalla(
-                onClickRegistro = {
-                    mainViewModel.insertPeople(context)
-                },
-                onClickPrivacidad = {},
-                onClickCondiciones = {},
-                nombre = nombre,
-                correo = correo,
-                password = password,
-                onValueChangeNombre = {
-                    mainViewModel.enviarNombre(it)
-                },
-                onValueChangeCorreo = {
-                    mainViewModel.enviarCorreo(it)
-                },
-                onValueChangePassword = {
-                    mainViewModel.enviarPassword(it)
-                }
-            )
-            if (registroExitoso) {
+            if (isLogin) {
                 context.startActivity(Intent(context, PrincipalActivity::class.java))
             }
-
         }
         composable(Screen.Login.route) {
             LoginPantalla(
@@ -100,6 +71,7 @@ fun MainScreen(
                     mainViewModel.enviarPassword(it)
                 },
                 onClickSignUp = {
+                    navController.navigate(Screen.Registrar.route)
                 }
             )
             when (loginExitoso) {
@@ -115,6 +87,33 @@ fun MainScreen(
                     }
                 }
             }
+        }
+        composable(Screen.Registrar.route) {
+            RegistrarPantalla(
+                onClickRegistro = {
+                    mainViewModel.insertPeople(context)
+                },
+                email = correo,
+                password = password,
+                confirmationPassword = confirmationPassword,
+                onValueChangeEmail = {
+                    mainViewModel.enviarCorreo(it)
+                },
+                onValueChangePassword = {
+                    mainViewModel.enviarPassword(it)
+                },
+                onValueChangeConfirmationPassword = {
+                    mainViewModel.enviarConfirmationPassword(it)
+                },
+                onClickSignIn = {
+                    navController.navigate(Screen.Login.route)
+                }
+
+            )
+            if (registroExitoso) {
+                context.startActivity(Intent(context, PrincipalActivity::class.java))
+            }
+
         }
     }
 }

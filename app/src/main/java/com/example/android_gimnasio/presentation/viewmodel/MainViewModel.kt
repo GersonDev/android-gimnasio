@@ -13,12 +13,14 @@ class MainViewModel : ViewModel() {
 
     private val peopleRepository = PeopleRepository()
 
-    private val _nombre = MutableLiveData("")
-    val nombre: LiveData<String> = _nombre
-    private val _correo = MutableLiveData("")
-    val correo: LiveData<String> = _correo
+    private val _email = MutableLiveData("")
+    val email: LiveData<String> = _email
     private val _password = MutableLiveData("")
     val password: LiveData<String> = _password
+    private val _confirmationPassword = MutableLiveData("")
+    val confirmationPassword: LiveData<String> = _confirmationPassword
+    private  val _isLogin = MutableLiveData(false)
+    val isLogin : LiveData<Boolean> = _isLogin
 
     private val _registroExitoso = MutableLiveData(false)
     val registroExitoso: LiveData<Boolean> = _registroExitoso
@@ -26,21 +28,29 @@ class MainViewModel : ViewModel() {
     private val _loginExitoso = MutableLiveData<Boolean>()
     val loginExitoso: LiveData<Boolean> = _loginExitoso
 
-    fun enviarNombre(nombre: String) {
-        _nombre.value = nombre
-    }
-
-    fun enviarCorreo(correo: String) {
-        _correo.value = correo
+    fun enviarCorreo(email: String) {
+        _email.value = email
     }
 
     fun enviarPassword(password: String) {
         _password.value = password
     }
 
+    fun enviarConfirmationPassword(nombre: String) {
+        _confirmationPassword.value = nombre
+    }
+
     fun insertPeople(context: Context) {
         viewModelScope.launch {
-            peopleRepository.insertPeople(context, People(0, _nombre.value ?: "", _correo.value ?: "", _password.value ?: ""))
+            peopleRepository.insertPeople(
+                context,
+                People(
+                    0,
+                    _email.value ?: "",
+                    _password.value ?: "",
+                    _confirmationPassword.value ?: ""
+                )
+            )
             _registroExitoso.value = true
         }
     }
@@ -49,10 +59,21 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             val peopleList = peopleRepository.getAllPeople(context)
             val personaEncontrada = peopleList.find {
-                it.correo == _correo.value
+                it.email == _email.value
             }
             _loginExitoso.value = personaEncontrada != null
         }
+    }
+
+    fun verifyLogin(context: Context) {
+        viewModelScope.launch {
+            val peopleList = peopleRepository.getAllPeople(context)
+            if (peopleList.size > 0) {
+                _isLogin.value = true
+            }
+        }
+
+
     }
 
     fun ocultarModal() {

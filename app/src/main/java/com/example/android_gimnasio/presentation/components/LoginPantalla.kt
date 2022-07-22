@@ -24,6 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -41,7 +42,7 @@ fun LoginPantalla(
     password: String,
     onValueChangeCorreo: (String) -> Unit,
     onValueChangePassword: (String) -> Unit,
-    onClickSignUp: () -> Unit
+    onClickSignUp: (Int) -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center
@@ -82,7 +83,7 @@ fun LoginPantalla(
             )
             Text(
                 " BODY GOALS\nWORKOUT",
-                letterSpacing = 0.3.em,
+                letterSpacing = 0.1.em,
                 fontSize = 32.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
@@ -94,6 +95,10 @@ fun LoginPantalla(
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color(0xFFFFFFFF)
+                ),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Done
                 ),
                 label = {
                     Row {
@@ -170,7 +175,10 @@ fun LoginPantalla(
                     )
                 }
             )
-            Row(modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)) {
+            Row(
+                modifier = Modifier.
+                padding(top = 15.dp, bottom = 30.dp)
+            ) {
                 Text(
                     "Didn’t have any account?",
                     style = TextStyle(
@@ -183,7 +191,7 @@ fun LoginPantalla(
                     style = TextStyle(
                         color = Yellow,
                     ),
-                    onClick = { }
+                    onClick = onClickSignUp
                 )
             }
         }

@@ -16,13 +16,13 @@ fun ModalDeError(onConfirmButtonClick: () -> Unit) {
         confirmButton = {
             Button(onClick = onConfirmButtonClick, content = {
                 Text("Aceptar")
-            }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Magenta))
+            }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow))
         },
         title = {
             Text("Ocurrio un Error")
         },
         text = {
-            Text("La persona no existe")
+            Text("AUN NO SE REGISTRA")
 
         }
     )
