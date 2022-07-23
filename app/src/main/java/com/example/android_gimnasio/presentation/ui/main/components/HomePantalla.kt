@@ -1,5 +1,6 @@
 package com.example.android_gimnasio.presentation.ui.main.components
 
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -140,17 +141,21 @@ private fun UserSection(description: String) {
         Spacer(
             modifier = Modifier.weight(1f)
         )
-
-        Image(
-            painter = painterResource(R.drawable.img_user_profile),
-            contentDescription = "profile",
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(64.dp)
-                .clip(CircleShape)
-                .border(2.dp, Color.Gray, CircleShape)
-        )
+        UserPicture(R.drawable.img_user_profile)
     }
+}
+
+@Composable
+fun UserPicture(@DrawableRes userImage: Int) {
+    Image(
+        painter = painterResource(userImage),
+        contentDescription = "profile",
+        contentScale = ContentScale.Crop,
+        modifier = Modifier
+            .size(64.dp)
+            .clip(CircleShape)
+            .border(2.dp, Color.Gray, CircleShape)
+    )
 }
 
 @Composable

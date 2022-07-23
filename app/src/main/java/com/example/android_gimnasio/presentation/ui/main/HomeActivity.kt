@@ -20,6 +20,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
+import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.main.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
@@ -102,7 +103,21 @@ fun NavigationGraph(navController: NavHostController) {
             HomePantalla()
         }
         composable(BottomNavItem.Gym.screenRoute) {
-            GymPantalla()
+            GymPantalla(
+                listOf(
+                    Brand("Gold's Gym", R.drawable.brand_gold_gym),
+                    Brand("SmartFit", R.drawable.brand_smart_fit),
+                    Brand("Bodytech", R.drawable.brand_bodytech),
+                    Brand("Megaforce", R.drawable.brand_megaforce),
+                    Brand("Megatlon", R.drawable.brand_megatlon),
+                    Brand("Gimnasio B2", R.drawable.brand_megaforce),
+                    Brand("Aldo's Gym", R.drawable.brand_smart_fit),
+                    Brand("X Sport Gym", R.drawable.brand_megatlon),
+                    Brand("Master Gym", R.drawable.brand_bodytech),
+                    Brand("Fitness de Impacto", R.drawable.brand_gold_gym),
+                    Brand("Sportlife Fitness Club", R.drawable.brand_smart_fit)
+                )
+            )
         }
         composable(BottomNavItem.Baile.screenRoute) {
             BailePantalla()
