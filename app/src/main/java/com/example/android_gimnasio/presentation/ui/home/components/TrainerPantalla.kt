@@ -14,6 +14,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -21,13 +22,18 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.Trainer
+import com.example.android_gimnasio.presentation.common.components.GymTitle
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
@@ -35,67 +41,64 @@ import com.google.android.exoplayer2.ui.PlayerView
 
 @Composable
 fun TrainerPantalla() {
-    Box(
-        contentAlignment = Alignment.TopStart,
+    Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
             .background(colorResource(id = R.color.trainers__primary))
+            .padding(start = 10.dp, bottom = 60.dp, top = 60.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .clip(RectangleShape)
-                .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            MaterialTheme.colors.secondaryVariant
-                        ),
-                        startY = 0f,
-                        endY = 640f
-                    )
-                )
-        )
+
+        GymTitle("Session", R.drawable.img_user_profile)
+
+        Spacer(modifier = Modifier.height(30.dp))
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .padding(40.dp)
+                .padding(start = 10.dp)
         ) {
-
-            VideoPlayer(modifier = Modifier.fillMaxWidth())
-
+            VideoPlayer(modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)
+            )
             Column {
                 SectionTitle(
-                    title = "Trainers",
+                    title = "Trainers Men",
                     subTitle = "See all",
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
                 TrainersBubble(
                     listOf(
-                        Trainer(R.drawable.trainers, "Amaka"),
-                        Trainer(R.drawable.trainers, "Stella"),
-                        Trainer(R.drawable.trainers, "Derick"),
-                        Trainer(R.drawable.trainers, "Tayao"),
-                        Trainer(R.drawable.trainers, "Sean"),
+                        Trainer(R.drawable.mujer, "Diego"),
+                        Trainer(R.drawable.mujer, "Jeff"),
+                        Trainer(R.drawable.mujer, "Josue"),
+                        Trainer(R.drawable.mujer, "Tiago"),
+                        Trainer(R.drawable.mujer, "Juan"),
+                        Trainer(R.drawable.mujer, "Juan"),
+                        Trainer(R.drawable.mujer, "Juan"),
+                        Trainer(R.drawable.mujer, "Juan")
                     )
                 )
             }
 
-            Column {
+            Column{
                 SectionTitle(
-                    title = "Trainers",
+                    title = "Trainers Women",
                     subTitle = "See all",
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
                 TrainersBubble(
                     listOf(
-                        Trainer(R.drawable.trainers, "Amaka"),
-                        Trainer(R.drawable.trainers, "Stella"),
-                        Trainer(R.drawable.trainers, "Derick"),
-                        Trainer(R.drawable.trainers, "Tayao"),
-                        Trainer(R.drawable.trainers, "Sean"),
+                        Trainer(R.drawable.hombre, "Amaka"),
+                        Trainer(R.drawable.hombre, "Stella"),
+                        Trainer(R.drawable.hombre, "Derick"),
+                        Trainer(R.drawable.hombre, "Tayao"),
+                        Trainer(R.drawable.hombre, "Sean"),
+                        Trainer(R.drawable.hombre, "Sean"),
+                        Trainer(R.drawable.hombre, "Sean"),
+                        Trainer(R.drawable.hombre, "Sean")
                     )
                 )
             }
@@ -147,14 +150,23 @@ private fun TrainersBubble(trainers: List<Trainer>) {
     ) {
         trainers.forEach { trainer ->
             Column {
-                Image(
-                    painter = painterResource(id = trainer.imagen),
-                    contentDescription = "trainers",
+                Box(
                     modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Text(text = trainer.nombre)
+                        .size(80.dp)
+                        .padding(10.dp)
+
+                ) {
+                    Image(
+                        painter = painterResource(id = trainer.imagen),
+                        contentDescription = "trainers",
+                        modifier = Modifier
+                            .clip(CircleShape)
+                            .fillMaxSize()
+                        ,
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
+                Text(text = trainer.nombre, color = Color.DarkGray)
             }
         }
     }
@@ -172,7 +184,8 @@ private fun VideoBody(imagenes: List<Int>) {
             Card(
                 modifier = Modifier
                     .width(120.dp)
-                    .height(120.dp),
+                    .height(120.dp)
+                    .padding(end = 15.dp),
                 shape = RoundedCornerShape(30.dp)
             ) {
                 Box(
@@ -210,8 +223,7 @@ private fun TutorialBody(imagenes: List<Int>) {
                 modifier = Modifier
                     .width(200.dp)
                     .height(120.dp)
-                    .padding(end = 15.dp)
-                ,
+                    .padding(end = 15.dp),
                 shape = RoundedCornerShape(30.dp)
             ) {
                 Box(
@@ -220,8 +232,7 @@ private fun TutorialBody(imagenes: List<Int>) {
                 ) {
                     Image(
                         modifier = Modifier
-                            .fillMaxSize()
-                        ,
+                            .fillMaxSize(),
                         painter = painterResource(id = imagen),
                         contentDescription = "Imagen de login",
                         contentScale = ContentScale.FillBounds
@@ -258,44 +269,6 @@ fun VideoPlayer(modifier: Modifier) {
     )
 }
 
-@Composable
-private fun Trainers(Trainers: List<Trainer>) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .horizontalScroll(rememberScrollState())
-            .padding(start = 10.dp)
-    ) {
-        Trainers.forEach { trainer ->
-            Card(
-                modifier = Modifier
-                    .width(140.dp)
-                    .padding(10.dp)
-                    .size(65.dp)
-                    .clip(CircleShape),
-            ) {
-                Box(
-                    contentAlignment = Alignment.BottomCenter
-                ) {
-                    Image(
-                        modifier = Modifier.fillMaxWidth(),
-                        painter = painterResource(id = trainer.imagen),
-                        contentDescription = "Imagen de los trainers",
-                        contentScale = ContentScale.FillWidth
-                    )
-                    Text(
-                        trainer.nombre,
-                        color = Color.White,
-                        modifier = Modifier.padding(10.dp),
-                        style = MaterialTheme.typography.body1,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 13.sp,
-                    )
-                }
-            }
-        }
-    }
-}
 
 @Preview
 @Composable
