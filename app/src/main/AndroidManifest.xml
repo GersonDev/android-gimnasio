@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.android_gimnasio">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -17,6 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidgimnasio"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.ui.gym_sedes.GymSedesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_gym_sedes"
+            android:theme="@style/Theme.Androidgimnasio" />
         <activity
             android:name="com.example.android_gimnasio.presentation.ui.main.PrincipalActivity"
             android:exported="false"

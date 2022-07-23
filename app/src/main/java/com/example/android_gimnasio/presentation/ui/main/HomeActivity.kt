@@ -1,5 +1,6 @@
 package com.example.android_gimnasio.presentation.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,6 +24,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
+import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedesActivity
 import com.example.android_gimnasio.presentation.ui.main.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
@@ -98,6 +101,7 @@ fun BottomNavigation(navController: NavController) {
 
 @Composable
 fun NavigationGraph(navController: NavHostController) {
+    val context = LocalContext.current
     NavHost(navController, startDestination = BottomNavItem.Home.screenRoute) {
         composable(BottomNavItem.Home.screenRoute) {
             HomePantalla()
@@ -116,7 +120,10 @@ fun NavigationGraph(navController: NavHostController) {
                     Brand("Master Gym", R.drawable.brand_bodytech),
                     Brand("Fitness de Impacto", R.drawable.brand_gold_gym),
                     Brand("Sportlife Fitness Club", R.drawable.brand_smart_fit)
-                )
+                ),
+                onClickBrand = {
+                    context.startActivity(Intent(context, GymSedesActivity::class.java))
+                }
             )
         }
         composable(BottomNavItem.Baile.screenRoute) {
