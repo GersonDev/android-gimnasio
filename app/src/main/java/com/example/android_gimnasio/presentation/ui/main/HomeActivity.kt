@@ -1,6 +1,5 @@
-package com.example.android_gimnasio.presentation.main
+package com.example.android_gimnasio.presentation.ui.main
 
-import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,8 +20,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
-import com.example.android_gimnasio.presentation.BottomNavItem
-import com.example.android_gimnasio.presentation.main.components.*
+import com.example.android_gimnasio.presentation.routes.BottomNavItem
+import com.example.android_gimnasio.presentation.ui.main.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class PrincipalActivity : ComponentActivity() {

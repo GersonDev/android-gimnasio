@@ -1,8 +1,7 @@
-package com.example.android_gimnasio.presentation.components
+package com.example.android_gimnasio.presentation.ui.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
@@ -12,19 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.Blue
-import androidx.compose.ui.graphics.Color.Companion.White
-import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.*
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -36,22 +30,25 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun LoginPantalla(
-    onClickLoginPantalla: () -> Unit,
-    correo: String,
+fun RegistrarPantalla(
+    onClickRegistro: () -> Unit,
+    email: String,
     password: String,
-    onValueChangeCorreo: (String) -> Unit,
+    confirmationPassword: String,
+    onValueChangeEmail: (String) -> Unit,
     onValueChangePassword: (String) -> Unit,
-    onClickSignUp: (Int) -> Unit
+    onValueChangeConfirmationPassword: (String) -> Unit,
+    onClickSignIn: (Int)-> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center
     ) {
         Column {
             Image(
-                modifier = Modifier.fillMaxWidth(),
-                painter = painterResource(id = R.drawable.imagen_de_login),
-                contentDescription = "Imagen de login",
+                modifier = Modifier
+                    .fillMaxWidth(),
+                painter = painterResource(id = R.drawable.imagen_pantalla_registro),
+                contentDescription = "Imagen pantalla de registro",
                 contentScale = ContentScale.FillWidth
             )
             Spacer(
@@ -70,19 +67,22 @@ fun LoginPantalla(
                             MaterialTheme.colors.secondaryVariant
                         ),
                         startY = 0f,
-                        endY = 1200f
+                        endY = 910f
                     )
                 )
         )
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier
+                .padding(40.dp)
         ) {
             Spacer(
                 modifier = Modifier
                     .weight(3f)
             )
             Text(
-                " BODY GOALS\nWORKOUT",
+                "BODY GOALS\n" +
+                        "WORKOUT",
                 letterSpacing = 0.1.em,
                 fontSize = 32.sp,
                 color = Color.White,
@@ -90,15 +90,11 @@ fun LoginPantalla(
                 style = MaterialTheme.typography.h1
             )
             TextField(
-                value = correo,
-                onValueChange = onValueChangeCorreo,
+                value = email,
+                onValueChange = onValueChangeEmail,
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color(0xFFFFFFFF)
-                ),
-                keyboardOptions = KeyboardOptions(
-                    keyboardType = KeyboardType.Email,
-                    imeAction = ImeAction.Done
                 ),
                 label = {
                     Row {
@@ -111,10 +107,10 @@ fun LoginPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .width(266.dp)
-                                .height(50.dp),
+                                .fillMaxWidth()
                         )
                     }
+
                 }
             )
             Spacer(
@@ -141,34 +137,55 @@ fun LoginPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .width(266.dp)
-                                .height(50.dp),
+                                .fillMaxWidth()
                         )
                     }
 
                 }
             )
-            Text(
-                "Forgot Password",
-                color = Color.White,
-                style = MaterialTheme.typography.body1,
-                fontWeight = FontWeight.Bold,
-                fontSize = 13.sp,
+            Spacer(
                 modifier = Modifier
-                    .padding(top = 20.dp, bottom = 5.dp)
+                    .weight(0.1f)
+            )
+            TextField(
+                value = confirmationPassword,
+                onValueChange = onValueChangeConfirmationPassword,
+                shape = RoundedCornerShape(15.dp),
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = Color(0xFFFFFFFF)
+                ),
+                visualTransformation = PasswordVisualTransformation(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                label = {
+                    Row {
+                        Image(
+                            painter = painterResource(id = R.drawable.icon_contra),
+                            contentDescription = "Icono de password"
+                        )
+                        Text(
+                            "Confirmation password",
+                            color = Color.LightGray,
+                            style = MaterialTheme.typography.body1,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                        )
+                    }
+
+                }
+            )
+            Spacer(
+                modifier = Modifier
+                    .weight(0.1f)
             )
             Button(
-                onClick = onClickLoginPantalla,
+                onClick = onClickRegistro,
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
                 shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
-                    .padding(top = 20.dp, bottom = 5.dp)
-                    .width(326.dp)
-                    .height(50.dp),
-
+                    .fillMaxWidth(),
                 content = {
                     Text(
-                        "Sign In",
+                        "Sign Up",
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
@@ -176,39 +193,102 @@ fun LoginPantalla(
                 }
             )
             Row(
+                modifier = Modifier
+                    .padding(top = 15.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(2.dp)
+                        .clip(RectangleShape)
+                        .background(Color.White)
+
+                ) {}
+                Text("Or", color = Color.White)
+                Box(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(2.dp)
+                        .clip(RectangleShape)
+                        .background(Color.White)
+                )
+            }
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(20.dp)
+
+            ) {
+                Button(
+                    onClick = {},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                    content = {
+                        Image(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(id = R.drawable.ic_apple),
+                            contentDescription = "Icono de apple"
+                        )
+                    }
+                )
+                Button(
+                    onClick = {},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                    content = {
+                        Image(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(id = R.drawable.ic_facebook),
+                            contentDescription = "Icono de apple"
+                        )
+                    }
+                )
+                Button(
+                    onClick = {},
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
+                    content = {
+                        Image(
+                            modifier = Modifier.size(24.dp),
+                            painter = painterResource(id = R.drawable.ic_google),
+                            contentDescription = "Icono de apple"
+
+                        )
+                    }
+                )
+            }
+            Row(
                 modifier = Modifier.
                 padding(top = 15.dp, bottom = 30.dp)
             ) {
                 Text(
                     "Didn’t have any account?",
                     style = TextStyle(
-                        color = White
+                        color = Color.White
                     ),
                     fontSize = 14.sp
                 )
                 ClickableText(
-                    text = AnnotatedString(" Sign Up here"),
+                    text = AnnotatedString(" Sign In here"),
                     style = TextStyle(
-                        color = Yellow,
+                        color = Color.Yellow,
                     ),
-                    onClick = onClickSignUp
+                    onClick = onClickSignIn
                 )
             }
         }
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-private fun LoginPantallaPreview() {
+private fun RegistrarPantallaPreview() {
     AndroidgimnasioTheme {
-        LoginPantalla(
-            onClickLoginPantalla = { /*TODO*/ },
-            correo = "",
+        RegistrarPantalla(
+            onClickRegistro = {},
+            email = "",
+            confirmationPassword = "",
             password = "",
+            onValueChangeEmail = {},
+            onValueChangeConfirmationPassword = {},
             onValueChangePassword = {},
-            onValueChangeCorreo = {},
-            onClickSignUp = {}
+            onClickSignIn = {}
         )
     }
 }

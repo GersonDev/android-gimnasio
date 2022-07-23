@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.components
+package com.example.android_gimnasio.presentation.ui.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -13,12 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.style.TextAlign
@@ -30,25 +32,22 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun RegistrarPantalla(
-    onClickRegistro: () -> Unit,
-    email: String,
+fun LoginPantalla(
+    onClickLoginPantalla: () -> Unit,
+    correo: String,
     password: String,
-    confirmationPassword: String,
-    onValueChangeEmail: (String) -> Unit,
+    onValueChangeCorreo: (String) -> Unit,
     onValueChangePassword: (String) -> Unit,
-    onValueChangeConfirmationPassword: (String) -> Unit,
-    onClickSignIn: (Int)-> Unit
+    onClickSignUp: (Int) -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center
     ) {
         Column {
             Image(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.imagen_pantalla_registro),
-                contentDescription = "Imagen pantalla de registro",
+                modifier = Modifier.fillMaxWidth(),
+                painter = painterResource(id = R.drawable.imagen_de_login),
+                contentDescription = "Imagen de login",
                 contentScale = ContentScale.FillWidth
             )
             Spacer(
@@ -67,22 +66,19 @@ fun RegistrarPantalla(
                             MaterialTheme.colors.secondaryVariant
                         ),
                         startY = 0f,
-                        endY = 910f
+                        endY = 1200f
                     )
                 )
         )
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier
-                .padding(40.dp)
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(
                 modifier = Modifier
                     .weight(3f)
             )
             Text(
-                "BODY GOALS\n" +
-                        "WORKOUT",
+                " BODY GOALS\nWORKOUT",
                 letterSpacing = 0.1.em,
                 fontSize = 32.sp,
                 color = Color.White,
@@ -90,11 +86,15 @@ fun RegistrarPantalla(
                 style = MaterialTheme.typography.h1
             )
             TextField(
-                value = email,
-                onValueChange = onValueChangeEmail,
+                value = correo,
+                onValueChange = onValueChangeCorreo,
                 shape = RoundedCornerShape(15.dp),
                 colors = TextFieldDefaults.textFieldColors(
                     backgroundColor = Color(0xFFFFFFFF)
+                ),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Done
                 ),
                 label = {
                     Row {
@@ -107,10 +107,10 @@ fun RegistrarPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .fillMaxWidth()
+                                .width(266.dp)
+                                .height(50.dp),
                         )
                     }
-
                 }
             )
             Spacer(
@@ -137,55 +137,34 @@ fun RegistrarPantalla(
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
-                                .fillMaxWidth()
+                                .width(266.dp)
+                                .height(50.dp),
                         )
                     }
 
                 }
             )
-            Spacer(
+            Text(
+                "Forgot Password",
+                color = Color.White,
+                style = MaterialTheme.typography.body1,
+                fontWeight = FontWeight.Bold,
+                fontSize = 13.sp,
                 modifier = Modifier
-                    .weight(0.1f)
-            )
-            TextField(
-                value = confirmationPassword,
-                onValueChange = onValueChangeConfirmationPassword,
-                shape = RoundedCornerShape(15.dp),
-                colors = TextFieldDefaults.textFieldColors(
-                    backgroundColor = Color(0xFFFFFFFF)
-                ),
-                visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                label = {
-                    Row {
-                        Image(
-                            painter = painterResource(id = R.drawable.icon_contra),
-                            contentDescription = "Icono de password"
-                        )
-                        Text(
-                            "Confirmation password",
-                            color = Color.LightGray,
-                            style = MaterialTheme.typography.body1,
-                            modifier = Modifier
-                                .fillMaxWidth()
-                        )
-                    }
-
-                }
-            )
-            Spacer(
-                modifier = Modifier
-                    .weight(0.1f)
+                    .padding(top = 20.dp, bottom = 5.dp)
             )
             Button(
-                onClick = onClickRegistro,
+                onClick = onClickLoginPantalla,
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
                 shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
-                    .fillMaxWidth(),
+                    .padding(top = 20.dp, bottom = 5.dp)
+                    .width(326.dp)
+                    .height(50.dp),
+
                 content = {
                     Text(
-                        "Sign Up",
+                        "Sign In",
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
@@ -193,102 +172,39 @@ fun RegistrarPantalla(
                 }
             )
             Row(
-                modifier = Modifier
-                    .padding(top = 15.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(2.dp)
-                        .clip(RectangleShape)
-                        .background(Color.White)
-
-                ) {}
-                Text("Or", color = Color.White)
-                Box(
-                    modifier = Modifier
-                        .weight(1f)
-                        .height(2.dp)
-                        .clip(RectangleShape)
-                        .background(Color.White)
-                )
-            }
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(20.dp)
-
-            ) {
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    content = {
-                        Image(
-                            modifier = Modifier.size(24.dp),
-                            painter = painterResource(id = R.drawable.ic_apple),
-                            contentDescription = "Icono de apple"
-                        )
-                    }
-                )
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    content = {
-                        Image(
-                            modifier = Modifier.size(24.dp),
-                            painter = painterResource(id = R.drawable.ic_facebook),
-                            contentDescription = "Icono de apple"
-                        )
-                    }
-                )
-                Button(
-                    onClick = {},
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
-                    content = {
-                        Image(
-                            modifier = Modifier.size(24.dp),
-                            painter = painterResource(id = R.drawable.ic_google),
-                            contentDescription = "Icono de apple"
-
-                        )
-                    }
-                )
-            }
-            Row(
                 modifier = Modifier.
                 padding(top = 15.dp, bottom = 30.dp)
             ) {
                 Text(
                     "Didn’t have any account?",
                     style = TextStyle(
-                        color = Color.White
+                        color = White
                     ),
                     fontSize = 14.sp
                 )
                 ClickableText(
-                    text = AnnotatedString(" Sign In here"),
+                    text = AnnotatedString(" Sign Up here"),
                     style = TextStyle(
-                        color = Color.Yellow,
+                        color = Yellow,
                     ),
-                    onClick = onClickSignIn
+                    onClick = onClickSignUp
                 )
             }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-private fun RegistrarPantallaPreview() {
+private fun LoginPantallaPreview() {
     AndroidgimnasioTheme {
-        RegistrarPantalla(
-            onClickRegistro = {},
-            email = "",
-            confirmationPassword = "",
+        LoginPantalla(
+            onClickLoginPantalla = { /*TODO*/ },
+            correo = "",
             password = "",
-            onValueChangeEmail = {},
-            onValueChangeConfirmationPassword = {},
             onValueChangePassword = {},
-            onClickSignIn = {}
+            onValueChangeCorreo = {},
+            onClickSignUp = {}
         )
     }
 }

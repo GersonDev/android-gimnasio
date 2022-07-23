@@ -1,6 +1,5 @@
-package com.example.android_gimnasio.presentation.components
+package com.example.android_gimnasio.presentation.ui.welcome.components
 
-import androidx.compose.foundation.layout.Column
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf

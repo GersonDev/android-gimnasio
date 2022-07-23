@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.main.components
+package com.example.android_gimnasio.presentation.ui.main.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -25,7 +25,7 @@ fun UsuarioPantalla() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Usuario Screen",
+            text = "Usuario WelcomeScreen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),

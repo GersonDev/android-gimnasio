@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation
+package com.example.android_gimnasio.presentation.ui.welcome
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.android_gimnasio.presentation.components.*
-import com.example.android_gimnasio.presentation.main.PrincipalActivity
+import com.example.android_gimnasio.presentation.routes.WelcomeScreen
+import com.example.android_gimnasio.presentation.ui.welcome.components.*
+import com.example.android_gimnasio.presentation.ui.main.PrincipalActivity
 import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
@@ -44,20 +45,20 @@ fun MainScreen(
     val isLogin by mainViewModel.isLogin.observeAsState(false)
     val context = LocalContext.current
     val navController = rememberNavController()
-    NavHost(navController, startDestination = Screen.Bienvenida.route) {
+    NavHost(navController, startDestination = WelcomeScreen.Bienvenida.route) {
 
-        composable(Screen.Bienvenida.route) {
+        composable(WelcomeScreen.Bienvenida.route) {
             mainViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
-                    navController.navigate(Screen.Login.route)
+                    navController.navigate(WelcomeScreen.Login.route)
                 },
             )
             if (isLogin) {
                 context.startActivity(Intent(context, PrincipalActivity::class.java))
             }
         }
-        composable(Screen.Login.route) {
+        composable(WelcomeScreen.Login.route) {
             LoginPantalla(
                 onClickLoginPantalla = {
                     mainViewModel.startLogin(context)
@@ -71,7 +72,7 @@ fun MainScreen(
                     mainViewModel.enviarPassword(it)
                 },
                 onClickSignUp = {
-                    navController.navigate(Screen.Registrar.route)
+                    navController.navigate(WelcomeScreen.Registrar.route)
                 }
             )
             when (loginExitoso) {
@@ -88,7 +89,7 @@ fun MainScreen(
                 }
             }
         }
-        composable(Screen.Registrar.route) {
+        composable(WelcomeScreen.Registrar.route) {
             RegistrarPantalla(
                 onClickRegistro = {
                     mainViewModel.insertPeople(context)
@@ -106,7 +107,7 @@ fun MainScreen(
                     mainViewModel.enviarConfirmationPassword(it)
                 },
                 onClickSignIn = {
-                    navController.navigate(Screen.Login.route)
+                    navController.navigate(WelcomeScreen.Login.route)
                 }
 
             )

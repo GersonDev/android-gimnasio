@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.components
+package com.example.android_gimnasio.presentation.ui.welcome.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
