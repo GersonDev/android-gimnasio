@@ -1,13 +1,11 @@
 package com.example.android_gimnasio.presentation.main.components
 
-import android.content.Context
-import android.net.Uri
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
@@ -33,6 +32,7 @@ import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.android_gimnasio.R
+import com.example.android_gimnasio.domain.models.Trainer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
@@ -44,20 +44,8 @@ fun TrainerPantalla() {
         contentAlignment = Alignment.TopStart,
         modifier = Modifier
             .fillMaxSize()
+            .background(colorResource(id = R.color.trainers__primary))
     ) {
-        Column {
-            Image(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                painter = painterResource(id = R.drawable.trainers),
-                contentDescription = "Imagen pantalla de trainers",
-                contentScale = ContentScale.FillWidth
-            )
-            Spacer(
-                modifier =Modifier
-                    .weight(1f)
-            )
-        }
         Box(
             modifier = Modifier
                 .fillMaxSize()
@@ -78,141 +66,239 @@ fun TrainerPantalla() {
             modifier = Modifier
                 .padding(40.dp)
         ) {
-            Text(
-                "YOUR BEST OPTION\n " +
-                        "IN TRAINERS",
-                letterSpacing = 0.1.em,
-                fontSize = 30.sp,
-                color = Color.White,
-                textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.h1
-            )
+
             VideoPlayer(modifier = Modifier.fillMaxWidth())
-            Row(
-                modifier = Modifier
-                    .padding(top = 15.dp, bottom = 15.dp),
 
-                ) {
-                Text(
-                    "Trainers Men",
-                    fontWeight = FontWeight.Bold,
-                    style = TextStyle(
-                        color = Color.White
-                    ),
-                    fontSize = 19.sp
+            Column {
+                SectionTitle(
+                    title = "Trainers",
+                    subTitle = "See all",
+                    colorTitle = Color.White,
+                    colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
-                Spacer(modifier = Modifier.weight(1f))
-                ClickableText(
-                    text = AnnotatedString(" See all"),
-                    style = TextStyle(
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 19.sp
-                    ),
-                    onClick = { }
-                )
+                TrainersBubble(listOf(
+                    Trainer(R.drawable.trainers, "Amaka"),
+                    Trainer(R.drawable.trainers, "Stella"),
+                    Trainer(R.drawable.trainers, "Derick"),
+                    Trainer(R.drawable.trainers, "Tayao"),
+                    Trainer(R.drawable.trainers, "Sean"),
+                ))
             }
-            Row {
-                Image(
-                    painter = painterResource(id = R.drawable.hombre),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.hombre),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.hombre),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.hombre),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.hombre),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .padding(top = 15.dp, bottom = 15.dp),
 
-                ) {
-                Text(
-                    "Trainers Women",
-                    fontWeight = FontWeight.Bold,
-                    style = TextStyle(
-                        color = Color.White
-                    ),
-                    fontSize = 19.sp
+            Column {
+                SectionTitle(
+                    title = "Trainers",
+                    subTitle = "See all",
+                    colorTitle = Color.White,
+                    colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
-                Spacer(modifier = Modifier.weight(1f))
-                ClickableText(
-                    text = AnnotatedString(" See all"),
-                    style = TextStyle(
-                        color = Color.White,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 19.sp
-                    ),
-                    onClick = { }
-                )
+                TrainersBubble(listOf(
+                    Trainer(R.drawable.trainers, "Amaka"),
+                    Trainer(R.drawable.trainers, "Stella"),
+                    Trainer(R.drawable.trainers, "Derick"),
+                    Trainer(R.drawable.trainers, "Tayao"),
+                    Trainer(R.drawable.trainers, "Sean"),
+                ))
             }
-            Row {
+
+            Column {
+                SectionTitle(
+                    title = "Videos",
+                    subTitle = "See all",
+                    colorTitle = Color.White,
+                    colorSubtitle = colorResource(id = R.color.trainers_gray)
+                )
+                VideoBody(listOf(
+                    R.drawable.img_video_pelado,
+                    R.drawable.img_video_pelado,
+                    R.drawable.img_video_pelado,
+                    R.drawable.img_video_pelado,
+                    R.drawable.img_video_pelado
+                ))
+            }
+
+
+        }
+
+
+
+//        Column(
+//            horizontalAlignment = Alignment.CenterHorizontally,
+//            modifier = Modifier
+//                .padding(40.dp)
+//        ) {
+//            Text(
+//                "YOUR BEST OPTION\n " +
+//                        "IN TRAINERS",
+//                letterSpacing = 0.1.em,
+//                fontSize = 30.sp,
+//                color = Color.White,
+//                textAlign = TextAlign.Center,
+//                style = MaterialTheme.typography.h1
+//            )
+//            VideoPlayer(modifier = Modifier.fillMaxWidth())
+//            Row(
+//                modifier = Modifier
+//                    .padding(top = 15.dp, bottom = 15.dp),
+//
+//                ) {
+//                Text(
+//                    "Trainers Men",
+//                    fontWeight = FontWeight.Bold,
+//                    style = TextStyle(
+//                        color = Color.White
+//                    ),
+//                    fontSize = 19.sp
+//                )
+//                Spacer(modifier = Modifier.weight(1f))
+//                ClickableText(
+//                    text = AnnotatedString(" See all"),
+//                    style = TextStyle(
+//                        color = Color.White,
+//                        fontWeight = FontWeight.Bold,
+//                        fontSize = 19.sp
+//                    ),
+//                    onClick = { }
+//                )
+//            }
+//            Column (
+//                modifier = Modifier
+//                    .fillMaxSize()
+//                    .verticalScroll(rememberScrollState())
+//                    ){
+//                Column {
+//                    Row(
+//                        modifier = Modifier
+//                            .padding(top = 15.dp, bottom = 15.dp),
+//
+//                        ) {
+//                        Text(
+//                            "Trainers Men",
+//                            fontWeight = FontWeight.Bold,
+//                            style = TextStyle(
+//                                color = Color.White
+//                            ),
+//                            fontSize = 19.sp
+//                        )
+//                        Spacer(modifier = Modifier.weight(1f))
+//                        ClickableText(
+//                            text = AnnotatedString(" See all"),
+//                            style = TextStyle(
+//                                color = Color.White,
+//                                fontWeight = FontWeight.Bold,
+//                                fontSize = 19.sp
+//                            ),
+//                            onClick = { }
+//                        )
+//                    }
+//                    Trainers(
+//                        listOf(
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man"),
+//                            Trainer(R.drawable.hombre,"Iron man")
+//                        )
+//                    )
+//                }
+//            }
+//            Row(
+//                modifier = Modifier
+//                    .padding(top = 15.dp, bottom = 15.dp),
+//
+//                ) {
+//                Text(
+//                    "Trainers Women",
+//                    fontWeight = FontWeight.Bold,
+//                    style = TextStyle(
+//                        color = Color.White
+//                    ),
+//                    fontSize = 19.sp
+//                )
+//                Spacer(modifier = Modifier.weight(1f))
+//                ClickableText(
+//                    text = AnnotatedString(" See all"),
+//                    style = TextStyle(
+//                        color = Color.White,
+//                        fontWeight = FontWeight.Bold,
+//                        fontSize = 19.sp
+//                    ),
+//                    onClick = { }
+//                )
+//            }
+//
+//        }
+    }
+}
+
+@Composable
+private fun TrainersBubble(trainers: List<Trainer>) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+    ) {
+        trainers.forEach { trainer ->
+            Column {
                 Image(
-                    painter = painterResource(id = R.drawable.mujer),
+                    painter = painterResource(id = trainer.imagen),
                     contentDescription = "trainers",
                     modifier = Modifier
                         .size(65.dp)
                         .clip(CircleShape)
                 )
-                Image(
-                    painter = painterResource(id = R.drawable.mujer),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.mujer),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.mujer),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
-                Image(
-                    painter = painterResource(id = R.drawable.mujer),
-                    contentDescription = "trainers",
-                    modifier = Modifier
-                        .size(65.dp)
-                        .clip(CircleShape)
-                )
+                Text(text = trainer.nombre)
             }
         }
     }
 }
+
+
+
+
+@Composable
+private fun VideoBody(imagenes: List<Int>) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+    ){
+        imagenes.forEach { imagen ->
+            Card(
+                modifier = Modifier
+                    .width(120.dp)
+                    .height(120.dp),
+                shape = RoundedCornerShape(30.dp)
+            ) {
+                Box(
+                    contentAlignment = Alignment.BottomCenter
+                ) {
+                    Image(
+                        modifier = Modifier.fillMaxSize(),
+                        painter = painterResource(id = imagen),
+                        contentDescription = "Imagen de login",
+                        contentScale = ContentScale.FillBounds
+                    )
+                    Image(
+                        modifier = Modifier
+                            .width(50.dp)
+                            .height(50.dp),
+                        painter = painterResource(id = R.drawable.ic_li_play_circle),
+                        contentDescription = "Imagen de login",
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
+            }
+        }
+    }
+
+}
+
+
 
 @Composable
 fun VideoPlayer(modifier:Modifier){
@@ -234,8 +320,45 @@ fun VideoPlayer(modifier:Modifier){
     AndroidView(factory = {
         playerView
     },
-
     )
+}
+@Composable
+private fun Trainers(Trainers: List<Trainer>){
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .horizontalScroll(rememberScrollState())
+            .padding(start = 10.dp)
+    ){
+        Trainers.forEach{ trainer->
+            Card(
+                modifier = Modifier
+                    .width(140.dp)
+                    .padding(10.dp)
+                    .size(65.dp)
+                    .clip(CircleShape),
+            ) {
+                Box (
+                    contentAlignment = Alignment.BottomCenter
+                        ){
+                    Image(
+                        modifier = Modifier.fillMaxWidth(),
+                        painter = painterResource(id = trainer.imagen),
+                        contentDescription ="Imagen de los trainers" ,
+                        contentScale = ContentScale.FillWidth
+                    )
+                    Text(
+                        trainer.nombre,
+                        color = Color.White,
+                        modifier = Modifier.padding(10.dp),
+                        style = MaterialTheme.typography.body1,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 13.sp,
+                    )
+                }
+            }
+        }
+    }
 }
 
 @Preview

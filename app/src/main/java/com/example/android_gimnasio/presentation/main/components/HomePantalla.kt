@@ -171,7 +171,7 @@ private fun TodayWorkOutPlan(
 }
 
 @Composable
-private fun SectionTitle(
+fun SectionTitle(
     title: String,
     subTitle: String,
     colorTitle: Color,
