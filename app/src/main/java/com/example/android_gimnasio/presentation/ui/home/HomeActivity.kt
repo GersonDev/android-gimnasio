@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.ui.main
+package com.example.android_gimnasio.presentation.ui.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -25,7 +25,7 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedesActivity
-import com.example.android_gimnasio.presentation.ui.main.components.*
+import com.example.android_gimnasio.presentation.ui.home.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class PrincipalActivity : ComponentActivity() {

@@ -14,7 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.routes.WelcomeScreen
 import com.example.android_gimnasio.presentation.ui.welcome.components.*
-import com.example.android_gimnasio.presentation.ui.main.PrincipalActivity
+import com.example.android_gimnasio.presentation.ui.home.PrincipalActivity
 import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 

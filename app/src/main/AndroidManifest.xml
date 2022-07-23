@@ -22,7 +22,7 @@
             android:label="@string/title_activity_gym_sedes"
             android:theme="@style/Theme.Androidgimnasio" />
         <activity
-            android:name="com.example.android_gimnasio.presentation.ui.main.PrincipalActivity"
+            android:name="com.example.android_gimnasio.presentation.ui.home.PrincipalActivity"
             android:exported="false"
             android:label="@string/title_activity_principal"
             android:theme="@style/Theme.Androidgimnasio" />

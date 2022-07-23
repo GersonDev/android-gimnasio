@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.ui.main.components
+package com.example.android_gimnasio.presentation.ui.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.example.android_gimnasio.R
 
 @Composable
-fun BailePantalla() {
+fun UsuarioPantalla() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -25,7 +25,7 @@ fun BailePantalla() {
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
-            text = "Baile WelcomeScreen",
+            text = "Usuario WelcomeScreen",
             fontWeight = FontWeight.Bold,
             color = Color.White,
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -37,6 +37,6 @@ fun BailePantalla() {
 
 @Preview
 @Composable
-fun BailePantallaPreview() {
-    BailePantalla()
+private fun UsuarioPantallaPreview() {
+    UsuarioPantalla()
 }

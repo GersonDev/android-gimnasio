@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.ui.main.components
+package com.example.android_gimnasio.presentation.ui.home.components
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
