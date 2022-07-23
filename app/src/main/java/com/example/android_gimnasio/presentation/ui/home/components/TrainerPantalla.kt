@@ -103,7 +103,7 @@ fun TrainerPantalla() {
                 )
             }
 
-            Column {
+            Column{
                 SectionTitle(
                     title = "Videos",
                     subTitle = "See all",
