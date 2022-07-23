@@ -32,27 +32,14 @@ fun HomePantalla() {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .background(Color.Blue)
+            .background(colorResource(id = R.color.bg_primary))
     ) {
         Column {
             Text("Today Workout Plan")
             TodayWorkOutPlan(listOf("carlos", "ronaldo", "gerson", "carlos", "ronaldo", "gerson"))
         }
 
-        Column {
-            Text("Today Workout Plan")
-            TodayWorkOutPlan(listOf("carlos", "ronaldo", "gerson", "carlos", "ronaldo", "gerson"))
-        }
 
-        Column {
-            Text("Today Workout Plan")
-            TodayWorkOutPlan(listOf("carlos", "ronaldo", "gerson", "carlos", "ronaldo", "gerson"))
-        }
-
-        Column {
-            Text("Today Workout Plan")
-            TodayWorkOutPlan(listOf("carlos", "ronaldo", "gerson", "carlos", "ronaldo", "gerson"))
-        }
     }
 }
 
