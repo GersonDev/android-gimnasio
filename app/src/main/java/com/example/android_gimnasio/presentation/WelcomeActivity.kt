@@ -17,7 +17,7 @@ import com.example.android_gimnasio.presentation.main.PrincipalActivity
 import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
-class MainActivity : ComponentActivity() {
+class WelcomeActivity : ComponentActivity() {
 
     private val mainViewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {

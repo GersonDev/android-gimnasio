@@ -135,7 +135,7 @@ fun BienvenidaPantalla(
 
 @Preview(showBackground = true)
 @Composable
-fun BienvenidaPreview() {
+private fun BienvenidaPreview() {
     AndroidgimnasioTheme {
         BienvenidaPantalla(onClickButtonRegistrar = { /*TODO*/ },
             onClickButtonIncisiarSesion = {},

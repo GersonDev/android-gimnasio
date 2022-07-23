@@ -278,7 +278,7 @@ fun RegistrarPantalla(
 
 @Preview(showBackground = true)
 @Composable
-fun RegistrarPantallaPreview() {
+private fun RegistrarPantallaPreview() {
     AndroidgimnasioTheme {
         RegistrarPantalla(
             onClickRegistro = {},

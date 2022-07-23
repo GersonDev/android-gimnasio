@@ -240,6 +240,6 @@ fun VideoPlayer(modifier:Modifier){
 
 @Preview
 @Composable
-fun TrainerPantallaPreview() {
+private fun TrainerPantallaPreview() {
     TrainerPantalla()
 }

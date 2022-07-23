@@ -37,6 +37,6 @@ fun UsuarioPantalla() {
 
 @Preview
 @Composable
-fun UsuarioPantallaPreview() {
+private fun UsuarioPantallaPreview() {
     UsuarioPantalla()
 }

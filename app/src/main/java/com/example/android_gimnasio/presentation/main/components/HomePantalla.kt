@@ -37,6 +37,6 @@ fun HomePantalla() {
 
 @Preview
 @Composable
-fun HomePantallaPreview() {
+private fun HomePantallaPreview() {
     HomePantalla()
 }

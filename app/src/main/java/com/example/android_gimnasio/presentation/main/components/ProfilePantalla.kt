@@ -42,6 +42,6 @@ fun ProfilePantalla() {
 
 @Preview
 @Composable
-fun ProfilePantallaPreview() {
+private fun ProfilePantallaPreview() {
     ProfilePantalla()
 }

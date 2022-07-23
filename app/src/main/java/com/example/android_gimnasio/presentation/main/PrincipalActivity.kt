@@ -119,7 +119,7 @@ fun NavigationGraph(navController: NavHostController) {
 
 @Preview(showBackground = true)
 @Composable
-fun DefaultPreview() {
+private fun DefaultPreview() {
     AndroidgimnasioTheme {
         PrincipalScreenView()
     }

@@ -37,6 +37,6 @@ fun GymPantalla() {
 
 @Preview
 @Composable
-fun GymPantallaPreview() {
+private fun GymPantallaPreview() {
     GymPantalla()
 }
