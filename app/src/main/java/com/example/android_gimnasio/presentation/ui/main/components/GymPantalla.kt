@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.sp
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.domain.models.trainers.TrainerCardModel
+import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -42,38 +43,6 @@ fun GymPantalla(brands: List<Brand>) {
             items(items = brands, itemContent = { brand ->
                 GymCard(brand)
             })
-        }
-    }
-}
-
-@Composable
-fun GymTitle(title: String, @DrawableRes userImage: Int) {
-    Box(
-        modifier = Modifier.height(80.dp),
-        contentAlignment = Alignment.Center
-    ) {
-        Text(
-            text = title,
-            modifier = Modifier
-                .fillMaxWidth(),
-            color = Color.White,
-            textAlign = TextAlign.Center
-        )
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(5.dp)
-        ) {
-            Image(
-                modifier = Modifier
-                    .size(24.dp),
-                painter = painterResource(id = R.drawable.ic_back),
-                contentDescription = "Imagen de login",
-                contentScale = ContentScale.FillBounds
-            )
-            Spacer(
-                modifier = Modifier.weight(1f)
-            )
-            UserPicture(userImage)
         }
     }
 }

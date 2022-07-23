@@ -1,9 +1,7 @@
 package com.example.android_gimnasio.presentation.ui.main.components
 
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -11,7 +9,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
@@ -28,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.trainers.TrainerCardModel
+import com.example.android_gimnasio.presentation.common.components.UserPicture
 
 @Composable
 fun HomePantalla() {
@@ -145,18 +143,7 @@ private fun UserSection(description: String) {
     }
 }
 
-@Composable
-fun UserPicture(@DrawableRes userImage: Int) {
-    Image(
-        painter = painterResource(userImage),
-        contentDescription = "profile",
-        contentScale = ContentScale.Crop,
-        modifier = Modifier
-            .size(64.dp)
-            .clip(CircleShape)
-            .border(2.dp, Color.Gray, CircleShape)
-    )
-}
+
 
 @Composable
 private fun TodayWorkOutPlan(
