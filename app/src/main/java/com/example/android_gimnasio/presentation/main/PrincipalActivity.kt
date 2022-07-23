@@ -1,5 +1,6 @@
 package com.example.android_gimnasio.presentation.main
 
+import android.content.Context
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -60,7 +61,7 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Profile
     )
     androidx.compose.material.BottomNavigation(
-        backgroundColor = colorResource(id = R.color.teal_200),
+        backgroundColor = colorResource(id = R.color.plomo),
         contentColor = Color.Black
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
