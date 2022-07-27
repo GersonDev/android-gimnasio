@@ -19,8 +19,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.Trainer
@@ -61,14 +63,15 @@ fun TrainerPantalla() {
                 )
                 TrainersBubble(
                     listOf(
-                        Trainer(R.drawable.mujer, "Diego"),
-                        Trainer(R.drawable.mujer, "Jeff"),
-                        Trainer(R.drawable.mujer, "Josue"),
-                        Trainer(R.drawable.mujer, "Tiago"),
-                        Trainer(R.drawable.mujer, "Juan"),
-                        Trainer(R.drawable.mujer, "Juan"),
-                        Trainer(R.drawable.mujer, "Juan"),
-                        Trainer(R.drawable.mujer, "Juan")
+                        Trainer(R.drawable.hombre, "Diego"),
+                        Trainer(R.drawable.hombre, "Jeff"),
+                        Trainer(R.drawable.hombre, "Josue"),
+                        Trainer(R.drawable.hombre, "Tiago"),
+                        Trainer(R.drawable.hombre, "Juan"),
+                        Trainer(R.drawable.hombre, "Juan"),
+                        Trainer(R.drawable.hombre, "Juan"),
+                        Trainer(R.drawable.hombre, "Juan")
+
                     )
                 )
             }
@@ -80,18 +83,18 @@ fun TrainerPantalla() {
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
-                TrainersBubble(
-                    listOf(
-                        Trainer(R.drawable.hombre, "Amaka"),
-                        Trainer(R.drawable.hombre, "Stella"),
-                        Trainer(R.drawable.hombre, "Derick"),
-                        Trainer(R.drawable.hombre, "Tayao"),
-                        Trainer(R.drawable.hombre, "Sean"),
-                        Trainer(R.drawable.hombre, "Sean"),
-                        Trainer(R.drawable.hombre, "Sean"),
-                        Trainer(R.drawable.hombre, "Sean")
+                    TrainersBubble(
+                        listOf(
+                            Trainer(R.drawable.mujer, "Amaka"),
+                            Trainer(R.drawable.mujer, "Stella"),
+                            Trainer(R.drawable.mujer, "Derick"),
+                            Trainer(R.drawable.mujer, "Tayao"),
+                            Trainer(R.drawable.mujer, "Sean"),
+                            Trainer(R.drawable.mujer, "Sean"),
+                            Trainer(R.drawable.mujer, "Sean"),
+                            Trainer(R.drawable.mujer, "Sean")
+                        )
                     )
-                )
             }
 
             Column{
@@ -140,7 +143,7 @@ private fun TrainersBubble(trainers: List<Trainer>) {
             .horizontalScroll(rememberScrollState())
     ) {
         trainers.forEach { trainer ->
-            Column {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Box(
                     modifier = Modifier
                         .size(80.dp)
@@ -156,7 +159,7 @@ private fun TrainersBubble(trainers: List<Trainer>) {
                         contentScale = ContentScale.FillBounds
                     )
                 }
-                Text(text = trainer.nombre, color = Color.DarkGray)
+                Text(text = trainer.nombre, color = Color.DarkGray, fontSize = 13.sp)
             }
         }
     }
@@ -173,13 +176,13 @@ private fun VideoBody(imagenes: List<Int>) {
         imagenes.forEach { imagen ->
             Card(
                 modifier = Modifier
-                    .width(120.dp)
-                    .height(120.dp)
+                    .width(150.dp)
+                    .height(150.dp)
                     .padding(end = 15.dp),
                 shape = RoundedCornerShape(30.dp)
             ) {
                 Box(
-                    contentAlignment = Alignment.BottomCenter
+                    contentAlignment = Alignment.BottomStart
                 ) {
                     Image(
                         modifier = Modifier.fillMaxSize(),
@@ -189,8 +192,9 @@ private fun VideoBody(imagenes: List<Int>) {
                     )
                     Image(
                         modifier = Modifier
-                            .width(50.dp)
-                            .height(50.dp),
+                            .width(35.dp)
+                            .height(35.dp)
+                            .padding(start = 10.dp, bottom = 10.dp),
                         painter = painterResource(id = R.drawable.ic_li_play_circle),
                         contentDescription = "Imagen de login",
                         contentScale = ContentScale.FillBounds

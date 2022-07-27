@@ -175,7 +175,8 @@ fun SectionTitle(
     ) {
         Text(
             title,
-            color = colorTitle
+            color = colorTitle,
+            fontSize = 14.sp
         )
         Spacer(
             modifier = Modifier
@@ -183,7 +184,8 @@ fun SectionTitle(
         )
         Text(
             subTitle,
-            color = colorSubtitle
+            color = colorSubtitle,
+            fontSize = 14.sp
         )
     }
 }
