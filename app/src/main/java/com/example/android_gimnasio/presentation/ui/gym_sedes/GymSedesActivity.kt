@@ -138,33 +138,33 @@ class GymSedesActivity : ComponentActivity() {
                                     Sede(
                                         R.drawable.smartfit_benavides,
                                         "Smart Fit \n Benavides",
-                                        "Av. Alfredo Benavides 347 Miraflores\n Municipalidad Metropolitana de Lima",
-                                        "6am - 11pm"
+                                        "Av.Alfredo Benavides 347 Miraflores\n Municipalidad de Lima",
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.smartfit_higuereta,
                                         "Smart Fit \n Higuereta",
-                                        "Av. Aviación 5150 con Av. Tomás Marsano 2975\n Santiago de Surco 15038",
-                                        "6am - 11pm"
+                                        "Av. Aviación con Av. Tomás Marsano\n Santiago de Surco 15038",
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.smartfit_colonial,
                                         "Smart Fit \n Colonial",
                                         "Av. Óscar R. Benavides 669\n Cercado de Lima 15082",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.smartfit_sanborja,
                                         "Smart Fit \n San Borja",
                                         "Av. Javier Prado Este 1980\n San Borja 15036",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.smartfit_megaplaza,
                                         "Smart Fit \n Mega Plaza Lima Norte",
                                         "Av. Alfredo Mendiola 3698\n Independencia 15311",
-                                        "6am - 11pm"
-                                    ),
+                                        "6am-11pm"
+                                    )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
                             )
@@ -176,31 +176,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -213,31 +213,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -250,31 +250,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -287,31 +287,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -324,31 +324,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -361,31 +361,31 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,
                                         "Bodytech \n Cercado de Lima",
                                         "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_jesusmaria,
                                         "Bodytech \n Jesus Maria",
                                         "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     )
                                 ),
                                 brand = Brand(tituloDeMarca!!, imagenDeMarca!!)
@@ -398,19 +398,19 @@ class GymSedesActivity : ComponentActivity() {
                                         R.drawable.bodytech_magdalena,
                                         "Bodytech \n Magdalena",
                                         "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_sanmiguel,
                                         "Bodytech \n San Miguel",
                                         "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_miraflores,
                                         "Bodytech \n Miraflores",
                                         "Av. Sta. Cruz 855\n Miraflores 15074",
-                                        "6am - 11pm"
+                                        "6am-11pm"
                                     ),
                                     Sede(
                                         R.drawable.bodytech_ceradodelima,

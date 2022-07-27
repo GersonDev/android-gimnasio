@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -30,7 +31,7 @@ fun GymSedePantalla(sedes: List<Sede>, brand: Brand) {
         modifier = Modifier
             .fillMaxSize()
             .background(colorResource(id = R.color.trainers__primary))
-            .padding(start = 10.dp, bottom = 60.dp, top = 20.dp, end = 3.dp)
+            .padding(start = 10.dp, bottom = 20.dp, top = 20.dp, end = 3.dp)
     ) {
 
         GymTitle(brand.title, brand.image)
@@ -67,12 +68,14 @@ fun GymSedeCelda(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(10.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Box(
             modifier = Modifier
                 .width(100.dp)
                 .height(100.dp)
+
         ) {
             Image(
                 painter = painterResource(id = sede.imagen),
@@ -87,10 +90,13 @@ fun GymSedeCelda(
         Column(
             modifier = Modifier.padding(10.dp)
         ) {
-            Text(text = sede.titulo, color = Color.White, fontSize = 15.sp)
-            Text(text = sede.descripcion, color = Color.White, fontSize = 10.sp)
+            Text(text = sede.titulo, color = Color.White, fontSize = 20.sp)
+            Row {
+                Text(text = sede.tiempo, color = Color.Yellow, fontSize = 13.sp, modifier = Modifier.width(150.dp))
+            }
+            Text(text = sede.descripcion, color = Color.White, fontSize = 12.sp)
         }
-        Text(text = sede.tiempo, color = Color.Yellow, fontSize = 14.sp)
+
     }
 }
 
