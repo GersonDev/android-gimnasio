@@ -27,7 +27,7 @@ import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun GymPantalla(brands: List<Brand>, onClickBrand: () -> Unit) {
+fun GymPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -46,7 +46,7 @@ fun GymPantalla(brands: List<Brand>, onClickBrand: () -> Unit) {
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun GymCard(brand: Brand, onClickBrand: () -> Unit) {
+private fun GymCard(brand: Brand, onClickBrand: (String, Int) -> Unit) {
     Row(
         modifier = Modifier
             .width(200.dp)
@@ -57,7 +57,9 @@ private fun GymCard(brand: Brand, onClickBrand: () -> Unit) {
             modifier = Modifier
                 .fillMaxSize(),
             shape = RoundedCornerShape(20.dp),
-            onClick = onClickBrand
+            onClick = {
+                onClickBrand(brand.title, brand.image)
+            }
         ) {
             Box(
                 contentAlignment = Alignment.BottomCenter
@@ -91,6 +93,7 @@ private fun GymPantallaPreview() {
         listOf(
             Brand("hola", R.drawable.brand_1)
         ),
-        onClickBrand = {}
+        onClickBrand = { titulo, imagen ->
+        }
     )
 }

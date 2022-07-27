@@ -14,7 +14,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.routes.WelcomeScreen
 import com.example.android_gimnasio.presentation.ui.welcome.components.*
-import com.example.android_gimnasio.presentation.ui.home.PrincipalActivity
+import com.example.android_gimnasio.presentation.ui.home.HomeActivity
 import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
@@ -55,7 +55,7 @@ fun MainScreen(
                 },
             )
             if (isLogin) {
-                context.startActivity(Intent(context, PrincipalActivity::class.java))
+                context.startActivity(Intent(context, HomeActivity::class.java))
             }
         }
         composable(WelcomeScreen.Login.route) {
@@ -80,7 +80,7 @@ fun MainScreen(
 
                 }
                 true -> {
-                    context.startActivity(Intent(context, PrincipalActivity::class.java))
+                    context.startActivity(Intent(context, HomeActivity::class.java))
                 }
                 false -> {
                     ModalDeError {
@@ -112,7 +112,7 @@ fun MainScreen(
 
             )
             if (registroExitoso) {
-                context.startActivity(Intent(context, PrincipalActivity::class.java))
+                context.startActivity(Intent(context, HomeActivity::class.java))
             }
 
         }

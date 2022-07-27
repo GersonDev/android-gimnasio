@@ -28,13 +28,16 @@ import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedesActivity
 import com.example.android_gimnasio.presentation.ui.home.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
-class PrincipalActivity : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidgimnasioTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
                     PrincipalScreenView()
                 }
             }
@@ -43,7 +46,7 @@ class PrincipalActivity : ComponentActivity() {
 }
 
 @Composable
-fun PrincipalScreenView(){
+fun PrincipalScreenView() {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
@@ -114,15 +117,22 @@ fun NavigationGraph(navController: NavHostController) {
                     Brand("Bodytech", R.drawable.brand_bodytech),
                     Brand("Megaforce", R.drawable.brand_megaforce),
                     Brand("Megatlon", R.drawable.brand_megatlon),
-                    Brand("Gimnasio B2", R.drawable.brand_megaforce),
-                    Brand("Aldo's Gym", R.drawable.brand_smart_fit),
-                    Brand("X Sport Gym", R.drawable.brand_megatlon),
-                    Brand("Master Gym", R.drawable.brand_bodytech),
-                    Brand("Fitness de Impacto", R.drawable.brand_gold_gym),
-                    Brand("Sportlife Fitness Club", R.drawable.brand_smart_fit)
+                    Brand("Gimnasio B2", R.drawable.b2_gimnasio),
+                    Brand("Aldo's Gym", R.drawable.aldos_gym),
+                    Brand("X Sport Gym", R.drawable.x_sport_gym),
+                    Brand("Master Gym", R.drawable.master_gym),
+                    Brand("Fitness de Impacto", R.drawable.fitness_de_impacto),
+                    Brand("Sportlife Fitness Club", R.drawable.sportlife_fitness_club)
                 ),
-                onClickBrand = {
-                    context.startActivity(Intent(context, GymSedesActivity::class.java))
+                onClickBrand = { titulo, imagen ->
+//                    context.startActivity(Intent(context, GymSedesActivity::class.java))
+                    val bundle = Bundle()
+                    bundle.putString("MARCA_TITULO", titulo)
+                    bundle.putInt("MARCA_IMAGEN", imagen)
+                    val intent = Intent(context, GymSedesActivity::class.java)
+                    intent.putExtras(bundle)
+                    context.startActivity(intent)
+
                 }
             )
         }
