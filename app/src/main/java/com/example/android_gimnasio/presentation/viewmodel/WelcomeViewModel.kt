@@ -9,7 +9,7 @@ import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class WelcomeViewModel : ViewModel() {
 
     private val peopleRepository = PeopleRepository()
 
@@ -54,6 +54,7 @@ class MainViewModel : ViewModel() {
             _registroExitoso.value = true
         }
     }
+
 
     fun startLogin(context: Context) {
         viewModelScope.launch {

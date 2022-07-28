@@ -31,4 +31,17 @@ class DatabaseDataSource {
             .peopleDao()
             .insertPeople(peopleEntity)
     }
+
+    suspend fun updatePeople(context: Context, people: People) {
+        val peopleEntity = PeopleEntity(
+            id = people.id,
+            correo = people.email,
+            password = people.password,
+            confirmationPassword = people.confirmationPassword
+        )
+        GimnasioDataBase.buildDataBase(context)
+            .peopleDao()
+            .updatePeople(peopleEntity)
+
+    }
 }

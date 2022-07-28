@@ -3,6 +3,7 @@ package com.example.android_gimnasio.data.database.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.example.android_gimnasio.data.database.entities.PeopleEntity
 
 
@@ -13,4 +14,7 @@ interface PeopleDao {
 
     @Insert
     suspend fun insertPeople(peopleEntity: PeopleEntity)
+
+    @Update
+    suspend fun updatePeople(peopleEntity: PeopleEntity)
 }

@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -108,6 +109,8 @@ fun BottomNavigation(navController: NavController) {
 
 @Composable
 fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewModel) {
+    val correo by homeViewModel.email.observeAsState("")
+    val password by homeViewModel.password.observeAsState("")
     val context = LocalContext.current
     NavHost(navController, startDestination = BottomNavItem.Home.screenRoute) {
         composable(BottomNavItem.Home.screenRoute) {
@@ -152,7 +155,19 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
             TrainerPantalla()
         }
         composable(BottomNavItem.Profile.screenRoute) {
-            ProfilePantalla()
+            ProfilePantalla(
+                onClickActualizar = {
+                    homeViewModel.updatePeople(context)
+                },
+                onValueChangeEmail = {
+                    homeViewModel.enviarCorreo(it)
+                },
+                onValueChangePassword = {
+                    homeViewModel.enviarPassword(it)
+                },
+                password = password,
+                email = correo,
+            )
         }
         composable(BottomNavItem.Proba.screenRoute) {
             GymSedesPantalla(homeViewModel.tituloDeMarca.value!!,
