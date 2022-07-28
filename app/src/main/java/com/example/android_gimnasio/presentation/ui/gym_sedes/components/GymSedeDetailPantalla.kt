@@ -2,48 +2,90 @@ package com.example.android_gimnasio.presentation.ui.gym_sedes.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.android_gimnasio.R
+import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @Composable
 fun GymSedeDetailPantalla() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(
-                brush = Brush.verticalGradient(
-                    colors = listOf(
-                        Color.Transparent,
-                        MaterialTheme.colors.secondaryVariant
-                    ),
-                    startY = 0f,
-                    endY = 1200f
-                )
-            )
+            .background(colorResource(R.color.trainers__primary)),
+        contentAlignment = Alignment.BottomCenter
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.golds_gimnasio),
-            contentDescription = "Imagen de Golds Gym",
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .height(200.dp),
-            contentScale = ContentScale.FillBounds
-        )
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.golds_gimnasio),
+                contentDescription = "Imagen de Golds Gym",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                contentScale = ContentScale.FillBounds
+            )
+            Text(
+                "Somos una cadena de Gimnasios peruana con 15 años impulsando un estilo " +
+                        "de vida saludable en las familias, ahora mediante de esta plataforma digital " +
+                        "podrás disfrutar de la experiencia Mega Force que combina las mejores clases grupales online, " +
+                        "asesoramiento personalizado, nutrición y mucho más que permitirá que muchas personas vivan una  " +
+                        "experiencia única alrededor del mundo.",
+                color = Color.White,
+                style = MaterialTheme.typography.body2
+            )
+            Text(
+                "Somos una cadena de Gimnasios peruana con 15 años impulsando un estilo " +
+                        "de vida saludable en las familias, ahora mediante de esta plataforma digital " +
+                        "podrás disfrutar de la experiencia Mega Force que combina las mejores clases grupales online, " +
+                        "asesoramiento personalizado, nutrición y mucho más que permitirá que muchas personas vivan una  " +
+                        "experiencia única alrededor del mundo.",
+                color = Color.White,
+                style = MaterialTheme.typography.body2
+            )
+            Text(
+                "Somos una cadena de Gimnasios peruana con 15 años impulsando un estilo " +
+                        "de vida saludable en las familias, ahora mediante de esta plataforma digital " +
+                        "podrás disfrutar de la experiencia Mega Force que combina las mejores clases grupales online, " +
+                        "asesoramiento personalizado, nutrición y mucho más que permitirá que muchas personas vivan una  " +
+                        "experiencia única alrededor del mundo.",
+                color = Color.White,
+                style = MaterialTheme.typography.body2
+            )
 
+        }
+        Column {
+            GymTitle("ver", R.drawable.img_user_profile)
+            Spacer(
+                modifier = Modifier.weight(1f)
+            )
+            Button(
+                onClick = {
 
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp)
+            ) {
+                Text("Matricularse")
+            }
+        }
     }
 }
 

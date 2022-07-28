@@ -1,11 +1,14 @@
 package com.example.android_gimnasio.presentation.common.components
 
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,6 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.android_gimnasio.R
@@ -20,7 +24,7 @@ import com.example.android_gimnasio.R
 @Composable
 fun GymTitle(title: String, @DrawableRes userImage: Int) {
     Box(
-        modifier = Modifier.height(80.dp),
+        modifier = Modifier.height(60.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -56,8 +60,36 @@ fun UserPicture(@DrawableRes userImage: Int) {
         contentDescription = "profile",
         contentScale = ContentScale.Crop,
         modifier = Modifier
-            .size(64.dp)
+            .size(48.dp)
             .clip(CircleShape)
             .border(2.dp, Color.Gray, CircleShape)
+    )
+}
+
+@Composable
+fun GymScaffold(
+    @StringRes titleId: Int,
+    upAvailable: Boolean,
+    onUpClicked: () -> Unit,
+    content: @Composable (PaddingValues) -> Unit
+) {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(titleId)) },
+                navigationIcon = {
+                    if (upAvailable) {
+                        IconButton(onClick = { onUpClicked() }) {
+                            Icon(
+                                imageVector = Icons.Filled.ArrowBack,
+                                contentDescription = "Back",
+                                tint = Color.White
+                            )
+                        }
+                    }
+                })
+        },
+        backgroundColor = Color.Transparent,
+        content = content
     )
 }

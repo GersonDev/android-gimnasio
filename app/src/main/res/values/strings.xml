@@ -2,4 +2,5 @@
     <string name="app_name">android-gimnasio</string>
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="title_activity_gym_sedes">GymSedesActivity</string>
+    <string name="detalle_de_sede">Detalle de Sede</string>
 </resources>
