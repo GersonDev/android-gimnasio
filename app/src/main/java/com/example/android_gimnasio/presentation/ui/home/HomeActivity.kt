@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -24,11 +25,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
-import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedesActivity
+import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedeDetailActivity
 import com.example.android_gimnasio.presentation.ui.home.components.*
+import com.example.android_gimnasio.presentation.viewmodel.HomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class HomeActivity : ComponentActivity() {
+
+    private val homeViewModel by viewModels<HomeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -38,7 +42,7 @@ class HomeActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PrincipalScreenView()
+                    PrincipalScreenView(homeViewModel)
                 }
             }
         }
@@ -46,14 +50,14 @@ class HomeActivity : ComponentActivity() {
 }
 
 @Composable
-fun PrincipalScreenView() {
+fun PrincipalScreenView(homeViewModel: HomeViewModel) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
             BottomNavigation(navController)
         }
     ) {
-        NavigationGraph(navController)
+        NavigationGraph(navController, homeViewModel = homeViewModel)
     }
 }
 
@@ -103,7 +107,7 @@ fun BottomNavigation(navController: NavController) {
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController) {
+fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewModel) {
     val context = LocalContext.current
     NavHost(navController, startDestination = BottomNavItem.Home.screenRoute) {
         composable(BottomNavItem.Home.screenRoute) {
@@ -124,14 +128,19 @@ fun NavigationGraph(navController: NavHostController) {
                     Brand("Fitness de Impacto", R.drawable.fitness_de_impacto),
                     Brand("Sportlife Fitness Club", R.drawable.sportlife_fitness_club)
                 ),
-                onClickBrand = { titulo, imagen ->
-//                    context.startActivity(Intent(context, GymSedesActivity::class.java))
-                    val bundle = Bundle()
-                    bundle.putString("MARCA_TITULO", titulo)
-                    bundle.putInt("MARCA_IMAGEN", imagen)
-                    val intent = Intent(context, GymSedesActivity::class.java)
-                    intent.putExtras(bundle)
-                    context.startActivity(intent)
+                onClickBrand = { tituloDeMarca, imagenDeMarca ->
+                    homeViewModel.setTituloDeMarca(tituloDeMarca)
+                    homeViewModel.setImagenDeMarca(imagenDeMarca)
+
+                    navController.navigate(BottomNavItem.Proba.screenRoute)
+
+////                    context.startActivity(Intent(context, GymSedeDetailActivity::class.java))
+//                    val bundle = Bundle()
+//                    bundle.putString("MARCA_TITULO", titulo)
+//                    bundle.putInt("MARCA_IMAGEN", imagen)
+//                    val intent = Intent(context, GymSedeDetailActivity::class.java)
+//                    intent.putExtras(bundle)
+//                    context.startActivity(intent)
 
                 }
             )
@@ -145,6 +154,19 @@ fun NavigationGraph(navController: NavHostController) {
         composable(BottomNavItem.Profile.screenRoute) {
             ProfilePantalla()
         }
+        composable(BottomNavItem.Proba.screenRoute) {
+            GymSedesPantalla(homeViewModel.tituloDeMarca.value!!,
+                homeViewModel.imagenDeMarca.value!!,
+                onClickSede = {
+                    val bundle = Bundle()
+                    bundle.putString("MARCA_TITULO", it.titulo)
+                    bundle.putInt("MARCA_IMAGEN", it.imagen)
+                    val intent = Intent(context, GymSedeDetailActivity::class.java)
+                    intent.putExtras(bundle)
+                    context.startActivity(intent)
+                }
+            )
+        }
     }
 }
 
@@ -152,6 +174,6 @@ fun NavigationGraph(navController: NavHostController) {
 @Composable
 private fun DefaultPreview() {
     AndroidgimnasioTheme {
-        PrincipalScreenView()
+        PrincipalScreenView(homeViewModel = HomeViewModel())
     }
 }
