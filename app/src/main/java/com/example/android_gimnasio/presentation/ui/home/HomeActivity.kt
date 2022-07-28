@@ -66,7 +66,7 @@ fun BottomNavigation(navController: NavController) {
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Gym,
-        BottomNavItem.Baile,
+        BottomNavItem.NearMe,
         BottomNavItem.Trainer,
         BottomNavItem.Profile
     )
@@ -145,8 +145,8 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
                 }
             )
         }
-        composable(BottomNavItem.Baile.screenRoute) {
-            BailePantalla()
+        composable(BottomNavItem.NearMe.screenRoute) {
+            NearMePantalla()
         }
         composable(BottomNavItem.Trainer.screenRoute) {
             TrainerPantalla()
