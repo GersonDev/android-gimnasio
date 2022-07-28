@@ -172,8 +172,7 @@ fun LoginPantalla(
                 }
             )
             Row(
-                modifier = Modifier.
-                padding(top = 15.dp, bottom = 30.dp)
+                modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)
             ) {
                 Text(
                     "Didn’t have any account?",
