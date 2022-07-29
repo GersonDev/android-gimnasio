@@ -23,6 +23,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
+import com.example.android_gimnasio.domain.models.BusStop
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedeDetailActivity
@@ -146,7 +147,12 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
             )
         }
         composable(BottomNavItem.NearMe.screenRoute) {
-            NearMePantalla()
+            NearMePantalla(
+                homeViewModel = homeViewModel,
+                onBusSelected = {
+
+                }
+            )
         }
         composable(BottomNavItem.Trainer.screenRoute) {
             TrainerPantalla()

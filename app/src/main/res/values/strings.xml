@@ -3,4 +3,9 @@
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="title_activity_gym_sedes">GymSedesActivity</string>
     <string name="detalle_de_sede">Detalle de Sede</string>
+
+    <plurals name="mins">
+        <item quantity="one">min</item>
+        <item quantity="other">mins</item>
+    </plurals>
 </resources>

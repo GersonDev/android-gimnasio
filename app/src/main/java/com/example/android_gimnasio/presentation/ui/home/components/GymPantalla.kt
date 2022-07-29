@@ -2,9 +2,9 @@ package com.example.android_gimnasio.presentation.ui.home.components
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
@@ -35,11 +35,14 @@ fun GymPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) {
     ) {
         GymTitle("Gimnasios", R.drawable.img_user_profile)
         LazyVerticalGrid(
-            cells = GridCells.Fixed(2)
+            columns = GridCells.Fixed(2)
         ) {
-            items(items = brands, itemContent = { brand ->
-                GymCard(brand, onClickBrand)
-            })
+            items(
+                items = brands,
+                itemContent = { brand ->
+                    GymCard(brand, onClickBrand)
+                }
+            )
         }
     }
 }
