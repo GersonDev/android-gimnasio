@@ -27,10 +27,31 @@ class HomeViewModel : ViewModel() {
     private val _password = MutableLiveData("")
     val password: LiveData<String> = _password
 
-    private val _busInfoList = MutableLiveData<List<Bus>>(listOf())
+    private val _busInfoList = MutableLiveData<List<Bus>>(listOf(
+        Bus(
+            "0",
+            latitude = -11.967750655284977,
+            longitude = -77.00428152896053
+        ),
+        Bus(
+            "1",
+            latitude = -11.969140970527766,
+            longitude = -77.00511967818196
+        ),
+        Bus(
+            "2",
+            latitude = -11.971885930945978,
+            longitude = -77.00670487345754
+        ),
+        Bus(
+            "3",
+            latitude = -11.974862577286663,
+            longitude = -77.00885490842902
+        )
+    ))
     val busInfoList: LiveData<List<Bus>> = _busInfoList
 
-    private val _currentBusStop = MutableLiveData<BusStop>()
+    private val _currentBusStop = MutableLiveData<BusStop>(BusStop(-11.967750655284977, -77.00428152896053, "My Bus"))
     val currentBusStop: LiveData<BusStop> = _currentBusStop
 
     fun setTituloDeMarca(tituloDeMarca: String) {

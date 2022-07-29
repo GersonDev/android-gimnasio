@@ -43,34 +43,8 @@ fun NearMePantalla(
 //        position = CameraPosition.fromLatLngZoom(markerPosition, 15f)
 //    }
 
-    val busInfoList by homeViewModel.busInfoList.observeAsState(
-        listOf(
-            Bus(
-                "0",
-                latitude = -11.967750655284977,
-                longitude = -77.00428152896053
-            ),
-            Bus(
-                "1",
-                latitude = -11.969140970527766,
-                longitude = -77.00511967818196
-            ),
-            Bus(
-                "2",
-                latitude = -11.971885930945978,
-                longitude = -77.00670487345754
-            ),
-            Bus(
-                "3",
-                latitude = -11.974862577286663,
-                longitude = -77.00885490842902
-            )
-        )
-
-    )
-    val currentBusStop by homeViewModel.currentBusStop.observeAsState(
-        BusStop(-11.967750655284977, -77.00428152896053, "")
-    )
+    val busInfoList by homeViewModel.busInfoList.observeAsState(listOf())
+    val currentBusStop by homeViewModel.currentBusStop.observeAsState(BusStop(0.0, 0.0, ""))
     val coroutineScope = rememberCoroutineScope()
 
     Column(
