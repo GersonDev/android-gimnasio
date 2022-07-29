@@ -204,7 +204,7 @@ fun RegistrarPantalla(
                         .clip(RectangleShape)
                         .background(Color.White)
 
-                ) {}
+                )
                 Text("Or", color = Color.White)
                 Box(
                     modifier = Modifier

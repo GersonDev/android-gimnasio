@@ -15,18 +15,18 @@ import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.routes.WelcomeScreen
 import com.example.android_gimnasio.presentation.ui.welcome.components.*
 import com.example.android_gimnasio.presentation.ui.home.HomeActivity
-import com.example.android_gimnasio.presentation.viewmodel.MainViewModel
+import com.example.android_gimnasio.presentation.viewmodel.WelcomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class WelcomeActivity : ComponentActivity() {
 
-    private val mainViewModel by viewModels<MainViewModel>()
+    private val welcomeViewModel by viewModels<WelcomeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidgimnasioTheme {
                 MainScreen(
-                    mainViewModel
+                    welcomeViewModel
                 )
             }
         }
@@ -35,20 +35,20 @@ class WelcomeActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(
-    mainViewModel: MainViewModel
+    welcomeViewModel: WelcomeViewModel
 ) {
-    val correo by mainViewModel.email.observeAsState("")
-    val password by mainViewModel.password.observeAsState("")
-    val confirmationPassword by mainViewModel.confirmationPassword.observeAsState("")
-    val registroExitoso by mainViewModel.registroExitoso.observeAsState(false)
-    val loginExitoso by mainViewModel.loginExitoso.observeAsState()
-    val isLogin by mainViewModel.isLogin.observeAsState(false)
+    val correo by welcomeViewModel.email.observeAsState("")
+    val password by welcomeViewModel.password.observeAsState("")
+    val confirmationPassword by welcomeViewModel.confirmationPassword.observeAsState("")
+    val registroExitoso by welcomeViewModel.registroExitoso.observeAsState(false)
+    val loginExitoso by welcomeViewModel.loginExitoso.observeAsState()
+    val isLogin by welcomeViewModel.isLogin.observeAsState(false)
     val context = LocalContext.current
     val navController = rememberNavController()
     NavHost(navController, startDestination = WelcomeScreen.Bienvenida.route) {
 
         composable(WelcomeScreen.Bienvenida.route) {
-            mainViewModel.verifyLogin(context)
+            welcomeViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
                     navController.navigate(WelcomeScreen.Login.route)
@@ -61,15 +61,15 @@ fun MainScreen(
         composable(WelcomeScreen.Login.route) {
             LoginPantalla(
                 onClickLoginPantalla = {
-                    mainViewModel.startLogin(context)
+                    welcomeViewModel.startLogin(context)
                 },
                 correo = correo,
                 password = password,
                 onValueChangeCorreo = {
-                    mainViewModel.enviarCorreo(it)
+                    welcomeViewModel.enviarCorreo(it)
                 },
                 onValueChangePassword = {
-                    mainViewModel.enviarPassword(it)
+                    welcomeViewModel.enviarPassword(it)
                 },
                 onClickSignUp = {
                     navController.navigate(WelcomeScreen.Registrar.route)
@@ -84,7 +84,7 @@ fun MainScreen(
                 }
                 false -> {
                     ModalDeError {
-                        mainViewModel.ocultarModal()
+                        welcomeViewModel.ocultarModal()
                     }
                 }
             }
@@ -92,19 +92,19 @@ fun MainScreen(
         composable(WelcomeScreen.Registrar.route) {
             RegistrarPantalla(
                 onClickRegistro = {
-                    mainViewModel.insertPeople(context)
+                    welcomeViewModel.insertPeople(context)
                 },
                 email = correo,
                 password = password,
                 confirmationPassword = confirmationPassword,
                 onValueChangeEmail = {
-                    mainViewModel.enviarCorreo(it)
+                    welcomeViewModel.enviarCorreo(it)
                 },
                 onValueChangePassword = {
-                    mainViewModel.enviarPassword(it)
+                    welcomeViewModel.enviarPassword(it)
                 },
                 onValueChangeConfirmationPassword = {
-                    mainViewModel.enviarConfirmationPassword(it)
+                    welcomeViewModel.enviarConfirmationPassword(it)
                 },
                 onClickSignIn = {
                     navController.navigate(WelcomeScreen.Login.route)

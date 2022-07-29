@@ -20,4 +20,9 @@ class PeopleRepository {
             databaseDataSource.insertPeople(context, people)
         }
     }
+    suspend fun updatePeople(context: Context,people: People){
+        return withContext(Dispatchers.IO){
+            databaseDataSource.updatePeople(context, people)
+        }
+    }
 }
