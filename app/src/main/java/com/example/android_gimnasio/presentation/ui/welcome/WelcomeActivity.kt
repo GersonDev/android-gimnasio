@@ -1,10 +1,14 @@
 package com.example.android_gimnasio.presentation.ui.welcome
 
+import android.app.DownloadManager
 import android.content.Intent
+import android.content.IntentFilter
+import android.hardware.usb.UsbManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.getValue
@@ -17,20 +21,46 @@ import com.example.android_gimnasio.presentation.ui.welcome.components.*
 import com.example.android_gimnasio.presentation.ui.home.HomeActivity
 import com.example.android_gimnasio.presentation.viewmodel.WelcomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
+import com.example.android_gimnasio.utils.CheckDownloadCompleteBroadcastReceiver
+import com.example.android_gimnasio.utils.Repoo
 
 class WelcomeActivity : ComponentActivity() {
+
+    private lateinit var checkDownloadCompleteBroadcastReceiver: CheckDownloadCompleteBroadcastReceiver
 
     private val welcomeViewModel by viewModels<WelcomeViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        checkDownloadCompleteBroadcastReceiver = CheckDownloadCompleteBroadcastReceiver()
+
         setContent {
             AndroidgimnasioTheme {
                 MainScreen(
                     welcomeViewModel
                 )
+
+                val carlos = Repoo.mData.observeAsState()
+
+                carlos.value?.let {
+                    Text("carlosssssssss $it")
+                }
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        val filter = IntentFilter()
+        filter.addAction(DownloadManager.ACTION_DOWNLOAD_COMPLETE)
+        filter.addAction(DownloadManager.ACTION_NOTIFICATION_CLICKED)
+        registerReceiver(checkDownloadCompleteBroadcastReceiver, filter)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        unregisterReceiver(checkDownloadCompleteBroadcastReceiver)
+    }
+
 }
 
 @Composable
@@ -51,7 +81,8 @@ fun MainScreen(
             welcomeViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
-                    navController.navigate(WelcomeScreen.Login.route)
+                                 welcomeViewModel.downloadFile(context)
+//                    navController.navigate(WelcomeScreen.Login.route)
                 },
             )
             if (isLogin) {
