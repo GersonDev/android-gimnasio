@@ -5,7 +5,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,7 +26,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
-import com.example.android_gimnasio.domain.models.BusStop
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedeDetailActivity
@@ -57,10 +58,11 @@ fun PrincipalScreenView(homeViewModel: HomeViewModel) {
     Scaffold(
         bottomBar = {
             BottomNavigation(navController)
+        },
+        content = { innerPadding ->
+            NavigationGraph(navController, homeViewModel = homeViewModel, innerPadding)
         }
-    ) {
-        NavigationGraph(navController, homeViewModel = homeViewModel)
-    }
+    )
 }
 
 @Composable
@@ -109,16 +111,16 @@ fun BottomNavigation(navController: NavController) {
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewModel) {
+fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewModel, paddingValues: PaddingValues) {
     val correo by homeViewModel.email.observeAsState("")
     val password by homeViewModel.password.observeAsState("")
     val context = LocalContext.current
-    NavHost(navController, startDestination = BottomNavItem.Home.screenRoute) {
+    NavHost(navController, startDestination = BottomNavItem.Home.screenRoute, modifier = Modifier.padding(paddingValues)) {
         composable(BottomNavItem.Home.screenRoute) {
             HomePantalla()
         }
         composable(BottomNavItem.Gym.screenRoute) {
-            GymPantalla(
+            GymBrandsPantalla(
                 listOf(
                     Brand("Gold's Gym", R.drawable.brand_gold_gym),
                     Brand("SmartFit", R.drawable.brand_smart_fit),

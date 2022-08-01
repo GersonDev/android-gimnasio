@@ -25,9 +25,8 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.common.components.GymTitle
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun GymPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) {
+fun GymBrandsPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) {
 
     Column(
         modifier = Modifier
@@ -92,7 +91,7 @@ private fun GymCard(brand: Brand, onClickBrand: (String, Int) -> Unit) {
 @Preview
 @Composable
 private fun GymPantallaPreview() {
-    GymPantalla(
+    GymBrandsPantalla(
         listOf(
             Brand("hola", R.drawable.brand_1)
         ),

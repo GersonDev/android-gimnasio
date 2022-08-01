@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.example.android_gimnasio.R
 
 @Composable
-fun GymTitle(title: String, @DrawableRes userImage: Int) {
+fun GymTitle(title: String, @DrawableRes userImage: Int, ocultarImagen: Boolean = false) {
     Box(
         modifier = Modifier.height(60.dp),
         contentAlignment = Alignment.Center
@@ -48,7 +48,9 @@ fun GymTitle(title: String, @DrawableRes userImage: Int) {
             Spacer(
                 modifier = Modifier.weight(1f)
             )
-            UserPicture(userImage)
+            if (!ocultarImagen) {
+                UserPicture(userImage)
+            }
         }
     }
 }

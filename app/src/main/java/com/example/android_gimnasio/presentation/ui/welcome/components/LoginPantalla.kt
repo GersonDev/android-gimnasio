@@ -80,7 +80,6 @@ fun LoginPantalla(
             Text(
                 " BODY GOALS\nWORKOUT",
                 letterSpacing = 0.1.em,
-                fontSize = 32.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h1

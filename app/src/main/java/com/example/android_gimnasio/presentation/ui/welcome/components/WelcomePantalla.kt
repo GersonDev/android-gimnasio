@@ -3,6 +3,7 @@ package com.example.android_gimnasio.presentation.ui.welcome.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -55,6 +56,8 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
 
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(50.dp)
             ) {
                 Spacer(
                     modifier = Modifier
@@ -64,12 +67,11 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
                     "Welcome to",
                     color = Color.White,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body2
+                    style = MaterialTheme.typography.h3
                 )
                 Text(
-                    " BODY GOALS\nWORKOUT",
+                    "BODY GOALS WORKOUT",
                     letterSpacing = 0.2.em,
-                    fontSize = 32.sp,
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h1
@@ -78,16 +80,17 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
                     "Achieve your body goals with us",
                     color = Color.White,
                     textAlign = TextAlign.Center,
-                    style = MaterialTheme.typography.body1
+                    style = MaterialTheme.typography.h4,
+                    modifier = Modifier.padding(bottom = 37.dp)
                 )
                 Button(
                     onClick = onClickStarted,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
-                    modifier = Modifier.padding(top = 33.dp, bottom = 70.dp).width(244.dp).height(55.dp),
-
+                    shape = RoundedCornerShape(15.dp),
+                    modifier = Modifier.width(244.dp).height(55.dp),
                     content = {
                         Text("Get Started", color = Color.Black,
-                            style = MaterialTheme.typography.h4)
+                            style = MaterialTheme.typography.button)
                     })
 
             }

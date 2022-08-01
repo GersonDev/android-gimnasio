@@ -9,7 +9,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
@@ -35,10 +34,10 @@ fun HomePantalla() {
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .background(colorResource(id = R.color.trainers__primary))
-            .padding(start = 10.dp, bottom = 60.dp, top = 60.dp)
+            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp)
     ) {
 
-        UserSection(description = "Let's start your day")
+        UserSection(description = "Let's start your day", modifier = Modifier.padding(end = 10.dp))
 
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -103,9 +102,10 @@ fun HomePantalla() {
 }
 
 @Composable
-private fun UserSection(description: String) {
+private fun UserSection(description: String, modifier: Modifier) {
     Row(
-        horizontalArrangement = Arrangement.Center
+        horizontalArrangement = Arrangement.Center,
+        modifier = modifier
     ) {
         Column {
             Text(
@@ -129,10 +129,9 @@ private fun UserSection(description: String) {
 
             Text(
                 description,
-                fontSize = 28.sp,
                 color = Color.White,
                 textAlign = TextAlign.Center,
-                style = MaterialTheme.typography.h1
+                style = MaterialTheme.typography.h2
             )
         }
 
