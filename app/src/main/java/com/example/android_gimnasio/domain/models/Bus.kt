@@ -5,6 +5,7 @@ data class Bus(
     val latitude: Double,
     val longitude: Double,
     val direction: Int = 0,
+    val imagen: Int,
     val departure_metadata: DepartureMetadata? = null
 )
 

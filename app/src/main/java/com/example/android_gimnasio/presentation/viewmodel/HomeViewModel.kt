@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import kotlinx.coroutines.launch
@@ -31,22 +32,26 @@ class HomeViewModel : ViewModel() {
         Bus(
             "0",
             latitude = -11.967750655284977,
-            longitude = -77.00428152896053
+            longitude = -77.00428152896053,
+            imagen = R.drawable.ic_megaforce
         ),
         Bus(
             "1",
             latitude = -11.969140970527766,
-            longitude = -77.00511967818196
+            longitude = -77.00511967818196,
+            imagen = R.drawable.ic_megaforce
         ),
         Bus(
             "2",
             latitude = -11.971885930945978,
-            longitude = -77.00670487345754
+            longitude = -77.00670487345754,
+            imagen = R.drawable.ic_megaforce
         ),
         Bus(
             "3",
             latitude = -11.974862577286663,
-            longitude = -77.00885490842902
+            longitude = -77.00885490842902,
+            imagen = R.drawable.ic_megaforce
         )
     ))
     val busInfoList: LiveData<List<Bus>> = _busInfoList

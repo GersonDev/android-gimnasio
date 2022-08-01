@@ -141,10 +141,15 @@ fun BusInfoMapViewContainer(
                 ""
             }
 
-            val icon = bitmapDescriptorFromVector(context, R.drawable.bus_side, tintColor)
+            val icon = bitmapDescriptorFromVector(context, bus.imagen, /*tintColor*/)
             MarkerInfoWindowContent(
-                state = MarkerState(position = busLocation), title = title,
-                snippet = snippet, icon = icon, tag = bus,
+                state = MarkerState(
+                    position = busLocation
+                ),
+                title = title,
+                snippet = snippet,
+                icon = icon,
+                tag = bus,
                 onInfoWindowClick = {
                     onBusSelected(bus.vehicle_id)
                 }
