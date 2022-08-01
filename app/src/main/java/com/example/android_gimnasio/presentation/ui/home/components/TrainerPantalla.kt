@@ -6,10 +6,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,7 +16,6 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,29 +27,22 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ui.PlayerView
 
-
 @Composable
 fun TrainerPantalla() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .background(colorResource(id = R.color.trainers__primary))
-            .padding(start = 10.dp, bottom = 60.dp, top = 60.dp)
+            .background(colorResource(id = R.color.trainers_primary))
     ) {
 
-        GymTitle("Session", R.drawable.img_user_profile)
-
-        Spacer(modifier = Modifier.height(30.dp))
+        GymTitle("Trainers", R.drawable.img_user_profile)
+        VideoPlayer()
         Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .padding(start = 10.dp)
         ) {
-            VideoPlayer(modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-            )
             Column {
                 SectionTitle(
                     title = "Trainers Men",
@@ -63,41 +52,38 @@ fun TrainerPantalla() {
                 )
                 TrainersBubble(
                     listOf(
-                        Trainer(R.drawable.hombre, "Diego"),
-                        Trainer(R.drawable.hombre, "Jeff"),
-                        Trainer(R.drawable.hombre, "Josue"),
-                        Trainer(R.drawable.hombre, "Tiago"),
-                        Trainer(R.drawable.hombre, "Juan"),
-                        Trainer(R.drawable.hombre, "Juan"),
-                        Trainer(R.drawable.hombre, "Juan"),
-                        Trainer(R.drawable.hombre, "Juan")
-
+                        Trainer(R.drawable.trainer_1, "Diego"),
+                        Trainer(R.drawable.trainer_2, "Jeff"),
+                        Trainer(R.drawable.trainer_3, "Josue"),
+                        Trainer(R.drawable.trainer_1, "Tiago"),
+                        Trainer(R.drawable.trainer_2, "Juan"),
+                        Trainer(R.drawable.trainer_3, "Juan"),
+                        Trainer(R.drawable.trainer_1, "Juan"),
+                        Trainer(R.drawable.trainer_1, "Juan")
                     )
                 )
             }
-
-            Column{
+            Column {
                 SectionTitle(
                     title = "Trainers Women",
                     subTitle = "See all",
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
-                    TrainersBubble(
-                        listOf(
-                            Trainer(R.drawable.mujer, "Amaka"),
-                            Trainer(R.drawable.mujer, "Stella"),
-                            Trainer(R.drawable.mujer, "Derick"),
-                            Trainer(R.drawable.mujer, "Tayao"),
-                            Trainer(R.drawable.mujer, "Sean"),
-                            Trainer(R.drawable.mujer, "Sean"),
-                            Trainer(R.drawable.mujer, "Sean"),
-                            Trainer(R.drawable.mujer, "Sean")
-                        )
+                TrainersBubble(
+                    listOf(
+                        Trainer(R.drawable.trainer_girl_1, "Amaka"),
+                        Trainer(R.drawable.trainer_girl_2, "Stella"),
+                        Trainer(R.drawable.trainer_girl_1, "Derick"),
+                        Trainer(R.drawable.trainer_girl_2, "Tayao"),
+                        Trainer(R.drawable.trainer_girl_1, "Sean"),
+                        Trainer(R.drawable.trainer_girl_2, "Sean"),
+                        Trainer(R.drawable.trainer_girl_1, "Sean"),
+                        Trainer(R.drawable.trainer_girl_1, "Sean")
                     )
+                )
             }
-
-            Column{
+            Column {
                 SectionTitle(
                     title = "Videos",
                     subTitle = "See all",
@@ -129,10 +115,39 @@ fun TrainerPantalla() {
                         R.drawable.img_tutorials1
                     )
                 )
-
             }
         }
     }
+}
+
+@Composable
+fun VideoPlayer() {
+    val context = LocalContext.current
+
+    val playWhenReady by rememberSaveable {
+        mutableStateOf(true)
+    }
+
+    val sampleVideo =
+        "https://www.muscleandstrength.com/video/highinvertedrow.mp4"
+    val mediaItem = MediaItem.fromUri(sampleVideo)
+
+    val exoPlayer = SimpleExoPlayer.Builder(context).build()
+    val playerView = PlayerView(context)
+
+
+    exoPlayer.setMediaItem(mediaItem)
+    playerView.player = exoPlayer
+    LaunchedEffect(exoPlayer) {
+        exoPlayer.prepare()
+        exoPlayer.playWhenReady = playWhenReady
+
+    }
+    AndroidView(
+        factory = {
+            playerView
+        },
+    )
 }
 
 @Composable
@@ -154,8 +169,7 @@ private fun TrainersBubble(trainers: List<Trainer>) {
                         contentDescription = "trainers",
                         modifier = Modifier
                             .clip(CircleShape)
-                            .fillMaxSize()
-                        ,
+                            .fillMaxSize(),
                         contentScale = ContentScale.FillBounds
                     )
                 }

@@ -8,4 +8,17 @@
         <item quantity="one">min</item>
         <item quantity="other">mins</item>
     </plurals>
+    <string name="strong_fitness">STRONG FITNESS</string>
+    <string name="register">Sign up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="welcome_to">Welcome to</string>
+    <string name="achieve_your_body_goals">Achieve your body goals with us</string>
+    <string name="get_started">Get Started</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="did_not_have_any_account">Didn\'t have any account?</string>
+    <string name="sign_up_here">Sign Up here</string>
+    <string name="sign_in_here">Sign In here</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirmation_password">Confirmation Password</string>
 </resources>

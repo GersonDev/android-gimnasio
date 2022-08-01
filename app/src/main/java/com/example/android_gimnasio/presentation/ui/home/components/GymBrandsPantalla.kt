@@ -30,7 +30,7 @@ fun GymBrandsPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) 
 
     Column(
         modifier = Modifier
-            .background(colorResource(R.color.trainers__primary))
+            .background(colorResource(R.color.trainers_primary))
     ) {
         GymTitle("Gimnasios", R.drawable.img_user_profile)
         LazyVerticalGrid(

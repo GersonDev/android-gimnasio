@@ -52,7 +52,6 @@ fun NearMePantalla(
             .fillMaxSize()
             .background(colorResource(id = R.color.teal_700))
             .wrapContentSize(Alignment.Center)
-            .padding(bottom = 60.dp)
     ) {
         BusInfoMapViewContainer(currentBusStop, busInfoList) { busId ->
             coroutineScope.launch {

@@ -26,7 +26,7 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.trainers__primary))
+            .background(colorResource(id = R.color.trainers_primary))
             .padding(start = 10.dp, bottom = 20.dp, top = 20.dp, end = 3.dp)
     ) {
         GymTitle(tituloDeMarca, imagenDeMarca, ocultarImagen = true)
@@ -97,37 +97,37 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.megaforce_mariscal,
-                            "MEGAFORCE \n Mariscal Caceres",
+                            "Mariscal Caceres",
                             "Av.Fernando Wiesse Mz.M15 Lt.34 San Juan de Lurigancho",
                             "6am - 11pm"
                         ),
                         Sede(
                             R.drawable.megaforce_santarosa,
-                            "MEGAFORCE \n Santa Rosa",
+                            "Santa Rosa",
                             "Av. Fernando Wiesse Cercado de Lima 15079",
                             "6am - 10:30pm"
                         ),
                         Sede(
                             R.drawable.megaforce_hacienda,
-                            "MEGAFORCE \n Hacienda",
+                            "Hacienda",
                             "Av. Próceres de la Independencia 1715 San Juan de Lurigancho 36",
                             "6am - 10:30pm"
                         ),
                         Sede(
                             R.drawable.megaforce_losolivos,
-                            "MEGAFORCE \n LOS OLIVOS",
+                            "LOS OLIVOS",
                             "Av. Naranjal 1542 Los Olivos 15306",
                             "6am - 11pm"
                         ),
                         Sede(
                             R.drawable.mega_force_ate,
-                            "MEGAFORCE \n Ate",
+                            "Ate",
                             "Av. Nicolas Ayllon 5596 Ate, Municipalidad de Lima",
                             "6am - 10:30pm"
                         ),
                         Sede(
                             R.drawable.megaforce_ventanilla,
-                            "MEGAFORCE \n Ventanilla Metro",
+                            "Ventanilla Metro",
                             "Av. Ventanilla Mz. C8 Lot. 16 Ventanilla CALLAO ",
                             "6am - 11pm"
                         )
@@ -140,31 +140,31 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.smartfit_benavides,
-                            "Smart Fit \n Benavides",
+                            "Smart Fit Benavides",
                             "Av.Alfredo Benavides 347 Miraflores Municipalidad de Lima",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.smartfit_higuereta,
-                            "Smart Fit \n Higuereta",
+                            "Smart Fit Higuereta",
                             "Av. Aviación con Av. Tomás Marsano Santiago de Surco 15038",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.smartfit_colonial,
-                            "Smart Fit \n Colonial",
+                            "Smart Fit Colonial",
                             "Av. Óscar R. Benavides 669 Cercado de Lima 15082",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.smartfit_sanborja,
-                            "Smart Fit \n San Borja",
+                            "Smart Fit San Borja",
                             "Av. Javier Prado Este 1980 San Borja 15036",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.smartfit_megaplaza,
-                            "Smart Fit \n Mega Plaza Lima Norte",
+                            "Smart Fit Mega Plaza Lima Norte",
                             "Av. Alfredo Mendiola 3698 Independencia 15311",
                             "6am-11pm"
                         )
@@ -177,31 +177,31 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.bodytech_magdalena,
-                            "Bodytech \n Magdalena",
+                            "Bodytech Magdalena",
                             "Av Javier Prado Oeste 999\n Magdalena del Mar 15076",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_sanmiguel,
-                            "Bodytech \n San Miguel",
+                            "Bodytech San Miguel",
                             "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE\n San Miguel",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_miraflores,
-                            "Bodytech \n Miraflores",
+                            "Bodytech Miraflores",
                             "Av. Sta. Cruz 855\n Miraflores 15074",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_ceradodelima,
-                            "Bodytech \n Cercado de Lima",
+                            "Bodytech Cercado de Lima",
                             "Av. Javier Prado Este 6220\n Cercado de Lima 15024",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_jesusmaria,
-                            "Bodytech \n Jesus Maria",
+                            "Bodytech Jesus Maria",
                             "Plaza Vea Brasil, Av. Brasil 1599\n Jesús María 15072",
                             "6am-11pm"
                         )
@@ -214,31 +214,31 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.bodytech_magdalena,
-                            "Bodytech \n Magdalena",
+                            "Bodytech Magdalena",
                             "Av Javier Prado Oeste 999 Magdalena del Mar 15076",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_sanmiguel,
-                            "Bodytech \n San Miguel",
+                            "Bodytech San Miguel",
                             "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE San Miguel",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_miraflores,
-                            "Bodytech \n Miraflores",
+                            "Bodytech Miraflores",
                             "Av. Sta. Cruz 855 Miraflores 15074",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_ceradodelima,
-                            "Bodytech \n Cercado de Lima",
+                            "Bodytech Cercado de Lima",
                             "Av. Javier Prado Este 6220 Cercado de Lima 15024",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_jesusmaria,
-                            "Bodytech \n Jesus Maria",
+                            "Bodytech Jesus Maria",
                             "Plaza Vea Brasil, Av. Brasil 1599 Jesús María 15072",
                             "6am-11pm"
                         )
@@ -251,31 +251,31 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.bodytech_magdalena,
-                            "Bodytech \n Magdalena",
+                            "Bodytech Magdalena",
                             "Av Javier Prado Oeste 999 Magdalena del Mar 15076",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_sanmiguel,
-                            "Bodytech \n San Miguel",
+                            "Bodytech San Miguel",
                             "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE San Miguel",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_miraflores,
-                            "Bodytech \n Miraflores",
+                            "Bodytech Miraflores",
                             "Av. Sta. Cruz 855 Miraflores 15074",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_ceradodelima,
-                            "Bodytech \n Cercado de Lima",
+                            "Bodytech Cercado de Lima",
                             "Av. Javier Prado Este 6220 Cercado de Lima 15024",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_jesusmaria,
-                            "Bodytech \n Jesus Maria",
+                            "Bodytech Jesus Maria",
                             "Plaza Vea Brasil, Av. Brasil 1599 Jesús María 15072",
                             "6am-11pm"
                         )
@@ -288,31 +288,31 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                     sedes = listOf(
                         Sede(
                             R.drawable.bodytech_magdalena,
-                            "Bodytech \n Magdalena",
+                            "Bodytech Magdalena",
                             "Av Javier Prado Oeste 999 Magdalena del Mar 15076",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_sanmiguel,
-                            "Bodytech \n San Miguel",
+                            "Bodytech San Miguel",
                             "ESQUINA DE AV.LA MAR CON UNIVERSITARIA, PE San Miguel",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_miraflores,
-                            "Bodytech \n Miraflores",
+                            "Bodytech Miraflores",
                             "Av. Sta. Cruz 855 Miraflores 15074",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_ceradodelima,
-                            "Bodytech \n Cercado de Lima",
+                            "Bodytech Cercado de Lima",
                             "Av. Javier Prado Este 6220 Cercado de Lima 15024",
                             "6am-11pm"
                         ),
                         Sede(
                             R.drawable.bodytech_jesusmaria,
-                            "Bodytech \n Jesus Maria",
+                            "Bodytech Jesus Maria",
                             "Plaza Vea Brasil, Av. Brasil 1599 Jesús María 15072",
                             "6am-11pm"
                         )

@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.ui.gym_sedes.components
+package com.example.android_gimnasio.presentation.ui.matricula.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -11,7 +11,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
@@ -21,11 +20,11 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @Composable
-fun GymSedeDetailPantalla() {
+fun GymSedeDetailPantalla(marcaDeSede: String) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(R.color.trainers__primary)),
+            .background(colorResource(R.color.trainers_primary)),
         contentAlignment = Alignment.BottomCenter
     ) {
         Column(
@@ -71,7 +70,7 @@ fun GymSedeDetailPantalla() {
 
         }
         Column {
-            GymTitle("ver", R.drawable.img_user_profile)
+            GymTitle(marcaDeSede, R.drawable.img_user_profile)
             Spacer(
                 modifier = Modifier.weight(1f)
             )
@@ -91,5 +90,5 @@ fun GymSedeDetailPantalla() {
 
 @Composable
 private fun GymSedeDetailPantallaPreview() {
-    GymSedeDetailPantalla()
+    GymSedeDetailPantalla("Gym")
 }

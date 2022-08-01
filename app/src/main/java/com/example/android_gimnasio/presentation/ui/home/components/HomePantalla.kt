@@ -33,8 +33,8 @@ fun HomePantalla() {
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .background(colorResource(id = R.color.trainers__primary))
-            .padding(start = 10.dp, top = 10.dp, bottom = 10.dp)
+            .background(colorResource(id = R.color.trainers_primary))
+            .padding(start = 10.dp, top = 15.dp, bottom = 10.dp)
     ) {
 
         UserSection(description = "Let's start your day", modifier = Modifier.padding(end = 10.dp))
@@ -194,6 +194,7 @@ private fun SectionBody(workoutPlans: List<TrainerCardModel>, modifier: Modifier
     Row(
         modifier = Modifier
             .fillMaxWidth()
+            .padding(bottom = 15.dp, top = 15.dp)
             .horizontalScroll(rememberScrollState())
     ) {
         workoutPlans.forEach { workoutPlan ->

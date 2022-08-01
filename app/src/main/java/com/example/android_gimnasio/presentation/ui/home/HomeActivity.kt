@@ -28,7 +28,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
-import com.example.android_gimnasio.presentation.ui.gym_sedes.GymSedeDetailActivity
+import com.example.android_gimnasio.presentation.ui.matricula.GymSedeDetailActivity
 import com.example.android_gimnasio.presentation.ui.home.components.*
 import com.example.android_gimnasio.presentation.viewmodel.HomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
@@ -57,7 +57,7 @@ fun PrincipalScreenView(homeViewModel: HomeViewModel) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
-            BottomNavigation(navController)
+            GymBottomNavigation(navController)
         },
         content = { innerPadding ->
             NavigationGraph(navController, homeViewModel = homeViewModel, innerPadding)
@@ -66,7 +66,7 @@ fun PrincipalScreenView(homeViewModel: HomeViewModel) {
 }
 
 @Composable
-fun BottomNavigation(navController: NavController) {
+fun GymBottomNavigation(navController: NavController) {
     val items = listOf(
         BottomNavItem.Home,
         BottomNavItem.Gym,
@@ -74,9 +74,9 @@ fun BottomNavigation(navController: NavController) {
         BottomNavItem.Trainer,
         BottomNavItem.Profile
     )
-    androidx.compose.material.BottomNavigation(
-        backgroundColor = colorResource(id = R.color.plomo),
-        contentColor = Color.Black
+    BottomNavigation(
+        backgroundColor = colorResource(id = R.color.trainers_primary),
+        contentColor = Color.White
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
@@ -89,8 +89,8 @@ fun BottomNavigation(navController: NavController) {
                         fontSize = 9.sp
                     )
                 },
-                selectedContentColor = Color.Black,
-                unselectedContentColor = Color.Black.copy(0.4f),
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(0.4f),
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screenRoute,
                 onClick = {
@@ -138,7 +138,7 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
                     homeViewModel.setTituloDeMarca(tituloDeMarca)
                     homeViewModel.setImagenDeMarca(imagenDeMarca)
 
-                    navController.navigate(BottomNavItem.Proba.screenRoute)
+                    navController.navigate(BottomNavItem.GymSedes.screenRoute)
 
 ////                    context.startActivity(Intent(context, GymSedeDetailActivity::class.java))
 //                    val bundle = Bundle()
@@ -177,13 +177,13 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
                 email = correo,
             )
         }
-        composable(BottomNavItem.Proba.screenRoute) {
+        composable(BottomNavItem.GymSedes.screenRoute) {
             GymSedesPantalla(homeViewModel.tituloDeMarca.value!!,
                 homeViewModel.imagenDeMarca.value!!,
                 onClickSede = {
                     val bundle = Bundle()
-                    bundle.putString("MARCA_TITULO", it.titulo)
-                    bundle.putInt("MARCA_IMAGEN", it.imagen)
+                    bundle.putString("SEDE_TITULO", it.titulo)
+                    bundle.putInt("SEDE_IMAGEN", it.imagen)
                     val intent = Intent(context, GymSedeDetailActivity::class.java)
                     intent.putExtras(bundle)
                     context.startActivity(intent)

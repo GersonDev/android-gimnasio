@@ -8,9 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="deep_purple_500">#673AB7</color>
-    <color name="plomo">#FF757575</color>
     <!-- trainers -->
-    <color name="trainers__primary">#062029</color>
+    <color name="trainers_primary">#062029</color>
     <color name="trainers_yellow">#FFF50A</color>
     <color name="trainers_gray">#BDBDBD</color>
 

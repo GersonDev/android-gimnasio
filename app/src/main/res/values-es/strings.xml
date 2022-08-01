@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">android-gimnasio</string>
+    <string name="strong_fitness">STRONG FITNESS</string>
+    <string name="sign_in">Iniciar sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="welcome_to">Bienvenido a</string>
+    <string name="achieve_your_body_goals">Logra tus metas con nosotros</string>
+    <string name="get_started">Empieza</string>
+    <string name="forgot_password">Olvidó la contraseña</string>
+    <string name="did_not_have_any_account">No tienes una cuenta?</string>
+    <string name="sign_up_here">Registrarte aquí</string>
+    <string name="sign_in_here">Inicia sesión aquí</string>
+    <string name="email">Correo</string>
+    <string name="password">Contraseña</string>
+    <string name="confirmation_password">Confirma Contraseña</string>
+</resources>

@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Androidgimnasio"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.ui.gym_sedes.GymSedeDetailActivity"
+            android:name=".presentation.ui.matricula.GymSedeDetailActivity"
             android:exported="false"
             android:label="@string/title_activity_gym_sedes"
             android:theme="@style/Theme.Androidgimnasio" />

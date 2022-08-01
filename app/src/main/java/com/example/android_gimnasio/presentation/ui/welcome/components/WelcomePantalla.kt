@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,20 +65,20 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
                         .weight(3f)
                 )
                 Text(
-                    "Welcome to",
+                    stringResource(R.string.welcome_to),
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h3
                 )
                 Text(
-                    "BODY GOALS WORKOUT",
+                    stringResource(R.string.strong_fitness),
                     letterSpacing = 0.2.em,
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h1
                 )
                 Text(
-                    "Achieve your body goals with us",
+                    stringResource(R.string.achieve_your_body_goals),
                     color = Color.White,
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h4,
@@ -89,7 +90,7 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier.width(244.dp).height(55.dp),
                     content = {
-                        Text("Get Started", color = Color.Black,
+                        Text(stringResource(R.string.get_started), color = Color.Black,
                             style = MaterialTheme.typography.button)
                     })
 

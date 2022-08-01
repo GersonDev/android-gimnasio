@@ -39,7 +39,7 @@ fun ProfilePantalla(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    colorResource(R.color.trainers__primary)
+                    colorResource(R.color.trainers_primary)
                 )
                 .padding(40.dp)
         ) {
