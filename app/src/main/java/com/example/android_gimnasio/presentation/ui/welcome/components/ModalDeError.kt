@@ -18,8 +18,12 @@ fun ModalDeError(onConfirmButtonClick: () -> Unit) {
     AlertDialog(
         onDismissRequest = {},
         confirmButton = {
-            Button(onClick = onConfirmButtonClick, content = {
-                Text(stringResource(id = R.string.accept))
+            Button(
+                onClick = onConfirmButtonClick,
+                content = {
+                Text(
+                    stringResource(id = R.string.accept)
+                )
             }, colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow))
         },
         title = {

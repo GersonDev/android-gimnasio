@@ -56,4 +56,9 @@
     <string name="accept">Accept</string>
     <string name="an_error_ocurred">An Error Ocurred</string>
     <string name="NOT_YET_REGISTERED">NOT YET REGISTERED</string>
+    <string name="tipos_de_pagos">Payment types</string>
+    <string name="seleccione_tipo_de_pago">Select payment type</string>
+    <string name="pay_by_credit_card">Pay by credit card</string>
+    <string name="pay_with_cash">Pay with Cash</string>
+    <string name="pay_with_paypal">Pay with paypal</string>
 </resources>

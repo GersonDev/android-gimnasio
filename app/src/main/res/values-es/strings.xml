@@ -49,4 +49,9 @@
     <string name="accept">Aceptar</string>
     <string name="an_error_ocurred">Se ha producido un error</string>
     <string name="NOT_YET_REGISTERED">AÚN NO ESTÁ REGISTRADO</string>
+    <string name="tipos_de_pagos">Tipos de pagos</string>
+    <string name="seleccione_tipo_de_pago">Seleccione tipo de pago</string>
+    <string name="pay_by_credit_card">Pagar con Tarjeta credito</string>
+    <string name="pay_with_cash">Pagar con Efectivo</string>
+    <string name="pay_with_paypal">Pagar con paypal</string>
 </resources>
