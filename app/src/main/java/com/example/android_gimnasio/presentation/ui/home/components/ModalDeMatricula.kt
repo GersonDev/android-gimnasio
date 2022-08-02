@@ -21,13 +21,13 @@ import com.example.android_gimnasio.presentation.ui.welcome.components.ModalDeEr
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun ModalDeMatricula() {
+fun ModalDeMatricula(onClickMatriculaExitosa: ()->Unit) {
     AlertDialog(
         backgroundColor = Color.DarkGray,
         onDismissRequest = {},
         confirmButton = {
             Column {
-                Button(onClick = {},
+                Button(onClick = onClickMatriculaExitosa,
                     colors = ButtonDefaults.buttonColors(Color.White),
                     content = {
                         Image(
@@ -39,7 +39,7 @@ fun ModalDeMatricula() {
                     }
                 )
                 Button(
-                    onClick = {},
+                    onClick = onClickMatriculaExitosa,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
                     content = {
                         Image(
@@ -51,13 +51,13 @@ fun ModalDeMatricula() {
                     }
                 )
                 Button(
-                    onClick = {},
+                    onClick = onClickMatriculaExitosa,
                     colors = ButtonDefaults.buttonColors(backgroundColor = Color.White),
                     content = {
                         Image(
                             modifier = Modifier.size(24.dp),
                             painter = painterResource(id = R.drawable.icon_paypal),
-                            contentDescription = "Icono de apple"
+                            contentDescription = "Icono de paypal"
                         )
                         Text(stringResource(id = R.string.pay_with_paypal), fontSize = 10.sp)
                     }
@@ -79,6 +79,6 @@ fun ModalDeMatricula() {
 fun MatricularsePreview() {
     AndroidgimnasioTheme {
         val muta = remember { mutableStateOf(false) }
-        ModalDeMatricula()
+        ModalDeMatricula(onClickMatriculaExitosa = {})
     }
 }

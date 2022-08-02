@@ -20,7 +20,9 @@ import com.example.android_gimnasio.R
 import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @Composable
-fun GymSedeDetailPantalla(marcaDeSede: String) {
+fun GymSedeDetailPantalla(
+    marcaDeSede: String, onClickMatricularse: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -75,9 +77,7 @@ fun GymSedeDetailPantalla(marcaDeSede: String) {
                 modifier = Modifier.weight(1f)
             )
             Button(
-                onClick = {
-
-                },
+                onClick = onClickMatricularse,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp)
@@ -90,5 +90,5 @@ fun GymSedeDetailPantalla(marcaDeSede: String) {
 
 @Composable
 private fun GymSedeDetailPantallaPreview() {
-    GymSedeDetailPantalla("Gym")
+    GymSedeDetailPantalla("Gym", onClickMatricularse = {})
 }

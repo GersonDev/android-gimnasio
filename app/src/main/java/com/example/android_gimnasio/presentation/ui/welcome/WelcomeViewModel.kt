@@ -12,7 +12,6 @@ import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import kotlinx.coroutines.launch
 
-
 class WelcomeViewModel : ViewModel() {
 
     private val peopleRepository = PeopleRepository()
@@ -23,6 +22,7 @@ class WelcomeViewModel : ViewModel() {
     val password: LiveData<String> = _password
     private val _confirmationPassword = MutableLiveData("")
     val confirmationPassword: LiveData<String> = _confirmationPassword
+
     private  val _isLogin = MutableLiveData(false)
     val isLogin : LiveData<Boolean> = _isLogin
 
@@ -35,11 +35,9 @@ class WelcomeViewModel : ViewModel() {
     fun enviarCorreo(email: String) {
         _email.value = email
     }
-
     fun enviarPassword(password: String) {
         _password.value = password
     }
-
     fun enviarConfirmationPassword(nombre: String) {
         _confirmationPassword.value = nombre
     }

@@ -79,7 +79,7 @@ fun MainScreen(
             welcomeViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
-//                                 welcomeViewModel.downloadFile(context)
+//                  welcomeViewModel.downloadFile(context)
                     navController.navigate(WelcomeScreen.Login.route)
                 },
             )
