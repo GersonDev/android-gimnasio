@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
@@ -78,7 +79,7 @@ fun LoginPantalla(
                     .weight(3f)
             )
             Text(
-                " BODY GOALS\nWORKOUT",
+                stringResource(R.string.strong_fitness),
                 letterSpacing = 0.1.em,
                 color = Color.White,
                 textAlign = TextAlign.Center,
@@ -102,7 +103,7 @@ fun LoginPantalla(
                             contentDescription = "Icono de login"
                         )
                         Text(
-                            "Email",
+                            stringResource(id = R.string.email),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -132,7 +133,7 @@ fun LoginPantalla(
                             contentDescription = "Icono de password"
                         )
                         Text(
-                            "Password",
+                            stringResource(id = R.string.password),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -144,7 +145,7 @@ fun LoginPantalla(
                 }
             )
             Text(
-                "Forgot Password",
+                stringResource(id = R.string.forgot_password),
                 color = Color.White,
                 style = MaterialTheme.typography.body1,
                 fontWeight = FontWeight.Bold,
@@ -163,7 +164,7 @@ fun LoginPantalla(
 
                 content = {
                     Text(
-                        "Sign In",
+                        stringResource(id = R.string.sign_in),
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
@@ -174,14 +175,14 @@ fun LoginPantalla(
                 modifier = Modifier.padding(top = 15.dp, bottom = 30.dp)
             ) {
                 Text(
-                    "Didn’t have any account?",
+                    stringResource(id = R.string.did_not_have_any_account),
                     style = TextStyle(
                         color = White
                     ),
                     fontSize = 14.sp
                 )
                 ClickableText(
-                    text = AnnotatedString(" Sign Up here"),
+                    text = AnnotatedString(stringResource(id = R.string.sign_up_here)),
                     style = TextStyle(
                         color = Yellow,
                     ),

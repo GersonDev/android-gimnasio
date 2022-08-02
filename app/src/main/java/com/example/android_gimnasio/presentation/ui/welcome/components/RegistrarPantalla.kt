@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -81,8 +82,7 @@ fun RegistrarPantalla(
                     .weight(3f)
             )
             Text(
-                "BODY GOALS\n" +
-                        "WORKOUT",
+                stringResource(id = R.string.body_goals_workout),
                 letterSpacing = 0.1.em,
                 color = Color.White,
                 textAlign = TextAlign.Center,
@@ -102,7 +102,7 @@ fun RegistrarPantalla(
                             contentDescription = "Icono de login"
                         )
                         Text(
-                            "Email",
+                            stringResource(id = R.string.email),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -132,7 +132,7 @@ fun RegistrarPantalla(
                             contentDescription = "Icono de password"
                         )
                         Text(
-                            "Password",
+                            stringResource(id = R.string.password),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -162,7 +162,7 @@ fun RegistrarPantalla(
                             contentDescription = "Icono de password"
                         )
                         Text(
-                            "Confirmation password",
+                            stringResource(id = R.string.confirmation_password),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -184,7 +184,7 @@ fun RegistrarPantalla(
                     .fillMaxWidth(),
                 content = {
                     Text(
-                        "Sign Up",
+                        stringResource(id = R.string.sign_up),
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
@@ -204,7 +204,7 @@ fun RegistrarPantalla(
                         .background(Color.White)
 
                 )
-                Text("Or", color = Color.White)
+                Text(stringResource(id = R.string.or), color = Color.White)
                 Box(
                     modifier = Modifier
                         .weight(1f)
@@ -257,14 +257,14 @@ fun RegistrarPantalla(
                 padding(top = 15.dp, bottom = 30.dp)
             ) {
                 Text(
-                    "Didn’t have any account?",
+                    stringResource(id = R.string.did_not_have_any_account),
                     style = TextStyle(
                         color = Color.White
                     ),
                     fontSize = 14.sp
                 )
                 ClickableText(
-                    text = AnnotatedString(" Sign In here"),
+                    text = AnnotatedString(stringResource(id = R.string.sign_in_here)),
                     style = TextStyle(
                         color = Color.Yellow,
                     ),

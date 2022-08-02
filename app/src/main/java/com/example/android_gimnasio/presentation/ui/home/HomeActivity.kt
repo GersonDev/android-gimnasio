@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -30,7 +31,6 @@ import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.matricula.GymSedeDetailActivity
 import com.example.android_gimnasio.presentation.ui.home.components.*
-import com.example.android_gimnasio.presentation.viewmodel.HomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 class HomeActivity : ComponentActivity() {
@@ -82,10 +82,10 @@ fun GymBottomNavigation(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
+                icon = { Icon(painterResource(id = item.icon), contentDescription = stringResource(item.title)) },
                 label = {
                     Text(
-                        text = item.title,
+                        text = stringResource(item.title),
                         fontSize = 9.sp
                     )
                 },

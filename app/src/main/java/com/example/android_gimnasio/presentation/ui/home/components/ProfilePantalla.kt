@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -55,7 +56,7 @@ fun ProfilePantalla(
                     .width(120.dp)
             )
             Text(
-                text = "Actualizar Perfil:",
+                stringResource(id = R.string.update_profile),
                 letterSpacing = 0.1.em,
                 fontSize = 17.sp,
                 color = Color.White,
@@ -80,7 +81,7 @@ fun ProfilePantalla(
                             contentDescription = "Icono de login"
                         )
                         Text(
-                            "Nombre",
+                            stringResource(id = R.string.name),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -108,7 +109,7 @@ fun ProfilePantalla(
                             contentDescription = "Icono de login"
                         )
                         Text(
-                            "Email",
+                            stringResource(id = R.string.email),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -138,7 +139,7 @@ fun ProfilePantalla(
                             contentDescription = "Icono de password"
                         )
                         Text(
-                            "Password",
+                            stringResource(id = R.string.password),
                             color = Color.LightGray,
                             style = MaterialTheme.typography.body1,
                             modifier = Modifier
@@ -157,7 +158,7 @@ fun ProfilePantalla(
                     .padding(top = 50.dp, bottom = 50.dp),
                 content = {
                     Text(
-                        "Actualizar",
+                        stringResource(id = R.string.update),
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1

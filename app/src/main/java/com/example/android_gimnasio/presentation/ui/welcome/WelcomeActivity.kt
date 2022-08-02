@@ -3,7 +3,6 @@ package com.example.android_gimnasio.presentation.ui.welcome
 import android.app.DownloadManager
 import android.content.Intent
 import android.content.IntentFilter
-import android.hardware.usb.UsbManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,7 +18,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.android_gimnasio.presentation.routes.WelcomeScreen
 import com.example.android_gimnasio.presentation.ui.welcome.components.*
 import com.example.android_gimnasio.presentation.ui.home.HomeActivity
-import com.example.android_gimnasio.presentation.viewmodel.WelcomeViewModel
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 import com.example.android_gimnasio.utils.CheckDownloadCompleteBroadcastReceiver
 import com.example.android_gimnasio.utils.Repoo
@@ -81,8 +79,8 @@ fun MainScreen(
             welcomeViewModel.verifyLogin(context)
             WelcomePantalla(
                 onClickStarted = {
-                                 welcomeViewModel.downloadFile(context)
-//                    navController.navigate(WelcomeScreen.Login.route)
+//                                 welcomeViewModel.downloadFile(context)
+                    navController.navigate(WelcomeScreen.Login.route)
                 },
             )
             if (isLogin) {

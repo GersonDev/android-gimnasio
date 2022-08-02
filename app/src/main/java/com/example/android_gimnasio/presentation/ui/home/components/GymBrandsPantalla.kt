@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -32,7 +33,7 @@ fun GymBrandsPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) 
         modifier = Modifier
             .background(colorResource(R.color.trainers_primary))
     ) {
-        GymTitle("Gimnasios", R.drawable.img_user_profile)
+        GymTitle(stringResource(id = R.string.gyms), R.drawable.img_user_profile)
         LazyVerticalGrid(
             columns = GridCells.Fixed(2)
         ) {

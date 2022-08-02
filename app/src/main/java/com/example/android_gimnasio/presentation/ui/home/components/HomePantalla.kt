@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -37,19 +38,19 @@ fun HomePantalla() {
             .padding(start = 10.dp, top = 15.dp, bottom = 10.dp)
     ) {
 
-        UserSection(description = "Let's start your day", modifier = Modifier.padding(end = 10.dp))
+        UserSection(description = stringResource(id = R.string.lets_start_your_day), modifier = Modifier.padding(end = 10.dp))
 
         Spacer(modifier = Modifier.height(30.dp))
 
         TodayWorkOutPlan(
-            title = "Today Workout Plan",
+            title = stringResource(id = R.string.today_workout_plan),
             subTitle = "6am-8am",
             colorSubtitle = colorResource(R.color.trainers_yellow),
             workoutPlans = listOf(
-                TrainerCardModel("Jogging", R.drawable.img_jogging),
-                TrainerCardModel("Push-up", R.drawable.img_push_up),
-                TrainerCardModel("Jogging", R.drawable.img_jogging),
-                TrainerCardModel("Push-up", R.drawable.img_push_up)
+                TrainerCardModel(stringResource(id = R.string.jogging), R.drawable.img_jogging),
+                TrainerCardModel(stringResource(id = R.string.push_up), R.drawable.img_push_up),
+                TrainerCardModel(stringResource(id = R.string.jogging), R.drawable.img_jogging),
+                TrainerCardModel(stringResource(id = R.string.push_up), R.drawable.img_push_up)
             ),
             cardModifier = Modifier
                 .width(180.dp)
@@ -58,14 +59,14 @@ fun HomePantalla() {
         )
 
         TodayWorkOutPlan(
-            title = "Categories",
-            subTitle = "See all",
+            title = stringResource(id = R.string.categories),
+            subTitle = stringResource(id = R.string.see_all),
             workoutPlans = listOf(
-                TrainerCardModel("Gym", R.drawable.img_category_gym),
-                TrainerCardModel("Yoga", R.drawable.img_category_yoga),
-                TrainerCardModel("Fitness", R.drawable.img_category_fitness),
-                TrainerCardModel("Aerobics", R.drawable.img_category_aerobics),
-                TrainerCardModel("Aerobics", R.drawable.img_category_aerobics)
+                TrainerCardModel(stringResource(id = R.string.gym), R.drawable.img_category_gym),
+                TrainerCardModel(stringResource(id = R.string.yoga), R.drawable.img_category_yoga),
+                TrainerCardModel(stringResource(id = R.string.fitness), R.drawable.img_category_fitness),
+                TrainerCardModel(stringResource(id = R.string.aerobics), R.drawable.img_category_aerobics),
+                TrainerCardModel(stringResource(id = R.string.aerobics), R.drawable.img_category_aerobics)
             ),
             cardModifier = Modifier
                 .width(120.dp)
@@ -74,11 +75,11 @@ fun HomePantalla() {
         )
 
         TodayWorkOutPlan(
-            title = "Trending",
-            subTitle = "See all",
+            title = stringResource(id = R.string.trending),
+            subTitle = stringResource(id = R.string.see_all),
             workoutPlans = listOf(
-                TrainerCardModel("Gym Centres", R.drawable.img_trending_gym_centres),
-                TrainerCardModel("Trainer centres", R.drawable.img_trending_gym_centres)
+                TrainerCardModel(stringResource(id = R.string.gym_centres), R.drawable.img_trending_gym_centres),
+                TrainerCardModel(stringResource(id = R.string.trainer_centres), R.drawable.img_trending_gym_centres)
             ),
             cardModifier = Modifier
                 .width(300.dp)
@@ -87,11 +88,11 @@ fun HomePantalla() {
         )
 
         TodayWorkOutPlan(
-            title = "Discover",
-            subTitle = "See all",
+            title = stringResource(id = R.string.discover),
+            subTitle = stringResource(id = R.string.see_all),
             workoutPlans = listOf(
-                TrainerCardModel("Jogging", R.drawable.img_discover_1),
-                TrainerCardModel("Jogging", R.drawable.img_discover_1)
+                TrainerCardModel(stringResource(id = R.string.jogging), R.drawable.img_discover_1),
+                TrainerCardModel(stringResource(id = R.string.jogging), R.drawable.img_discover_1)
             ),
             cardModifier = Modifier
                 .width(300.dp)
@@ -115,7 +116,7 @@ private fun UserSection(description: String, modifier: Modifier) {
                             color = Color.White
                         )
                     ) {
-                        append("Hello ")
+                        append(stringResource(id = R.string.hello))
                     }
                     withStyle(
                         style = SpanStyle(
@@ -234,7 +235,9 @@ private fun HomePantallaPreview() {
         subTitle = "See all",
         colorSubtitle = colorResource(R.color.trainers_gray),
         workoutPlans = listOf(TrainerCardModel("demo", R.drawable.img_push_up)),
-        cardModifier = Modifier.width(120.dp).padding(15.dp),
+        cardModifier = Modifier
+            .width(120.dp)
+            .padding(15.dp),
         cardShape = RoundedCornerShape(15.dp)
     )
 }

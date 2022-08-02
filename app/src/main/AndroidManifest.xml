@@ -43,7 +43,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDsWo-j-5metLfeAPRqoJvHVIYrDiHymxU"/>
+            android:value="AIzaSyBKRBd2px_OirB34FeLwb-19kO__NHmQ8w"/>
 
 <!--        <receiver-->
 <!--            android:name=".utils.CheckDownloadCompleteBroadcastReceiver"-->

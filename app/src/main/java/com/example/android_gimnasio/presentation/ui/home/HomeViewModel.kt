@@ -1,4 +1,4 @@
-package com.example.android_gimnasio.presentation.viewmodel
+package com.example.android_gimnasio.presentation.ui.home
 
 import android.content.Context
 import androidx.lifecycle.LiveData

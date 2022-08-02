@@ -1,12 +1,9 @@
-package com.example.android_gimnasio.presentation.viewmodel
+package com.example.android_gimnasio.presentation.ui.welcome
 
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
-import android.os.Environment
 import android.os.Environment.DIRECTORY_DOWNLOADS
-import android.os.Environment.DIRECTORY_MUSIC
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +11,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import kotlinx.coroutines.launch
-import java.io.File
 
 
 class WelcomeViewModel : ViewModel() {

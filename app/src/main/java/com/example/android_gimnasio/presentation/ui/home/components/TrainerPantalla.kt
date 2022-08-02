@@ -16,6 +16,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,7 +36,7 @@ fun TrainerPantalla() {
             .background(colorResource(id = R.color.trainers_primary))
     ) {
 
-        GymTitle("Trainers", R.drawable.img_user_profile)
+        GymTitle(stringResource(id = R.string.trainers), R.drawable.img_user_profile)
         VideoPlayer()
         Column(
             modifier = Modifier
@@ -45,8 +46,8 @@ fun TrainerPantalla() {
         ) {
             Column {
                 SectionTitle(
-                    title = "Trainers Men",
-                    subTitle = "See all",
+                    stringResource(id = R.string.trainers_men),
+                    subTitle = stringResource(id = R.string.see_all),
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
@@ -65,8 +66,8 @@ fun TrainerPantalla() {
             }
             Column {
                 SectionTitle(
-                    title = "Trainers Women",
-                    subTitle = "See all",
+                    title = stringResource(id = R.string.trainers_women),
+                    subTitle = stringResource(id = R.string.see_all),
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
@@ -85,8 +86,8 @@ fun TrainerPantalla() {
             }
             Column {
                 SectionTitle(
-                    title = "Videos",
-                    subTitle = "See all",
+                    title = stringResource(id = R.string.videos),
+                    subTitle =stringResource(id = R.string.see_all),
                     colorTitle = Color.White,
                     colorSubtitle = colorResource(id = R.color.trainers_gray)
                 )
@@ -102,8 +103,8 @@ fun TrainerPantalla() {
             }
             Column {
                 SectionTitle(
-                    title = "Tutorials",
-                    subTitle = "See all",
+                    title = stringResource(id = R.string.tutorials),
+                    subTitle = stringResource(id = R.string.see_all),
                     colorTitle = Color.White,
                     colorSubtitle = Color.White
                 )
