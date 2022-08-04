@@ -21,7 +21,10 @@ import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @Composable
 fun GymSedeDetailPantalla(
-    marcaDeSede: String, onClickMatricularse: () -> Unit
+    marcaDeSede: String,
+    onClickMatricularse: () -> Unit,
+    textButton: String,
+    enableButton: Boolean
 ) {
     Box(
         modifier = Modifier
@@ -35,7 +38,7 @@ fun GymSedeDetailPantalla(
                 .verticalScroll(rememberScrollState())
         ) {
             Image(
-                painter = painterResource(id = R.drawable.golds_gimnasio),
+                painter = painterResource(id = R.drawable.megaforce_hacienda),
                 contentDescription = "Imagen de Golds Gym",
                 modifier = Modifier
                     .fillMaxWidth()
@@ -80,9 +83,10 @@ fun GymSedeDetailPantalla(
                 onClick = onClickMatricularse,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(10.dp)
+                    .padding(10.dp),
+                enabled = enableButton
             ) {
-                Text("Matricularse")
+                Text(textButton)
             }
         }
     }
@@ -90,5 +94,10 @@ fun GymSedeDetailPantalla(
 
 @Composable
 private fun GymSedeDetailPantallaPreview() {
-    GymSedeDetailPantalla("Gym", onClickMatricularse = {})
+    GymSedeDetailPantalla(
+        "Gym",
+        onClickMatricularse = {},
+        textButton = "",
+        true
+    )
 }

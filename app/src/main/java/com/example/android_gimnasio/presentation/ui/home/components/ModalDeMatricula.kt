@@ -16,15 +16,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.DialogProperties
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.presentation.ui.welcome.components.ModalDeError
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
 
 @Composable
-fun ModalDeMatricula(onClickMatriculaExitosa: ()->Unit) {
+fun ModalDeMatricula(
+    onClickMatriculaExitosa: () -> Unit,
+    onDismissRequest: () -> Unit
+) {
     AlertDialog(
         backgroundColor = Color.DarkGray,
-        onDismissRequest = {},
+        onDismissRequest = {
+            onDismissRequest()
+        },
         confirmButton = {
             Column {
                 Button(onClick = onClickMatriculaExitosa,
@@ -44,10 +50,10 @@ fun ModalDeMatricula(onClickMatriculaExitosa: ()->Unit) {
                     content = {
                         Image(
                             modifier = Modifier.size(24.dp),
-                            painter = painterResource(id = R.drawable.icon_efectivo),
-                            contentDescription = "Efectivo"
+                            painter = painterResource(id = R.drawable.tarjeta_de_debito_automatic),
+                            contentDescription = stringResource(R.string.debit_automatic)
                         )
-                        Text(stringResource(id = R.string.pay_with_cash), fontSize = 10.sp)
+                        Text(stringResource(id = R.string.debit_automatic), fontSize = 10.sp)
                     }
                 )
                 Button(
@@ -65,11 +71,25 @@ fun ModalDeMatricula(onClickMatriculaExitosa: ()->Unit) {
             }
         },
         title = {
-            Text(stringResource(id = R.string.tipos_de_pagos), fontWeight = FontWeight.Bold, style =MaterialTheme.typography.h2, color = Color.White)
+            Text(
+                stringResource(id = R.string.tipos_de_pagos),
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h2,
+                color = Color.White
+            )
         },
         text = {
-            Text(stringResource(id = R.string.seleccione_tipo_de_pago),fontWeight = FontWeight.Bold, style =MaterialTheme.typography.h4, color = Color.White)
+            Text(
+                stringResource(id = R.string.seleccione_tipo_de_pago),
+                fontWeight = FontWeight.Bold,
+                style = MaterialTheme.typography.h4,
+                color = Color.White
+            )
         },
+        properties = DialogProperties(
+            dismissOnClickOutside = true,
+            dismissOnBackPress = true,
+        )
     )
 }
 
@@ -79,6 +99,9 @@ fun ModalDeMatricula(onClickMatriculaExitosa: ()->Unit) {
 fun MatricularsePreview() {
     AndroidgimnasioTheme {
         val muta = remember { mutableStateOf(false) }
-        ModalDeMatricula(onClickMatriculaExitosa = {})
+        ModalDeMatricula(
+            onClickMatriculaExitosa = {},
+            onDismissRequest = {}
+        )
     }
 }

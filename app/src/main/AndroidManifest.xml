@@ -6,19 +6,28 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_app_sf"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_app_sf"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidgimnasio"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.ui.splash.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".presentation.ui.matricula.GymSedeDetailActivity"
             android:exported="false"
@@ -33,28 +42,11 @@
             android:name=".presentation.ui.welcome.WelcomeActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Androidgimnasio">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.Androidgimnasio"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyBKRBd2px_OirB34FeLwb-19kO__NHmQ8w"/>
-
-<!--        <receiver-->
-<!--            android:name=".utils.CheckDownloadCompleteBroadcastReceiver"-->
-<!--            android:enabled="true"-->
-<!--            android:exported="true" >-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />-->
-<!--                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
-
+            android:value="AIzaSyBKRBd2px_OirB34FeLwb-19kO__NHmQ8w" />
     </application>
 
 </manifest>

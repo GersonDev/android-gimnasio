@@ -77,6 +77,12 @@ fun WelcomePantalla(onClickStarted:()->Unit) {
                     textAlign = TextAlign.Center,
                     style = MaterialTheme.typography.h1
                 )
+                Image(
+                    modifier = Modifier.width(100.dp).height(100.dp),
+                    painter = painterResource(id = R.drawable.ic_app_sf_full),
+                    contentDescription = "Imagen de strong fitness",
+                    contentScale = ContentScale.FillWidth
+                )
                 Text(
                     stringResource(R.string.achieve_your_body_goals),
                     color = Color.White,

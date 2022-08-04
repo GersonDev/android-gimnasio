@@ -123,7 +123,7 @@ private fun UserSection(description: String, modifier: Modifier) {
                             color = colorResource(R.color.trainers_yellow)
                         )
                     ) {
-                        append("Carlos")
+                        append(" Carlos")
                     }
                 }
             )
@@ -139,7 +139,7 @@ private fun UserSection(description: String, modifier: Modifier) {
         Spacer(
             modifier = Modifier.weight(1f)
         )
-        UserPicture(R.drawable.img_user_profile)
+        UserPicture(R.drawable.ic_user_profile_picture)
     }
 }
 

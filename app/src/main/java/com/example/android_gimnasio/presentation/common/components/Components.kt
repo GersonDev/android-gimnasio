@@ -58,7 +58,7 @@ fun GymTitle(title: String, @DrawableRes userImage: Int, ocultarImagen: Boolean 
 @Composable
 fun UserPicture(@DrawableRes userImage: Int) {
     Image(
-        painter = painterResource(userImage),
+        painter = painterResource(R.drawable.ic_user_profile_picture),
         contentDescription = "profile",
         contentScale = ContentScale.Crop,
         modifier = Modifier

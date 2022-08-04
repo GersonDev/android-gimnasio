@@ -2,15 +2,23 @@ package com.example.android_gimnasio.presentation.ui.home.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Star
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -49,11 +57,12 @@ fun ProfilePantalla(
                     .weight(1f)
             )
             Image(
-                painter = painterResource(id = R.drawable.img_user_profile),
+                painter = painterResource(id = R.drawable.ic_user_profile_picture),
                 contentDescription = "Imagen de profile",
                 modifier = Modifier
                     .height(120.dp)
                     .width(120.dp)
+                    .clip(CircleShape)
             )
             Text(
                 stringResource(id = R.string.update_profile),
@@ -63,9 +72,87 @@ fun ProfilePantalla(
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.h1
             )
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+                    .border(2.dp, Color.Gray, RectangleShape),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Clases Pendientes ",
+                    color = Color.White,
+                    style = MaterialTheme.typography.body1
+                )
+                Spacer(
+                    modifier = Modifier.weight(1f)
+                )
+                Icon(
+                    imageVector = Icons.Filled.ArrowForward,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+                    .border(2.dp, Color.Gray, RectangleShape),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Evaluar esta Aplicacion ",
+                    color = Color.White,
+                    style = MaterialTheme.typography.body1
+                )
+                Spacer(
+                    modifier = Modifier.width(20.dp)
+                )
+                Icon(
+                    imageVector = Icons.Filled.Star,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+                Icon(
+                    imageVector = Icons.Filled.Star,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+                Icon(
+                    imageVector = Icons.Filled.Star,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(5.dp)
+                    .border(2.dp, Color.Gray, RectangleShape),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    "Recomendaciones ",
+                    color = Color.White,
+                    style = MaterialTheme.typography.body1
+                )
+                Spacer(
+                    modifier = Modifier.weight(1f)
+                )
+                Icon(
+                    imageVector = Icons.Filled.ArrowForward,
+                    contentDescription = "Back",
+                    tint = Color.White
+                )
+            }
+
+
             Spacer(
                 modifier = Modifier
-                    .weight(1f)
+                    .height(20.dp)
             )
             TextField(
                 value = "",

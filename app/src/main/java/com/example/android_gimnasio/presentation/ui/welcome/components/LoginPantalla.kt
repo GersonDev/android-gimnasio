@@ -78,6 +78,12 @@ fun LoginPantalla(
                 modifier = Modifier
                     .weight(3f)
             )
+            Image(
+                modifier = Modifier.width(100.dp).height(100.dp),
+                painter = painterResource(id = R.drawable.ic_app_sf_full),
+                contentDescription = "Imagen de strong fitness",
+                contentScale = ContentScale.FillWidth
+            )
             Text(
                 stringResource(R.string.strong_fitness),
                 letterSpacing = 0.1.em,

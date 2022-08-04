@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">android-gimnasio</string>
+    <string name="app_name">Strong Fitness</string>
     <string name="strong_fitness">STRONG FITNESS</string>
     <string name="sign_in">Iniciar sesión</string>
     <string name="register">Registrarse</string>
@@ -54,4 +54,5 @@
     <string name="pay_by_credit_card">Pagar con Tarjeta credito</string>
     <string name="pay_with_cash">Pagar con Efectivo</string>
     <string name="pay_with_paypal">Pagar con paypal</string>
+    <string name="debit_automatic">Afiliarte al Debito Automatico</string>
 </resources>

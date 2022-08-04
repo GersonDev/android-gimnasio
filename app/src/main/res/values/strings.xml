@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">android-gimnasio</string>
+    <string name="app_name">Strong Fitness</string>
     <string name="title_activity_principal">PrincipalActivity</string>
     <string name="title_activity_gym_sedes">GymSedesActivity</string>
     <string name="detalle_de_sede">Detalle de Sede</string>
@@ -61,4 +61,5 @@
     <string name="pay_by_credit_card">Pay by credit card</string>
     <string name="pay_with_cash">Pay with Cash</string>
     <string name="pay_with_paypal">Pay with paypal</string>
+    <string name="debit_automatic">Roll into Automatic Debit</string>
 </resources>

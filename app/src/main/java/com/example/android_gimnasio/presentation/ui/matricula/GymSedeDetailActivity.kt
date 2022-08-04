@@ -52,20 +52,28 @@ private fun GymSedeDetailScreen(gymSedesDetailViewModel: GymSedesDetailViewModel
             GymSedeDetailPantalla(
                 marcaDeSede = "",
                 onClickMatricularse = {
-                    gymSedesDetailViewModel.startLogin(context)
+                    gymSedesDetailViewModel.startMatricula(context)
                 },
+                textButton = gymSedesDetailViewModel.textBotonMatricula.value!!,
+                enableButton = gymSedesDetailViewModel.enableButtonMatricular.value!!
             )
             when (matriculaExitoso) {
                 null -> {
 
                 }
                 true -> {
-                    navController.navigate(MatricularseScreen.GymSedeDetail.route)
+                    ModalDeMatricula(
+                        onClickMatriculaExitosa = {
+                            gymSedesDetailViewModel.ocultarModal()
+                            gymSedesDetailViewModel.updateTextBotonMatricula("Te Matriculaste")
+                            gymSedesDetailViewModel.updateEnableButton(false)
+                        },
+                        onDismissRequest = {
+                            gymSedesDetailViewModel.ocultarModal()
+                        })
                 }
                 false -> {
-                    ModalDeMatricula {
-                        gymSedesDetailViewModel.ocultarModal()
-                    }
+
                 }
             }
         }

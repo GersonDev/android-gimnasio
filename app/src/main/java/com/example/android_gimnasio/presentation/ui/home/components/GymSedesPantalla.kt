@@ -110,7 +110,7 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
                         Sede(
                             R.drawable.megaforce_hacienda,
                             "Hacienda",
-                            "Av. Próceres de la Independencia 1715 San Juan de Lurigancho 36",
+                            "Av. Las Flores de Primavera 1230, San Juan de Lurigancho 15419",
                             "6am - 10:30pm"
                         ),
                         Sede(

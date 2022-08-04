@@ -22,6 +22,9 @@ class HomeViewModel : ViewModel() {
     private val _imagenDeMarca = MutableLiveData(0)
     val imagenDeMarca: LiveData<Int> = _imagenDeMarca
 
+    private val _userName = MutableLiveData("")
+    val userName: LiveData<String> = _userName
+
     // perfil livedatas
     private val _email = MutableLiveData("")
     val email: LiveData<String> = _email
@@ -86,6 +89,15 @@ class HomeViewModel : ViewModel() {
                     _password.value ?: ""
                 )
             )
+        }
+    }
+
+    // TODO: GERSON porfa agregar el campo nombre en la table y pintarlo en la pantalla HOME
+    fun getUsers(context: Context) {
+        viewModelScope.launch {
+            val peopleList = peopleRepository.getAllPeople(context)
+            val personaEncontrada = peopleList.first()
+            _userName.value = personaEncontrada.email
         }
     }
 
