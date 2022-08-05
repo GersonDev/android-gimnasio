@@ -139,15 +139,6 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
                     homeViewModel.setImagenDeMarca(imagenDeMarca)
 
                     navController.navigate(BottomNavItem.GymSedes.screenRoute)
-
-////                    context.startActivity(Intent(context, GymSedeDetailActivity::class.java))
-//                    val bundle = Bundle()
-//                    bundle.putString("MARCA_TITULO", titulo)
-//                    bundle.putInt("MARCA_IMAGEN", imagen)
-//                    val intent = Intent(context, GymSedeDetailActivity::class.java)
-//                    intent.putExtras(bundle)
-//                    context.startActivity(intent)
-
                 }
             )
         }

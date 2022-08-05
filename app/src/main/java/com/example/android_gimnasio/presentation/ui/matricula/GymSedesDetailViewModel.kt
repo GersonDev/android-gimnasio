@@ -8,7 +8,7 @@ import androidx.lifecycle.viewModelScope
 
 import kotlinx.coroutines.launch
 
-class GymSedesDetailViewModel:ViewModel() {
+class GymSedesDetailViewModel : ViewModel() {
     private val _matriculaexitosa = MutableLiveData<Boolean>()
     var matriculaexitosa: LiveData<Boolean> = _matriculaexitosa
 
@@ -25,7 +25,7 @@ class GymSedesDetailViewModel:ViewModel() {
     }
 
     fun ocultarModal() {
-        _matriculaexitosa.value = null
+        _matriculaexitosa.value = false
     }
 
     fun updateTextBotonMatricula(text: String) {

@@ -4,6 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
@@ -22,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import com.example.android_gimnasio.R
 
 @Composable
-fun GymTitle(title: String, @DrawableRes userImage: Int, ocultarImagen: Boolean = false) {
+fun GymTitle(title: String, @DrawableRes userImage: Int, ocultarImagen: Boolean = false,onClickFinish:()->Unit) {
     Box(
         modifier = Modifier.height(60.dp),
         contentAlignment = Alignment.Center
@@ -40,7 +41,8 @@ fun GymTitle(title: String, @DrawableRes userImage: Int, ocultarImagen: Boolean 
         ) {
             Image(
                 modifier = Modifier
-                    .size(24.dp),
+                    .size(24.dp)
+                    .clickable(onClick =onClickFinish),
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "Imagen de login",
                 contentScale = ContentScale.FillBounds

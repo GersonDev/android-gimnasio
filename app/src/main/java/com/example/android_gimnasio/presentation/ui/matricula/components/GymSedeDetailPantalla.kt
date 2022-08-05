@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.presentation.common.components.GymTitle
@@ -24,7 +25,8 @@ fun GymSedeDetailPantalla(
     marcaDeSede: String,
     onClickMatricularse: () -> Unit,
     textButton: String,
-    enableButton: Boolean
+    enableButton: Boolean,
+    onClickFinish:()->Unit
 ) {
     Box(
         modifier = Modifier
@@ -75,7 +77,10 @@ fun GymSedeDetailPantalla(
 
         }
         Column {
-            GymTitle(marcaDeSede, R.drawable.img_user_profile)
+            GymTitle(marcaDeSede,
+                R.drawable.img_user_profile,
+                onClickFinish = onClickFinish
+            )
             Spacer(
                 modifier = Modifier.weight(1f)
             )
@@ -92,12 +97,14 @@ fun GymSedeDetailPantalla(
     }
 }
 
+@Preview
 @Composable
 private fun GymSedeDetailPantallaPreview() {
     GymSedeDetailPantalla(
         "Gym",
         onClickMatricularse = {},
         textButton = "",
-        true
+        true,
+        onClickFinish = {}
     )
 }

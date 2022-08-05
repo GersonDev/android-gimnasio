@@ -33,7 +33,7 @@ fun GymBrandsPantalla(brands: List<Brand>, onClickBrand: (String, Int) -> Unit) 
         modifier = Modifier
             .background(colorResource(R.color.trainers_primary))
     ) {
-        GymTitle(stringResource(id = R.string.gyms), R.drawable.img_user_profile)
+        GymTitle(stringResource(id = R.string.gyms), R.drawable.img_user_profile, onClickFinish ={} )
         LazyVerticalGrid(
             columns = GridCells.Fixed(2)
         ) {
@@ -97,6 +97,6 @@ private fun GymPantallaPreview() {
             Brand("hola", R.drawable.brand_1)
         ),
         onClickBrand = { titulo, imagen ->
-        }
+        },
     )
 }

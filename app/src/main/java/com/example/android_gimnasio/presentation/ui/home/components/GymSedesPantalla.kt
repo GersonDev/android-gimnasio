@@ -21,7 +21,12 @@ import com.example.android_gimnasio.domain.models.gym.Sede
 import com.example.android_gimnasio.presentation.common.components.GymTitle
 
 @Composable
-fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Sede) -> Unit) {
+fun GymSedesPantalla(
+    tituloDeMarca: String,
+    imagenDeMarca: Int,
+    onClickSede: (Sede) -> Unit
+
+) {
 
     Column(
         modifier = Modifier
@@ -29,7 +34,7 @@ fun GymSedesPantalla(tituloDeMarca: String, imagenDeMarca: Int, onClickSede: (Se
             .background(colorResource(id = R.color.trainers_primary))
             .padding(start = 10.dp, bottom = 20.dp, top = 20.dp, end = 3.dp)
     ) {
-        GymTitle(tituloDeMarca, imagenDeMarca, ocultarImagen = true)
+        GymTitle(tituloDeMarca, imagenDeMarca, ocultarImagen = true, onClickFinish = {})
         when (tituloDeMarca) {
             "Gold's Gym" -> {
                 GymSedesComponent(
@@ -529,7 +534,12 @@ private fun GymSedeCelda(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Text(text = sede.titulo, color = Color.White, fontSize = 20.sp, modifier = Modifier.weight(1f))
+                Text(
+                    text = sede.titulo,
+                    color = Color.White,
+                    fontSize = 20.sp,
+                    modifier = Modifier.weight(1f)
+                )
                 Text(
                     text = sede.tiempo,
                     color = Color.Yellow,

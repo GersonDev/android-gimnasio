@@ -36,7 +36,7 @@ fun TrainerPantalla() {
             .background(colorResource(id = R.color.trainers_primary))
     ) {
 
-        GymTitle(stringResource(id = R.string.trainers), R.drawable.img_user_profile)
+        GymTitle(stringResource(id = R.string.trainers), R.drawable.img_user_profile, onClickFinish ={})
         VideoPlayer()
         Column(
             modifier = Modifier

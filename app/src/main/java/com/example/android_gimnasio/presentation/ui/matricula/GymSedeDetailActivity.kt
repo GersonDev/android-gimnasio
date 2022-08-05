@@ -1,6 +1,5 @@
 package com.example.android_gimnasio.presentation.ui.matricula
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -35,7 +34,11 @@ class GymSedeDetailActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                 ) {
-                    GymSedeDetailScreen(gymSedesDetailViewModel)
+                    GymSedeDetailScreen(gymSedesDetailViewModel,
+                        onClickFinish = {
+                            finish()
+                        }
+                    )
                 }
             }
         }
@@ -43,8 +46,15 @@ class GymSedeDetailActivity : ComponentActivity() {
 }
 
 @Composable
-private fun GymSedeDetailScreen(gymSedesDetailViewModel: GymSedesDetailViewModel) {
-    val matriculaExitoso by gymSedesDetailViewModel.matriculaexitosa.observeAsState()
+private fun GymSedeDetailScreen(
+    gymSedesDetailViewModel: GymSedesDetailViewModel,
+    onClickFinish: () -> Unit
+) {
+    val matriculaExitoso by gymSedesDetailViewModel.matriculaexitosa.observeAsState(false)
+    val textBotonMatricula by gymSedesDetailViewModel.textBotonMatricula.observeAsState("")
+    val enableButtonMatricular by gymSedesDetailViewModel.enableButtonMatricular.observeAsState(
+        false
+    )
     val context = LocalContext.current
     val navController = rememberNavController()
     NavHost(navController, startDestination = MatricularseScreen.GymSedeDetail.route) {
@@ -54,13 +64,12 @@ private fun GymSedeDetailScreen(gymSedesDetailViewModel: GymSedesDetailViewModel
                 onClickMatricularse = {
                     gymSedesDetailViewModel.startMatricula(context)
                 },
-                textButton = gymSedesDetailViewModel.textBotonMatricula.value!!,
-                enableButton = gymSedesDetailViewModel.enableButtonMatricular.value!!
+                textButton = textBotonMatricula,
+                enableButton = enableButtonMatricular,
+                onClickFinish = onClickFinish
+
             )
             when (matriculaExitoso) {
-                null -> {
-
-                }
                 true -> {
                     ModalDeMatricula(
                         onClickMatriculaExitosa = {
@@ -84,6 +93,6 @@ private fun GymSedeDetailScreen(gymSedesDetailViewModel: GymSedesDetailViewModel
 @Composable
 private fun GymSedeDetailScreenPreview() {
     AndroidgimnasioTheme {
-        GymSedeDetailScreen(gymSedesDetailViewModel = GymSedesDetailViewModel())
+        GymSedeDetailScreen(gymSedesDetailViewModel = GymSedesDetailViewModel(), onClickFinish = {})
     }
 }
