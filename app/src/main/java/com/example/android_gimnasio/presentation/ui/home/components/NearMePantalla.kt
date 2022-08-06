@@ -1,6 +1,7 @@
 package com.example.android_gimnasio.presentation.ui.home.components
 
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.annotation.ColorRes
@@ -189,7 +190,7 @@ fun bitmapDescriptorFromVector(
 @Composable
 private fun NearMePantallaPreview() {
     NearMePantalla(
-        homeViewModel = HomeViewModel(),
+        homeViewModel = HomeViewModel(application = Application()),
         onBusSelected = {}
     )
 }

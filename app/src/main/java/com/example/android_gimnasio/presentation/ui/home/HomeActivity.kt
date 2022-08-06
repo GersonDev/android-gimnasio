@@ -1,5 +1,6 @@
 package com.example.android_gimnasio.presentation.ui.home
 
+import android.app.Application
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -180,7 +181,7 @@ fun NavigationGraph(
                     homeViewModel.updatePeople(context, cerrarSesion = 1)
                 },
                 onClickCerrarSesion = {
-                    homeViewModel.cerrarsesion(context = context, cerrarSesion = 0)
+                    homeViewModel.cerrarsesion(context = context)
                     onCerrarSesion()
                 },
                 onValueChangeEmail = {
@@ -214,7 +215,7 @@ fun NavigationGraph(
 private fun DefaultPreview() {
     AndroidgimnasioTheme {
         PrincipalScreenView(
-            homeViewModel = HomeViewModel(),
+            homeViewModel = HomeViewModel(application = Application()),
             onCerrarSesion = {}
         )
     }

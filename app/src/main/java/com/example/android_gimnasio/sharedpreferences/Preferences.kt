@@ -4,15 +4,16 @@ import android.content.Context
 
 class Preferences(val context: Context) {
 
-    val USER_ID: Int = 0
+   private val SHARED_PREFERENCES_NAME:String = "Preferencias_de_Gerson"
+   private val USER_ID_KEY:String = "USER_ID"
 
-    val storage = context.getSharedPreferences(USER_ID.toString(), 0)
+   private val storage = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
 
     fun saveId(id: Int) {
-        storage.edit().putString(USER_ID.toString(), id.toString()).apply()
+        storage.edit().putInt(USER_ID_KEY, id).apply()
     }
 
     fun getId(): Int {
-        return storage.getInt(USER_ID.toString(), 0)
+        return storage.getInt(USER_ID_KEY, 0)
     }
 }

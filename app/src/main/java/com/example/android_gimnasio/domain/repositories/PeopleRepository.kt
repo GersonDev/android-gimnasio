@@ -15,7 +15,7 @@ class PeopleRepository {
         }
     }
 
-    suspend fun insertPeople(context: Context, people: People) {
+    suspend fun insertPeople(context: Context, people: People):Long {
         return withContext(Dispatchers.IO) {
             databaseDataSource.insertPeople(context, people)
         }

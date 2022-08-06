@@ -110,6 +110,7 @@ fun MainScreen(
                 }
                 true -> {
                     context.startActivity(Intent(context, HomeActivity::class.java))
+                    welcomeViewModel.reiniciarLogin()
                 }
                 false -> {
                     ModalDeError {

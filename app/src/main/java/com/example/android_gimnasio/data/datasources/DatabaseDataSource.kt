@@ -21,7 +21,7 @@ class DatabaseDataSource {
         }
     }
 
-    suspend fun insertPeople(context: Context, people: People) {
+    suspend fun insertPeople(context: Context, people: People): Long {
         val peopleEntity = PeopleEntity(
             id = people.id,
             correo = people.email,
@@ -29,9 +29,11 @@ class DatabaseDataSource {
             confirmationPassword = people.confirmationPassword,
             cerrarSesion = people.estaLogeado
         )
-        GimnasioDataBase.buildDataBase(context)
+        val idGenerado = GimnasioDataBase
+            .buildDataBase(context)
             .peopleDao()
             .insertPeople(peopleEntity)
+        return idGenerado
     }
 
     suspend fun updatePeople(context: Context, people: People) {

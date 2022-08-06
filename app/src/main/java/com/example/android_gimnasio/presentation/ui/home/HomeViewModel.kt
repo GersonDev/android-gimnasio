@@ -1,20 +1,24 @@
 package com.example.android_gimnasio.presentation.ui.home
 
+import android.app.Application
 import android.content.Context
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.android_gimnasio.R
-import com.example.android_gimnasio.domain.models.People
-import com.example.android_gimnasio.domain.repositories.PeopleRepository
-import kotlinx.coroutines.launch
 import com.example.android_gimnasio.domain.models.Bus
 import com.example.android_gimnasio.domain.models.BusStop
+import com.example.android_gimnasio.domain.models.People
+import com.example.android_gimnasio.domain.repositories.PeopleRepository
+import com.example.android_gimnasio.sharedpreferences.Preferences
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val peopleRepository = PeopleRepository()
+
+    private val preferences = Preferences(context = application)
 
     private val _tituloDeMarca = MutableLiveData("")
     val tituloDeMarca: LiveData<String> = _tituloDeMarca
@@ -81,7 +85,7 @@ class HomeViewModel : ViewModel() {
         _password.value = password
     }
 
-    fun updatePeople(context: Context,cerrarSesion: Int) {
+    fun updatePeople(context: Context, cerrarSesion: Int) {
         viewModelScope.launch {
             peopleRepository.updatePeople(
                 context,
@@ -96,23 +100,25 @@ class HomeViewModel : ViewModel() {
         }
     }
 
-    fun cerrarsesion(context: Context,cerrarSesion: Int) {
+    fun cerrarsesion(context: Context) {
         viewModelScope.launch {
-            val peopleList = peopleRepository.getAllPeople(context)
-            val personaEncontrada = peopleList.first()
+            val todasLasPersonas = peopleRepository.getAllPeople(context)
+            val personaEncontradaPorId = todasLasPersonas.first {
+                it.id == preferences.getId()
+            }
             peopleRepository.updatePeople(
-                context,
-                People(
-                    1,
-                    personaEncontrada.email,
-                    personaEncontrada.password,
-                    personaEncontrada.password,
-                    estaLogeado = cerrarSesion
+                context = context,
+                people = People(
+                    id = personaEncontradaPorId.id,
+                    email = personaEncontradaPorId.email,
+                    password = personaEncontradaPorId.password,
+                    confirmationPassword = personaEncontradaPorId.confirmationPassword,
+                    estaLogeado = 0
                 )
             )
+            preferences.saveId(0)
         }
     }
-
 
 
     // TODO: GERSON porfa agregar el campo nombre en la table y pintarlo en la pantalla HOME

@@ -1,20 +1,21 @@
 package com.example.android_gimnasio.presentation.ui.welcome
 
+import android.app.Application
 import android.app.DownloadManager
 import android.content.Context
 import android.net.Uri
 import android.os.Environment.DIRECTORY_DOWNLOADS
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
+import com.example.android_gimnasio.sharedpreferences.Preferences
 import kotlinx.coroutines.launch
 
-class WelcomeViewModel : ViewModel() {
+class WelcomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val peopleRepository = PeopleRepository()
+
+    private val preferences = Preferences(application)
 
     private val _email = MutableLiveData("")
     val email: LiveData<String> = _email
@@ -23,8 +24,8 @@ class WelcomeViewModel : ViewModel() {
     private val _confirmationPassword = MutableLiveData("")
     val confirmationPassword: LiveData<String> = _confirmationPassword
 
-    private  val _isLogin = MutableLiveData(false)
-    val isLogin : LiveData<Boolean> = _isLogin
+    private val _isLogin = MutableLiveData(false)
+    val isLogin: LiveData<Boolean> = _isLogin
 
     private val _registroExitoso = MutableLiveData(false)
     val registroExitoso: LiveData<Boolean> = _registroExitoso
@@ -35,16 +36,18 @@ class WelcomeViewModel : ViewModel() {
     fun enviarCorreo(email: String) {
         _email.value = email
     }
+
     fun enviarPassword(password: String) {
         _password.value = password
     }
+
     fun enviarConfirmationPassword(nombre: String) {
         _confirmationPassword.value = nombre
     }
 
     fun insertPeople(context: Context) {
         viewModelScope.launch {
-            peopleRepository.insertPeople(
+            val idGenerado = peopleRepository.insertPeople(
                 context,
                 People(
                     0,
@@ -54,6 +57,7 @@ class WelcomeViewModel : ViewModel() {
                     estaLogeado = 1
                 )
             )
+            preferences.saveId(id = idGenerado.toInt())
             _registroExitoso.value = true
         }
     }
@@ -61,11 +65,22 @@ class WelcomeViewModel : ViewModel() {
 
     fun startLogin(context: Context) {
         viewModelScope.launch {
-            val peopleList = peopleRepository.getAllPeople(context)
-            val personaEncontrada = peopleList.find {
-                it.email == _email.value
+            val todasLasPersonas = peopleRepository.getAllPeople(context)
+            val personaEncontradaPorCorreoPassword=todasLasPersonas.first{
+                it.email==_email.value && it.password==_password.value
             }
-            _loginExitoso.value = personaEncontrada != null
+            preferences.saveId(personaEncontradaPorCorreoPassword.id)
+            peopleRepository.updatePeople(
+                context = context,
+                people = People(
+                    id = personaEncontradaPorCorreoPassword.id,
+                    email =personaEncontradaPorCorreoPassword.email ,
+                    password = personaEncontradaPorCorreoPassword.password,
+                    confirmationPassword =personaEncontradaPorCorreoPassword.confirmationPassword ,
+                    estaLogeado = 1
+                )
+            )
+            _loginExitoso.value = personaEncontradaPorCorreoPassword != null
         }
     }
 
@@ -74,7 +89,7 @@ class WelcomeViewModel : ViewModel() {
             val peopleList = peopleRepository.getAllPeople(context)
             if (peopleList.size > 0) {
                 val personaLogeada = peopleList.first()
-                if(personaLogeada.estaLogeado == 1 ) {
+                if (personaLogeada.estaLogeado == 1) {
                     _isLogin.value = true
                 }
             }
@@ -86,7 +101,8 @@ class WelcomeViewModel : ViewModel() {
     }
 
     fun downloadFile(context: Context) {
-        val uri: Uri = Uri.parse("https://download.samplelib.com/mp3/sample-3s.mp3") // Path where you want to download file.
+        val uri: Uri =
+            Uri.parse("https://download.samplelib.com/mp3/sample-3s.mp3") // Path where you want to download file.
         // Create request for android download manager
         // Create request for android download manager
         val downloadManager = context.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
@@ -115,5 +131,9 @@ class WelcomeViewModel : ViewModel() {
         _email.value = ""
         _password.value = ""
 
+    }
+
+    fun reiniciarLogin() {
+        _loginExitoso.value = null
     }
 }

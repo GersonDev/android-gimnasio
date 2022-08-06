@@ -14,7 +14,7 @@ PeopleDao {
     suspend fun getPeople(): List<PeopleEntity>
 
     @Insert
-    suspend fun insertPeople(peopleEntity: PeopleEntity)
+    suspend fun insertPeople(peopleEntity: PeopleEntity):Long
 
     @Update
     suspend fun updatePeople(peopleEntity: PeopleEntity)
