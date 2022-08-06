@@ -62,4 +62,5 @@
     <string name="pay_with_cash">Pay with Cash</string>
     <string name="pay_with_paypal">Pay with paypal</string>
     <string name="debit_automatic">Roll into Automatic Debit</string>
+    <string name="log_out">Log Out</string>
 </resources>

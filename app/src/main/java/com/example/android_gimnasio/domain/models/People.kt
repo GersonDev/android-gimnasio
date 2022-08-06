@@ -4,5 +4,6 @@ data class People(
     val id:Int,
     val email: String,
     val password: String,
-    val confirmationPassword: String
+    val confirmationPassword: String,
+    val estaLogeado:Int
 )

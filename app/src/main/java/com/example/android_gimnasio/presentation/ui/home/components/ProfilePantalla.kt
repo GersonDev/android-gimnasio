@@ -1,9 +1,6 @@
 package com.example.android_gimnasio.presentation.ui.home.components
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -35,6 +32,7 @@ import com.example.android_gimnasio.R
 @Composable
 fun ProfilePantalla(
     onClickActualizar: () -> Unit,
+    onClickCerrarSesion: () -> Unit,
     onValueChangeEmail: (String) -> Unit,
     onValueChangePassword: (String) -> Unit,
     email: String,
@@ -47,6 +45,7 @@ fun ProfilePantalla(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .fillMaxSize()
+                .verticalScroll(rememberScrollState())
                 .background(
                     colorResource(R.color.trainers_primary)
                 )
@@ -242,10 +241,26 @@ fun ProfilePantalla(
                 shape = RoundedCornerShape(15.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 50.dp, bottom = 50.dp),
+                    .padding(top = 50.dp, bottom = 5.dp),
                 content = {
                     Text(
                         stringResource(id = R.string.update),
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black,
+                        style = MaterialTheme.typography.body1
+                    )
+                }
+            )
+            Button(
+                onClick = onClickCerrarSesion,
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+                shape = RoundedCornerShape(15.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 5.dp, bottom = 5.dp),
+                content = {
+                    Text(
+                        stringResource(id = R.string.log_out),
                         fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         style = MaterialTheme.typography.body1
@@ -260,6 +275,7 @@ fun ProfilePantalla(
 @Composable
 private fun ProfilePantallaPreview() {
     ProfilePantalla(
+        {},
         {},
         {},
         {},

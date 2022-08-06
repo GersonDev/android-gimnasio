@@ -45,7 +45,9 @@ class HomeActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PrincipalScreenView(homeViewModel)
+                    PrincipalScreenView(homeViewModel, {
+                        finish()
+                    })
                 }
             }
         }
@@ -53,14 +55,19 @@ class HomeActivity : ComponentActivity() {
 }
 
 @Composable
-fun PrincipalScreenView(homeViewModel: HomeViewModel) {
+fun PrincipalScreenView(homeViewModel: HomeViewModel, onCerrarSesion: () -> Unit) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
             GymBottomNavigation(navController)
         },
         content = { innerPadding ->
-            NavigationGraph(navController, homeViewModel = homeViewModel, innerPadding)
+            NavigationGraph(
+                navController,
+                homeViewModel = homeViewModel,
+                innerPadding,
+                onCerrarSesion = onCerrarSesion
+            )
         }
     )
 }
@@ -82,7 +89,12 @@ fun GymBottomNavigation(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = stringResource(item.title)) },
+                icon = {
+                    Icon(
+                        painterResource(id = item.icon),
+                        contentDescription = stringResource(item.title)
+                    )
+                },
                 label = {
                     Text(
                         text = stringResource(item.title),
@@ -111,11 +123,20 @@ fun GymBottomNavigation(navController: NavController) {
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewModel, paddingValues: PaddingValues) {
+fun NavigationGraph(
+    navController: NavHostController,
+    homeViewModel: HomeViewModel,
+    paddingValues: PaddingValues,
+    onCerrarSesion: () -> Unit
+) {
     val correo by homeViewModel.email.observeAsState("")
     val password by homeViewModel.password.observeAsState("")
     val context = LocalContext.current
-    NavHost(navController, startDestination = BottomNavItem.Home.screenRoute, modifier = Modifier.padding(paddingValues)) {
+    NavHost(
+        navController,
+        startDestination = BottomNavItem.Home.screenRoute,
+        modifier = Modifier.padding(paddingValues)
+    ) {
         composable(BottomNavItem.Home.screenRoute) {
             HomePantalla()
         }
@@ -156,7 +177,11 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
         composable(BottomNavItem.Profile.screenRoute) {
             ProfilePantalla(
                 onClickActualizar = {
-                    homeViewModel.updatePeople(context)
+                    homeViewModel.updatePeople(context, cerrarSesion = 1)
+                },
+                onClickCerrarSesion = {
+                    homeViewModel.cerrarsesion(context = context, cerrarSesion = 0)
+                    onCerrarSesion()
                 },
                 onValueChangeEmail = {
                     homeViewModel.enviarCorreo(it)
@@ -188,6 +213,9 @@ fun NavigationGraph(navController: NavHostController, homeViewModel: HomeViewMod
 @Composable
 private fun DefaultPreview() {
     AndroidgimnasioTheme {
-        PrincipalScreenView(homeViewModel = HomeViewModel())
+        PrincipalScreenView(
+            homeViewModel = HomeViewModel(),
+            onCerrarSesion = {}
+        )
     }
 }

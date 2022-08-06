@@ -8,7 +8,8 @@ import com.example.android_gimnasio.data.database.entities.PeopleEntity
 
 
 @Dao
-interface PeopleDao {
+interface
+PeopleDao {
     @Query("SELECT * FROM people")
     suspend fun getPeople(): List<PeopleEntity>
 

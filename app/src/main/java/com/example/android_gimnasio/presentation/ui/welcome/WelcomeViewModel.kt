@@ -50,7 +50,8 @@ class WelcomeViewModel : ViewModel() {
                     0,
                     _email.value ?: "",
                     _password.value ?: "",
-                    _confirmationPassword.value ?: ""
+                    _confirmationPassword.value ?: "",
+                    estaLogeado = 1
                 )
             )
             _registroExitoso.value = true
@@ -72,11 +73,12 @@ class WelcomeViewModel : ViewModel() {
         viewModelScope.launch {
             val peopleList = peopleRepository.getAllPeople(context)
             if (peopleList.size > 0) {
-                _isLogin.value = true
+                val personaLogeada = peopleList.first()
+                if(personaLogeada.estaLogeado == 1 ) {
+                    _isLogin.value = true
+                }
             }
         }
-
-
     }
 
     fun ocultarModal() {
@@ -105,6 +107,13 @@ class WelcomeViewModel : ViewModel() {
 //        viewModelScope.launch {
 //            manager.en
 //        }
+
+    }
+
+    fun reiniciarRegistro() {
+        _registroExitoso.value = false
+        _email.value = ""
+        _password.value = ""
 
     }
 }

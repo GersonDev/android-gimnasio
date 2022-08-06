@@ -9,5 +9,6 @@ data class PeopleEntity(
     @PrimaryKey(autoGenerate = true) val id:Int=0,
     @ColumnInfo(name = "correo")val correo: String,
     @ColumnInfo(name = "password")val password: String,
-    @ColumnInfo(name = "confirmationPassword") val confirmationPassword: String
+    @ColumnInfo(name = "confirmationPassword") val confirmationPassword: String,
+    @ColumnInfo(name = "Cerrar_sesion")val cerrarSesion:Int
 )

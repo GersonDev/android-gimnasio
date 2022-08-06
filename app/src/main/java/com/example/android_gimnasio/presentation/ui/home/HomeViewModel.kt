@@ -31,35 +31,38 @@ class HomeViewModel : ViewModel() {
     private val _password = MutableLiveData("")
     val password: LiveData<String> = _password
 
-    private val _busInfoList = MutableLiveData<List<Bus>>(listOf(
-        Bus(
-            "0",
-            latitude = -11.967750655284977,
-            longitude = -77.00428152896053,
-            imagen = R.drawable.ic_megaforce
-        ),
-        Bus(
-            "1",
-            latitude = -11.969140970527766,
-            longitude = -77.00511967818196,
-            imagen = R.drawable.ic_megaforce
-        ),
-        Bus(
-            "2",
-            latitude = -11.971885930945978,
-            longitude = -77.00670487345754,
-            imagen = R.drawable.ic_megaforce
-        ),
-        Bus(
-            "3",
-            latitude = -11.974862577286663,
-            longitude = -77.00885490842902,
-            imagen = R.drawable.ic_megaforce
+    private val _busInfoList = MutableLiveData<List<Bus>>(
+        listOf(
+            Bus(
+                "0",
+                latitude = -11.967750655284977,
+                longitude = -77.00428152896053,
+                imagen = R.drawable.ic_megaforce
+            ),
+            Bus(
+                "1",
+                latitude = -11.969140970527766,
+                longitude = -77.00511967818196,
+                imagen = R.drawable.ic_megaforce
+            ),
+            Bus(
+                "2",
+                latitude = -11.971885930945978,
+                longitude = -77.00670487345754,
+                imagen = R.drawable.ic_megaforce
+            ),
+            Bus(
+                "3",
+                latitude = -11.974862577286663,
+                longitude = -77.00885490842902,
+                imagen = R.drawable.ic_megaforce
+            )
         )
-    ))
+    )
     val busInfoList: LiveData<List<Bus>> = _busInfoList
 
-    private val _currentBusStop = MutableLiveData<BusStop>(BusStop(-11.967750655284977, -77.00428152896053, "My Bus"))
+    private val _currentBusStop =
+        MutableLiveData<BusStop>(BusStop(-11.967750655284977, -77.00428152896053, "My Bus"))
     val currentBusStop: LiveData<BusStop> = _currentBusStop
 
     fun setTituloDeMarca(tituloDeMarca: String) {
@@ -78,7 +81,7 @@ class HomeViewModel : ViewModel() {
         _password.value = password
     }
 
-    fun updatePeople(context: Context) {
+    fun updatePeople(context: Context,cerrarSesion: Int) {
         viewModelScope.launch {
             peopleRepository.updatePeople(
                 context,
@@ -86,11 +89,31 @@ class HomeViewModel : ViewModel() {
                     1,
                     _email.value ?: "",
                     _password.value ?: "",
-                    _password.value ?: ""
+                    _password.value ?: "",
+                    estaLogeado = cerrarSesion
                 )
             )
         }
     }
+
+    fun cerrarsesion(context: Context,cerrarSesion: Int) {
+        viewModelScope.launch {
+            val peopleList = peopleRepository.getAllPeople(context)
+            val personaEncontrada = peopleList.first()
+            peopleRepository.updatePeople(
+                context,
+                People(
+                    1,
+                    personaEncontrada.email,
+                    personaEncontrada.password,
+                    personaEncontrada.password,
+                    estaLogeado = cerrarSesion
+                )
+            )
+        }
+    }
+
+
 
     // TODO: GERSON porfa agregar el campo nombre en la table y pintarlo en la pantalla HOME
     fun getUsers(context: Context) {

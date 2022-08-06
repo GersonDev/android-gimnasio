@@ -142,7 +142,9 @@ fun MainScreen(
             )
             if (registroExitoso) {
                 context.startActivity(Intent(context, HomeActivity::class.java))
+                welcomeViewModel.reiniciarRegistro()
             }
+
 
         }
     }

@@ -55,4 +55,5 @@
     <string name="pay_with_cash">Pagar con Efectivo</string>
     <string name="pay_with_paypal">Pagar con paypal</string>
     <string name="debit_automatic">Afiliarte al Debito Automatico</string>
+    <string name="log_out">Cerrar Sesion</string>
 </resources>

@@ -15,7 +15,8 @@ class DatabaseDataSource {
                 id = it.id,
                 email = it.correo,
                 password = it.password,
-                confirmationPassword = it.confirmationPassword
+                confirmationPassword = it.confirmationPassword,
+                estaLogeado = it.cerrarSesion
             )
         }
     }
@@ -25,7 +26,8 @@ class DatabaseDataSource {
             id = people.id,
             correo = people.email,
             password = people.password,
-            confirmationPassword = people.confirmationPassword
+            confirmationPassword = people.confirmationPassword,
+            cerrarSesion = people.estaLogeado
         )
         GimnasioDataBase.buildDataBase(context)
             .peopleDao()
@@ -37,7 +39,8 @@ class DatabaseDataSource {
             id = people.id,
             correo = people.email,
             password = people.password,
-            confirmationPassword = people.confirmationPassword
+            confirmationPassword = people.confirmationPassword,
+            cerrarSesion = people.estaLogeado
         )
         GimnasioDataBase.buildDataBase(context)
             .peopleDao()
