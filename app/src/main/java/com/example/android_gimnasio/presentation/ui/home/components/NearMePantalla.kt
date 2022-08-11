@@ -61,7 +61,7 @@ fun NearMePantalla(
 @SuppressLint("MissingPermission")
 @Composable
 fun BusInfoMapViewContainer(
-    stop: BusStop,
+    currentBusStop: BusStop,
     busInfoList: List<Bus>,
     onBusSelected: (String) -> Unit
 ) {
@@ -70,11 +70,11 @@ fun BusInfoMapViewContainer(
     val cameraPositionState = rememberCameraPositionState()
 
     // SIDE EFFECT IN COMPOSE
-    LaunchedEffect(stop) {
+    LaunchedEffect(currentBusStop) {
         val builder = LatLngBounds.Builder()
 
-        stop.latitude?.let { latitude ->
-            stop.longitude?.let { longitude ->
+        currentBusStop.latitude?.let { latitude ->
+            currentBusStop.longitude?.let { longitude ->
                 val busStopLocation = LatLng(latitude, longitude)
                 builder.include(busStopLocation)
             }
@@ -96,16 +96,16 @@ fun BusInfoMapViewContainer(
 //        properties = mapProperties, // COARSE, FINE LOCATION
 //        uiSettings = uiSettings // COARSE, FINE LOCATION
     ) {
-        stop.latitude?.let { latitude ->
-            stop.longitude?.let { longitude ->
+        currentBusStop.latitude?.let { latitude ->
+            currentBusStop.longitude?.let { longitude ->
                 val busStopLocation = LatLng(latitude, longitude)
                 val icon =
                     bitmapDescriptorFromVector(context, R.drawable.ic_stop, R.color.mapMarkerGreen)
                 Marker(
                     state = MarkerState(position = busStopLocation),
-                    title = stop.shortName,
+                    title = currentBusStop.shortName,
                     icon = icon,
-                    tag = stop
+                    tag = currentBusStop
                 )
             }
         }
