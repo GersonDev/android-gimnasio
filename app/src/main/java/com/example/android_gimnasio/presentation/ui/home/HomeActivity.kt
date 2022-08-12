@@ -1,6 +1,7 @@
 package com.example.android_gimnasio.presentation.ui.home
 
-import android.app.Application
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,8 +11,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,7 +19,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -33,44 +32,75 @@ import com.example.android_gimnasio.presentation.routes.BottomNavItem
 import com.example.android_gimnasio.presentation.ui.matricula.GymSedeDetailActivity
 import com.example.android_gimnasio.presentation.ui.home.components.*
 import com.example.android_gimnasio.ui.theme.AndroidgimnasioTheme
+import com.example.android_gimnasio.utils.location.PermissionState
+import com.example.android_gimnasio.utils.location.checkSelfPermissionState
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 class HomeActivity : ComponentActivity() {
 
     private val homeViewModel by viewModels<HomeViewModel>()
+
+    @OptIn(ExperimentalCoroutinesApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             AndroidgimnasioTheme {
+
+                var showLandingScreen by remember { mutableStateOf(true) }
+                val fineLocationPermissionState =
+                    checkSelfPermissionState( // FOR REQUESTING PERMISSION
+                        activity = this,
+                        permission = Manifest.permission.ACCESS_FINE_LOCATION
+                    )
+
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    PrincipalScreenView(homeViewModel, {
-                        finish()
-                    })
+                    if (showLandingScreen) {
+                        LandingScreen(homeViewModel, onTimeout = { showLandingScreen = false })
+                    } else {
+                        PrincipalScreenView(
+                            homeViewModel,
+                            fineLocationPermissionState) {
+                            finish()
+                        }
+                    }
                 }
             }
         }
     }
 }
 
+@OptIn(ExperimentalCoroutinesApi::class)
+@SuppressLint("MissingPermission")
 @Composable
-fun PrincipalScreenView(homeViewModel: HomeViewModel, onCerrarSesion: () -> Unit) {
+fun PrincipalScreenView(
+    homeViewModel: HomeViewModel,
+    fineLocationPermissionState: PermissionState,
+    onCerrarSesion: () -> Unit
+) {
     val navController = rememberNavController()
-    Scaffold(
-        bottomBar = {
-            GymBottomNavigation(navController)
-        },
-        content = { innerPadding ->
-            NavigationGraph(
-                navController,
-                homeViewModel = homeViewModel,
-                innerPadding,
-                onCerrarSesion = onCerrarSesion
-            )
-        }
-    )
+    val hasLocationPermission by fineLocationPermissionState.hasPermission.observeAsState(false)
+
+    if (hasLocationPermission) {
+        Scaffold(
+            bottomBar = {
+                GymBottomNavigation(navController)
+            },
+            content = { innerPadding ->
+                NavigationGraph(
+                    navController,
+                    homeViewModel = homeViewModel,
+                    paddingValues = innerPadding,
+                    onCerrarSesion = onCerrarSesion
+                )
+            }
+        )
+    } else {
+        fineLocationPermissionState.launchPermissionRequest()
+    }
 }
 
 @Composable
@@ -210,13 +240,14 @@ fun NavigationGraph(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-private fun DefaultPreview() {
-    AndroidgimnasioTheme {
-        PrincipalScreenView(
-            homeViewModel = HomeViewModel(application = Application()),
-            onCerrarSesion = {}
-        )
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//private fun DefaultPreview() {
+//    AndroidgimnasioTheme {
+//        PrincipalScreenView(
+//            homeViewModel = HomeViewModel(application = Application()),
+//            fineLocationPermissionState = PermissionState("loca", MutableLiveData(false), ActivityResultLauncher<>),
+//            onCerrarSesion = {}
+//        )
+//    }
+//}

@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.Bus
 import com.example.android_gimnasio.domain.models.BusStop
+import com.example.android_gimnasio.domain.models.MyCurrentLocation
 import com.example.android_gimnasio.domain.models.People
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import com.example.android_gimnasio.sharedpreferences.Preferences
@@ -28,6 +29,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _userName = MutableLiveData("")
     val userName: LiveData<String> = _userName
+
+    //maps livadata
+    val myCurrentLocationDefault = MyCurrentLocation(-11.959584311990993, -76.98711087235495) // ESTACION BAYOVAR TREN
+    private val _myCurrentLocation = MutableLiveData(myCurrentLocationDefault)
+    val myCurrentLocation = _myCurrentLocation
+
+    private val _cameraPosition = MutableLiveData<MyCurrentLocation>()
+    private val _zoomLevel = MutableLiveData(15.0f)
 
     // perfil livedatas
     private val _email = MutableLiveData("")
@@ -120,14 +129,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    // region Maps
 
-    // TODO: GERSON porfa agregar el campo nombre en la table y pintarlo en la pantalla HOME
-    fun getUsers(context: Context) {
-        viewModelScope.launch {
-            val peopleList = peopleRepository.getAllPeople(context)
-            val personaEncontrada = peopleList.first()
-            _userName.value = personaEncontrada.email
+    fun setLocation(myCurrentLocation: MyCurrentLocation) {
+        _myCurrentLocation.value = myCurrentLocation
+    }
+
+    fun setCameraPosition(myCurrentLocation: MyCurrentLocation) {
+        if (myCurrentLocation != _cameraPosition.value) {
+            _cameraPosition.value = myCurrentLocation
         }
     }
+
+    fun setZoomLevel(zl: Float) {
+        _zoomLevel.value = zl
+    }
+
+    // endregion
 
 }

@@ -5,23 +5,19 @@ import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
 import androidx.annotation.ColorRes
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.example.android_gimnasio.R
 import com.example.android_gimnasio.domain.models.Bus
 import com.example.android_gimnasio.domain.models.BusStop
+import com.example.android_gimnasio.domain.models.MyCurrentLocation
 import com.example.android_gimnasio.presentation.ui.home.HomeViewModel
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.*
@@ -35,25 +31,19 @@ fun NearMePantalla(
     onBusSelected: (String) -> Unit
 ) {
 
-//    val markerPosition = LatLng(-11.967750655284977, -77.00428152896053)
-//    val cameraPositionState = rememberCameraPositionState {
-//        position = CameraPosition.fromLatLngZoom(markerPosition, 15f)
-//    }
-
     val busInfoList by homeViewModel.busInfoList.observeAsState(listOf())
     val currentBusStop by homeViewModel.currentBusStop.observeAsState(BusStop(0.0, 0.0, ""))
+    val myCurrentLocation by homeViewModel.myCurrentLocation.observeAsState(homeViewModel.myCurrentLocationDefault)
     val coroutineScope = rememberCoroutineScope()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.teal_700))
-            .wrapContentSize(Alignment.Center)
-    ) {
-        BusInfoMapViewContainer(currentBusStop, busInfoList) { busId ->
-            coroutineScope.launch {
-                onBusSelected(busId)
-            }
+    BusInfoMapViewContainer(
+        homeViewModel,
+        myCurrentLocation,
+        currentBusStop,
+        busInfoList
+    ) { busId ->
+        coroutineScope.launch {
+            onBusSelected(busId)
         }
     }
 }
@@ -61,31 +51,46 @@ fun NearMePantalla(
 @SuppressLint("MissingPermission")
 @Composable
 fun BusInfoMapViewContainer(
+    homeViewModel: HomeViewModel,
+    myCurrentLocation: MyCurrentLocation,
     currentBusStop: BusStop,
     busInfoList: List<Bus>,
     onBusSelected: (String) -> Unit
 ) {
     val context = LocalContext.current
 
-    val cameraPositionState = rememberCameraPositionState()
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(
+            LatLng(
+                myCurrentLocation.latitude,
+                myCurrentLocation.longitude
+            ),
+            15f
+        )
+    }
 
     // SIDE EFFECT IN COMPOSE
-    LaunchedEffect(currentBusStop) {
-        val builder = LatLngBounds.Builder()
+    LaunchedEffect(myCurrentLocation) {
+        cameraPositionState.move(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    myCurrentLocation.latitude,
+                    myCurrentLocation.longitude
+                ), 15f
+            )
+        )
+    }
 
-        currentBusStop.latitude?.let { latitude ->
-            currentBusStop.longitude?.let { longitude ->
-                val busStopLocation = LatLng(latitude, longitude)
-                builder.include(busStopLocation)
-            }
+    LaunchedEffect(cameraPositionState.isMoving) {
+        val position = cameraPositionState.position
+        val isMoving = cameraPositionState.isMoving
+
+        if (!isMoving) {
+            val myCurrentLocation =
+                MyCurrentLocation(position.target.latitude, position.target.longitude)
+            homeViewModel.setCameraPosition(myCurrentLocation)
+            homeViewModel.setZoomLevel(cameraPositionState.position.zoom)
         }
-
-        busInfoList.forEach { bus ->
-            val busLocation = LatLng(bus.latitude, bus.longitude)
-            builder.include(busLocation)
-        }
-
-        cameraPositionState.move(CameraUpdateFactory.newLatLngBounds(builder.build(), 64))
     }
 
 
@@ -93,8 +98,8 @@ fun BusInfoMapViewContainer(
     val uiSettings by remember { mutableStateOf(MapUiSettings(myLocationButtonEnabled = true)) }
     GoogleMap(
         cameraPositionState = cameraPositionState,
-//        properties = mapProperties, // COARSE, FINE LOCATION
-//        uiSettings = uiSettings // COARSE, FINE LOCATION
+        properties = mapProperties, // SHOW THE LOCATION ICON, NEEDS COARSE, FINE LOCATION permission
+        uiSettings = uiSettings // don't know yet, why do we need this, NEEDS COARSE, FINE LOCATION permission
     ) {
         currentBusStop.latitude?.let { latitude ->
             currentBusStop.longitude?.let { longitude ->
@@ -138,7 +143,7 @@ fun BusInfoMapViewContainer(
                 ""
             }
 
-            val icon = bitmapDescriptorFromVector(context, bus.imagen, /*tintColor*/)
+            val icon = bitmapDescriptorFromVector(context, bus.imagen /*tintColor*/)
             MarkerInfoWindowContent(
                 state = MarkerState(
                     position = busLocation
