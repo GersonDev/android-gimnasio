@@ -17,6 +17,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_app_sf"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_app_sf"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidgimnasio"
@@ -45,7 +46,7 @@
             android:name=".presentation.ui.welcome.WelcomeActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Androidgimnasio"/>
+            android:theme="@style/Theme.Androidgimnasio" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

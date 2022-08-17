@@ -162,6 +162,7 @@ fun NavigationGraph(
 ) {
     val correo by homeViewModel.email.observeAsState("")
     val password by homeViewModel.password.observeAsState("")
+    val brands by homeViewModel.brands.observeAsState(listOf())
     val context = LocalContext.current
     NavHost(
         navController,
@@ -172,20 +173,23 @@ fun NavigationGraph(
             HomePantalla()
         }
         composable(BottomNavItem.Gym.screenRoute) {
+            homeViewModel.getBrands()
             GymBrandsPantalla(
-                listOf(
-                    Brand("Gold's Gym", R.drawable.brand_gold_gym),
-                    Brand("SmartFit", R.drawable.brand_smart_fit),
-                    Brand("Bodytech", R.drawable.brand_bodytech),
-                    Brand("Megaforce", R.drawable.brand_megaforce),
-                    Brand("Megatlon", R.drawable.brand_megatlon),
-                    Brand("Gimnasio B2", R.drawable.b2_gimnasio),
-                    Brand("Aldo's Gym", R.drawable.aldos_gym),
-                    Brand("X Sport Gym", R.drawable.x_sport_gym),
-                    Brand("Master Gym", R.drawable.master_gym),
-                    Brand("Fitness de Impacto", R.drawable.fitness_de_impacto),
-                    Brand("Sportlife Fitness Club", R.drawable.sportlife_fitness_club)
-                ),
+                brands = brands
+//                listOf(
+//                    Brand("Gold's Gym", R.drawable.brand_gold_gym),
+//                    Brand("SmartFit", R.drawable.brand_smart_fit),
+//                    Brand("Bodytech", R.drawable.brand_bodytech),
+//                    Brand("Megaforce", R.drawable.brand_megaforce),
+//                    Brand("Megatlon", R.drawable.brand_megatlon),
+//                    Brand("Gimnasio B2", R.drawable.b2_gimnasio),
+//                    Brand("Aldo's Gym", R.drawable.aldos_gym),
+//                    Brand("X Sport Gym", R.drawable.x_sport_gym),
+//                    Brand("Master Gym", R.drawable.master_gym),
+//                    Brand("Fitness de Impacto", R.drawable.fitness_de_impacto),
+//                    Brand("Sportlife Fitness Club", R.drawable.sportlife_fitness_club)
+//                )
+                ,
                 onClickBrand = { tituloDeMarca, imagenDeMarca ->
                     homeViewModel.setTituloDeMarca(tituloDeMarca)
                     homeViewModel.setImagenDeMarca(imagenDeMarca)

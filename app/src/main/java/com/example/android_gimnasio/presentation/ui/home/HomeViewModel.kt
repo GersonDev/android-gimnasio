@@ -11,6 +11,7 @@ import com.example.android_gimnasio.domain.models.Bus
 import com.example.android_gimnasio.domain.models.BusStop
 import com.example.android_gimnasio.domain.models.MyCurrentLocation
 import com.example.android_gimnasio.domain.models.People
+import com.example.android_gimnasio.domain.models.gym.Brand
 import com.example.android_gimnasio.domain.repositories.PeopleRepository
 import com.example.android_gimnasio.sharedpreferences.Preferences
 import kotlinx.coroutines.launch
@@ -29,6 +30,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _userName = MutableLiveData("")
     val userName: LiveData<String> = _userName
+
+    //Brands
+    private val _brands = MutableLiveData<List<Brand>>(listOf())
+    val brands: LiveData<List<Brand>> = _brands
 
     //maps livadata
     val myCurrentLocationDefault = MyCurrentLocation(-11.959584311990993, -76.98711087235495) // ESTACION BAYOVAR TREN
@@ -146,5 +151,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     // endregion
+
+    // region Brands
+    fun getBrands() {
+        viewModelScope.launch {
+            val brands = peopleRepository.getBrandsFromRemote()
+            _brands.value = brands
+        }
+    }
+
+    // endregion
+
 
 }
