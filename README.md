@@ -1,3 +1,10 @@
 # TITULO
-haodfalksjh dlkajshdf alksdfh alksjhdf asjlkf alksdfg asjkhdfg asjkdg f
-asdf kasdfjk asgdjkfh gasdjf ghasjkdfgh 
+Aplicativo de Gimnasio:
+JetpackCompose.
+Android Studio.
+Koltin.
+Room.
+Shared Preferences.
+Git.
+SQLite
+
