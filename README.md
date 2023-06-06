@@ -10,6 +10,6 @@
 </p>
 
 ### DESCRIPTION
-Aplicativo de Gimnasio con sitmea de login personalizado,registros,videos,uso de retrofit y room,Sqlite,
+Aplicativo de Gimnasio con sistema de login personalizado,registros,videos,uso de retrofit y room,Sqlite,
 jetpackCompose,MVVM,entre otros.
 
